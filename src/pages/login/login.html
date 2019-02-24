@@ -1,0 +1,41 @@
+<ion-content padding center text-center class="contentLogin">
+    <button (click)="goBack()" style="background-color: transparent;position: absolute;left: 15px;">
+        <ion-icon name="arrow-back" style="color: white; zoom: 2.5">
+        </ion-icon>
+    </button>
+
+  <div class="initial">
+    <div>
+        <img src="../../assets/imgs/fondo-Inico.png" class="imgLogin"
+        alt="fondo" />
+    </div>
+    <form [formGroup]="myForm" (ngSubmit)="goStart()" novalidate>
+      <ion-list class="list">
+          <ion-item>
+            <ion-label> <ion-icon name="person"></ion-icon></ion-label>
+            <ion-input formControlName="email" placeholder="Correo" [(ngModel)]="FormLog.email"></ion-input>
+          </ion-item>
+          <ion-item *ngIf="myForm.get('email').errors && myForm.get('email').dirty">
+            <p color="danger" ion-text *ngIf="myForm.get('email').hasError('required')">Debe escribir un correo</p>
+            <p color="danger" ion-text *ngIf="myForm.get('email').hasError('email') && !myForm.get('email').hasError('required')">Este no es un correo</p>
+          </ion-item>
+          <ion-item>
+              <ion-label> <ion-icon name="lock"></ion-icon></ion-label>
+            <ion-input formControlName="password" placeholder="Contraseña" type="password" [(ngModel)]="FormLog.password"></ion-input>
+          </ion-item>
+          <ion-item *ngIf="myForm.get('email').errors && myForm.get('email').dirty">
+            <p color="danger" ion-text *ngIf="myForm.get('email').hasError('required')">Debe escribir una contraseña</p>
+          </ion-item>
+        </ion-list>
+        <button ion-button round class="buttonLogin" [disabled]="myForm.invalid">Ingresar</button>
+      </form>
+      <div class="buttonSecondary">
+            <button id="buttonGoFB" class="buttonSocial">
+                    <ion-icon name="logo-facebook" style="color: #3b5998; zoom: 1.1;"></ion-icon>
+                </button>
+                <button id="buttonGoGoo" class="buttonSocial">
+                    <ion-icon name="logo-googleplus" style="color: #db4a39; zoom: 1.1;"></ion-icon>
+              </button>
+      </div>
+  </div>
+</ion-content>

@@ -1,0 +1,67 @@
+page-home {
+
+    .contentHome{
+        //background-color: #c6eaf8;
+        background-image: linear-gradient(#7B55B9,#ffffff,#ffffff,#ffffff,
+        #ffffff, #7B55B9);
+        vertical-align: center;
+    }
+
+    .initial{
+        margin-top: 20%;
+        margin-bottom: 10%;
+    }
+
+    .imgHome{
+        width: 56.67%;
+        height: 38.09%;
+    }
+
+    .buttonPrimary{
+        margin-top: 15.24%;
+    }
+    
+    .buttonInitial{
+        align-content: center;
+        text-decoration: none;
+        padding: 10px;
+        font-weight: 600;
+        font-size: 100%;
+        color: #ffffff;
+        background-color: #7b55c6;
+        border-radius: 35px;
+    }
+    #buttonGoLogin{
+        padding-left: 16px; 
+        padding-right: 16px; 
+    }
+    #buttonGoRegister{
+        padding-left: 30.4px; 
+        padding-right: 30.4px;
+    }
+
+    .buttonSecondary{
+        margin-top: 15px;
+    }
+    .buttonSocial{
+        align-content: center;
+        text-decoration: none;
+        padding: 10px;
+        font-weight: 550;
+        font-size: 15px;
+        padding-left: 15px; 
+        padding-right: 15px; 
+        //border: 1.5px solid #7B55B9;
+    }
+    #buttonGoFB{
+        border-top-left-radius: 35px;
+        border-bottom-left-radius: 35px;
+        background-image: linear-gradient(to right, #7B55B9, rgb(233, 221, 255), #ffffff);
+    }
+    #buttonGoGoo{
+        border-top-right-radius: 35px;
+        border-bottom-right-radius: 35px;
+        background-image: linear-gradient(to right, #ffffff, rgb(233, 221, 255), #7B55B9);
+    }
+    
+}

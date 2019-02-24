@@ -1,0 +1,48 @@
+
+<ion-content padding center text-center class="contentSingIn">
+    <button (click)="goBack()" style="background-color: transparent;position: absolute;left: 15px;">
+        <ion-icon name="arrow-back" style="color: white; zoom: 2.5">
+        </ion-icon>
+      </button>
+      
+  
+  <div class="initial">
+    <div>
+        <img src="../../assets/imgs/fondo-Inico.png" class="imgSingIn"
+        alt="fondo" />
+    </div>
+  
+      <ion-list class="list">
+          <ion-item>
+            <ion-label><ion-icon name="person"></ion-icon></ion-label>
+            <ion-input placeholder="Nombre completo"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label><ion-icon name="mail"></ion-icon></ion-label>
+            <ion-input placeholder="Correo" type="password"></ion-input>
+          </ion-item>
+          <ion-item>
+              <ion-label><ion-icon name="person"></ion-icon></ion-label>
+              <ion-input placeholder="Usuario"></ion-input>
+            </ion-item>
+          <ion-item>
+              <ion-label><ion-icon name="lock"></ion-icon></ion-label>
+            <ion-input placeholder="Contraseña" type="password"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label><ion-icon name="lock"></ion-icon></ion-label>
+            <ion-input placeholder="Confirmar contraseña" type="password"></ion-input>
+          </ion-item>
+      </ion-list>
+        <button ion-button round (click)="goBack()" class="buttonSingIn">Registrarse</button>
+  
+      <div class="buttonSecondary">
+          <button id="buttonGoFB" class="buttonSocial">
+              <ion-icon name="logo-facebook" style="color: #3b5998; zoom: 1.1;"></ion-icon>
+          </button>
+          <button id="buttonGoGoo" class="buttonSocial">
+              <ion-icon name="logo-googleplus" style="color: #db4a39; zoom: 1.1;"></ion-icon>
+        </button>
+      </div>
+  </div>
+</ion-content>

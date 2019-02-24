@@ -1,0 +1,7 @@
+{
+  "name": "Alquio",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

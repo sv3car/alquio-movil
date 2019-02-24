@@ -1,0 +1,140 @@
+drawer-user {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 20 !important;
+
+    .scroll-content {
+        padding: 0px !important;
+        contain: none !important;
+    }
+
+    .contentUser{
+        background: transparent;
+        position: absolute;
+        height: 100%;
+        width: 100%;
+    }
+
+    .ion-page{
+        background:transparent;
+    }
+
+    .content-md {
+        background:transparent;
+    }
+
+    .buttonCancel{
+        position: fixed;
+        align-content: center;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 100%;
+        background-color: #ffffff;
+        border-radius: 1000px;
+        width: 40px;
+        height: 40px;
+        left: calc(50% - 40px/2);
+        z-index: 20;
+    }
+
+    .divButton{
+        width: 50%;
+        height: 50%;
+        padding-top: 10%;
+        height: 10%;
+        position: relative;
+        text-align: left;
+    }
+
+    .images-user{
+        width: 100%;
+        height: 35%;
+        filter: blur(5px);
+        //background-image: url("../../assets/imgs/user-images/user-2.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: 50% 50%;
+    }
+
+    .img-user-small{
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        border-radius: 150px;
+        top: 7%;
+        margin-left:auto;
+        margin-right:auto;
+        left:0;
+        right:0;
+        //background-image: url("../../assets/imgs/user-images/user-2.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: 50% 50%;
+    }
+
+    .name-user{
+        position: absolute;
+        color: #ffffff;
+        top: calc(6.5% + 100px);
+        margin-left:auto;
+        margin-right:auto;
+        left:0;
+        right:0;
+        text-shadow: 2px 0 0 #000, 
+        -2px 0 0 #000, 
+        0 2px 0 #000, 
+        0 -2px 0 #000, 
+        1px 1px #000, 
+        -1px -1px 0 #000, 
+        1px -1px 0 #000, 
+        -1px 1px 0 #000;
+    }
+
+    .options-class{
+        background: #ffffff;
+        border-bottom-left-radius: 50px;
+        border-bottom-right-radius: 50px;
+    }
+
+    .separator-horizontal{
+        border:15px;
+    }
+
+    .icon-perfil{
+        width: 20px;
+        height: 20px;
+    }
+
+    .icon-name{
+        color:  #7b55c6;
+        font-size: 15px;
+        margin: 0;
+    }
+
+    .button-opction{
+        background: #ffffff;
+        padding: 5px;
+    }
+
+    .col {
+        padding: 10px;
+    }
+
+    .hide-gesture{
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 40%;
+        background: transparent;
+        z-index: 15;
+    }
+
+    .user-option{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+    }
+    
+}

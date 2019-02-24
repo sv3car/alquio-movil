@@ -1,0 +1,161 @@
+<ion-content padding>
+  <div class="mid">
+    <div class="div-slides">
+      <ion-slides pager>
+        <ion-slide>
+          <div class="slides-img" 
+          [style.background-image]="'url(https://alquio.com/productos/' + product.foto + ')'">
+          </div>
+        </ion-slide>
+      </ion-slides>
+    </div>
+
+    <div class="title-search">
+      <h4>{{product.name}}</h4>
+    </div>
+
+    <hr style="border:5px; width: 70%; text-align: center">
+
+    <ion-grid>
+      <ion-row class="price-calc">
+        <ion-col>
+          <div class="price">
+            <p>{{product.precio}}</p>
+          </div>
+        </ion-col>
+        <ion-col>
+          <div>
+            <button class="button-remove" (click)="decrement()">
+                <ion-icon name="remove"></ion-icon>
+            </button>
+            <p class="quantity">{{currentNumber}}</p>
+            <img class="img-control" src="../../assets/imgs/customicons/control.png" >
+  
+            <button class="button-add" (click)="increment()">
+                <ion-icon name="add"></ion-icon>
+            </button>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <hr style="border:5px; width: 90%; text-align: center">
+
+    <div style="width: 100%;position: relative;text-align: center">
+        <p style="position: relative;"><strong>Variantes</strong></p>
+    </div>
+
+    <ion-grid>
+      <ion-row class="price-calc">
+        <ion-col>
+          <div style="position: absolute; top: 0; bottom: 0; margin-top: auto; margin-bottom: auto ">
+            <ion-grid center>
+              <ion-row class="price-calc">
+                <ion-col>
+                  <ion-checkbox [(ngModel)]="color1" class="check-color1"></ion-checkbox>
+                </ion-col>
+                <ion-col>
+                  <ion-checkbox [(ngModel)]="color2" class="check-color2"></ion-checkbox>
+                </ion-col>
+                <ion-col>
+                  <ion-checkbox [(ngModel)]="color3" class="check-color3"></ion-checkbox>
+                </ion-col>
+              </ion-row>
+              <ion-row class="price-calc">
+                <ion-col>
+                  <ion-checkbox [(ngModel)]="color4" class="check-color4"></ion-checkbox>
+                </ion-col>
+                <ion-col>
+                  <ion-checkbox [(ngModel)]="color5" class="check-color5"></ion-checkbox>
+                </ion-col>
+                <ion-col>
+                  <ion-checkbox [(ngModel)]="color6" class="check-color6"></ion-checkbox>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </div>
+        </ion-col>
+        <ion-col>
+          <div>
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                    <p style="margin: 0">S</p>
+                </ion-col>
+                <ion-col>
+                    <p style="margin: 0">M</p>
+                </ion-col>
+                <ion-col>
+                    <p style="margin: 0">L</p>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <ion-checkbox [(ngModel)]="s" class="check-size1"></ion-checkbox>
+                </ion-col>
+                <ion-col>
+                  <ion-checkbox [(ngModel)]="m" class="check-size2"></ion-checkbox>
+                </ion-col>
+                <ion-col>
+                  <ion-checkbox [(ngModel)]="l" class="check-size3"></ion-checkbox>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </div>
+        </ion-col>
+        <ion-col>
+            <p style="margin-bottom: 0">10 a 15 dias</p>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <div style="width: 100%;position: relative;text-align: center">
+      <button ion-button round 
+      style="position: relative; background-color: #7b55c6;">
+          Comprar Ahora</button>
+    </div>
+    
+
+  </div>
+
+  <div class="initial">
+    <div id="header" class="bar">
+
+      <button id="search" class="buttonBar">
+        <img src="../../assets/imgs/customicons/search.png" class="icon-bar">
+      </button>
+      <button id="user" class="buttonBar">
+          <img src="../../assets/imgs/customicons/user.png" class="icon-bar-user">
+      </button>
+      <button id="cart" class="buttonBar">
+          <img src="../../assets/imgs/customicons/shopping-cart.png" class="icon-bar">
+      </button>
+    </div>
+    <div id="bottom" class="bar">
+        <!--<button id="left" class="buttonBar">
+            <img src="../../assets/imgs/customicons/left.png" class="icon-bar">
+        </button>-->
+        <ion-icon name="arrow-up" style="color: white; zoom: 1.5; padding-top: 5px"></ion-icon>
+        <button class="buttonBar">
+          <p class="title-bot"><strong>Detalles</strong></p>
+        </button>
+        <ion-icon name="arrow-up" style="color: white; zoom: 1.5; padding-top: 5px"></ion-icon>
+        <!--<button id="right" class="buttonBar">
+            <img src="../../assets/imgs/customicons/right.png" class="icon-bar">
+        </button>-->
+    </div>
+
+    <button class="button-home" (click)="backPage()">
+        <ion-icon name="arrow-back" style="color: white"></ion-icon>
+    </button>
+  </div>
+
+</ion-content>
+
+<drawer-user [options]="namePage" [sideBar]="sideBar"></drawer-user>
+<drawer-user-panel></drawer-user-panel>
+
+<drawer-opacity #sideBar></drawer-opacity>
+

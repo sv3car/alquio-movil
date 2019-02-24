@@ -1,0 +1,111 @@
+drawer-category {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 20 !important;
+
+    .ion-page{
+        background:transparent;
+    }
+    
+    .scroll-content {
+        padding: 0px !important;
+        contain: none !important;
+    }
+    
+    .contentCategory{
+        background: transparent;
+        position: absolute;
+        width: 100%;
+    }
+
+    .divButton{
+        padding-top: 10%;
+        height: 10%;
+        position: relative;
+        text-align: left;
+    }
+
+    h3{
+        color: #7b55c6;
+    }
+
+    .divTitle{
+        position: relative;
+        margin-top: 10%;
+        padding-top: 1.5%;
+        height: 30%;
+        background-color: #ffffff;
+        width: 100%;
+        border-top-left-radius: 35px;
+        border-top-right-radius: 35px;
+    }
+
+    .buttonCancel{
+        position: fixed;
+        align-content: center;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 100%;
+        background-color: #ffffff;
+        border-radius: 1000px;
+        width: 40px;
+        height: 40px;
+        left: calc(50% - 40px/2);
+        z-index: 20;
+    }
+
+    #cardCategories{
+        top: 27.5%;
+        background-color: #ffffff;
+    }
+
+    .card-md{
+        border-radius: 10px;
+    }
+
+    ion-card {
+        position: relative;
+        text-align: center;
+        height: 35%;
+    }
+    
+    .card-title {
+        position: absolute;
+        top: 36%;
+        font-size: 2.0em;
+        width: 100%;
+        font-weight: bold;
+        color: #fff;
+    }
+
+    .card-subtitle {
+        font-size: 1.0em;
+        position: absolute;
+        top: 60%;
+        width: 100%;
+        color: #fff;
+    }
+
+    .divCat{
+        width: 100%;
+        background-color: #ffffff ;
+    }
+
+    .hide-gesture{
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 20%;
+        background: transparent;
+        z-index: 10;
+    }
+
+    .imgCategory{
+        -webkit-filter: blur(3px);
+        filter: blur(10px);
+        -webkit-filter: brightness(50%);
+        filter: brightness(50%);
+    }
+}

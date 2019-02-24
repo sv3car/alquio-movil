@@ -1,0 +1,77 @@
+<ion-content padding>
+  <div class="card-order">
+    <ion-card *ngFor="let order of orders">
+        <ion-grid center>
+          <ion-row>
+            <ion-col>
+              <div class="nro-card"><strong>{{ order.number }}</strong></div>
+            </ion-col>
+            <ion-col class="col-shape">
+              <div class="img-shape">
+                <img src="../../assets/imgs/customicons/shape.png"/>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid> 
+      <hr style="border:5px; width: 90%; text-align: center; border-width: 5px">  
+      <div>
+        <ion-grid center>
+          <ion-row class="row-card">
+            <ion-col>
+              <div class="img-card" 
+              [style.background-image]="'url(../../assets/imgs/prueba/' + order.product + ')'">
+            </div>
+            </ion-col>
+            <ion-col>
+              <p class="price">Precio</p>
+              <p class="value-price">{{ order.price }}</p>
+            </ion-col>
+            <ion-col>
+                <img [src]="'../../assets/imgs/customicons/' + order.statusImage" 
+                class="icon-status"/>
+              <p class="status"><strong>{{ order.statusName }}</strong></p>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+      <hr style="border:5px; width: 90%; text-align: center; border-width: 5px">
+      <ion-card-content>
+          <p>{{ order.description }}
+          </p>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <div class="initial">
+    <div id="header" class="bar">
+      <button id="search" class="buttonBar">
+        <img src="../../assets/imgs/customicons/search.png" class="icon-bar">
+      </button>
+      <button id="user" class="buttonBar">
+          <img src="../../assets/imgs/customicons/user.png" class="icon-bar-user">
+      </button>
+      <button id="cart" class="buttonBar">
+          <img src="../../assets/imgs/customicons/shopping-cart.png" class="icon-bar">
+      </button>
+    </div>
+    <div id="bottom" class="bar">
+        <!--<button id="left" class="buttonBar">
+            <img src="../../assets/imgs/customicons/left.png" class="icon-bar">
+        </button>-->
+        <button class="buttonBar">
+          <p class="title-bot"><strong>Ordenes</strong></p>
+        </button>
+        <!--<button id="right" class="buttonBar">
+            <img src="../../assets/imgs/customicons/right.png" class="icon-bar">
+        </button>-->
+    </div>
+    <button class="button-home" (click)="backPage()">
+        <ion-icon name="arrow-back" style="color: white"></ion-icon>
+    </button>
+  </div>
+</ion-content>
+
+<drawer-user [options]="namePage" [sideBar]="sideBar"></drawer-user>
+<drawer-user-panel></drawer-user-panel>
+
+<drawer-opacity #sideBar></drawer-opacity>

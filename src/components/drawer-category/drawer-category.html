@@ -1,0 +1,45 @@
+<ion-content center text-center class="contentCategory">
+  <div class="divButton">
+    <button (click)="hideContent()" class="buttonCancel">
+      <ion-icon name="close" style="zoom:2;"></ion-icon>
+    </button>
+  </div>
+  
+  <div class="divTitle">
+      <h3>Categorías</h3>
+  </div>
+
+  <div class="divCat">
+    <div class="scroll-content" id="cardCategories">
+      <ion-card class="cards" *ngFor="let category of categ" 
+      tappable (click)="viewCat(category)">
+        <div class="imgCard">
+            <img class="imgCategory" *ngIf="category.id == 1" 
+            src="assets/imgs/prueba/tegnology-category.jpg"/>
+
+            <img class="imgCategory" *ngIf="category.id == 2" 
+            src="assets/imgs/prueba/moda-category.jpg"/>
+
+            <img class="imgCategory" *ngIf="category.id == 3" 
+            src="assets/imgs/prueba/accesorios-category.jpg"/>
+
+            <img class="imgCategory" *ngIf="category.id == 4" 
+            src="assets/imgs/prueba/salud-y-belleza-category.jpg"/>
+
+            <img class="imgCategory" *ngIf="category.id == 5" 
+            src="assets/imgs/prueba/house-category.jpg"/>
+
+            <img class="imgCategory" *ngIf="category.id == 6" 
+            src="assets/imgs/prueba/deportes-category.jpg"/>
+
+            <img class="imgCategory" *ngIf="category.id == 7" 
+            src="assets/imgs/prueba/infantil-category.jpg"/>
+        </div>
+          <div class="card-title">{{ category.name }}</div>
+          <!-- <div class="card-subtitle">{{ category.product }}</div> -->
+      </ion-card>
+    </div>
+  </div>
+
+  <drawer-category-panel-hide class="hide-gesture"></drawer-category-panel-hide>
+</ion-content>

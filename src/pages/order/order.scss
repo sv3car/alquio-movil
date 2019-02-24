@@ -1,0 +1,217 @@
+page-order {
+    .scroll-content {
+        padding: 0px !important;
+        contain: none !important;
+    }
+
+    ion-card-content{
+        text-align: center;
+        background-image: linear-gradient(#ffffff, #e0e0e0);
+    }
+
+    .initial{
+        position: relative;
+    }
+
+    .mid{
+        contain: layout;
+        background: #eeeeee
+    }
+
+    .bar{
+        position: fixed;
+        height: 8.5%;
+        width: 100%;
+        background-color: #7B55B9;
+        text-align: center
+    }
+    .button-home{
+        position: fixed;
+        height: 45px;
+        width: 45px;
+        background-color: #7B55B9;
+        text-align: center;
+        left: 0;
+        border-top-right-radius: 200px;
+        border-bottom-right-radius: 200px;
+        bottom: 12%;
+        background-image: linear-gradient(to right,#7B55B9, #40188F);
+    }
+    .buttonBar{
+        align-content: center;
+        text-decoration: none;
+        padding: 10px;
+        font-weight: 600;
+        font-size: 80%;
+        color: #ffffff;
+        background-color: transparent;
+        width: 30%;
+        height: 100%;
+        p{
+            margin:0;
+        }
+    }
+
+    #header{
+        top: 0;
+        border-bottom-right-radius: 200px;
+        border-bottom-left-radius: 200px;
+        background-color: #7B55B9;
+        background-image: linear-gradient(#7B55B9, #40188F);
+    }
+    #search{
+        border-bottom-left-radius: 200px;
+    }
+    #user{
+    }
+    #cart{
+        border-bottom-right-radius: 200px;
+    }
+
+    #bottom{
+        position: fixed;
+        top: 91.5%;
+        border-top-right-radius: 200px;
+        border-top-left-radius: 200px;
+        background-color: #7B55B9;
+        background-image: linear-gradient(#40188F, #7B55B9);
+    }
+
+    .icon-bar{
+        width: 20px;
+        height: 20px;
+    }
+
+    .icon-bar-user{
+        width: 20px;
+        height: 25px;
+    }
+
+    //---------Div Opacity-----------
+
+    .transition-content{
+        position: fixed;
+        background-color: rgba(0, 0, 0, 0.692);
+        -webkit-transition: opacity 600ms, visibility 600ms;
+        transition: opacity 600ms, visibility 600ms;
+    }
+
+    .opacity-content{
+        opacity: 1;
+    }
+    .no-opacity-content{
+        opacity: 0;
+    }
+    .exist-content{
+        z-index: 15 !important;
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+    .no-exist-content{
+        display: none;
+    }
+
+    //-------Cards---------//
+    .head-card{
+        position: relative;
+    }
+
+    .nro-card{
+        position: relative;
+    }
+
+    .img-shape{
+        position: absolute;
+        width: 30px;
+        height: 20px;
+        right: 10px;
+    }
+    
+    .card-order{
+        margin-top: 20%;
+        margin-bottom: 20%;
+    }
+
+    .card{
+        margin-top: 5%;
+        margin-bottom: 5%;
+    }
+
+    .row-card{
+        height: 100px;
+    }
+
+    .img-card{
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: 50% 50%;
+    }
+
+    #img-prod1{
+        background-image: url("../../assets/imgs/prueba/producto-1.png");
+    }
+    #img-prod2{
+        background-image: url("../../assets/imgs/prueba/producto-2.png");
+    }
+    #img-prod3{
+        background-image: url("../../assets/imgs/prueba/producto-3.png");
+    }
+    #img-prod4{
+        background-image: url("../../assets/imgs/prueba/producto-4.png");
+    }
+    
+    .icon-card{
+        width: 70%;
+        height: 70%;
+        background-size: auto;
+        background-repeat: no-repeat;
+        background-position: 50% 50%;
+    }
+
+    #status1{
+        background-image: url("../../assets/imgs/customicons/cancelado.png");
+    }
+    #status2{
+        background-image: url("../../assets/imgs/customicons/en-proceso.png");
+    }
+    #status3{
+        background-image: url("../../assets/imgs/customicons/en-transito.png");
+    }
+    #status4{
+        background-image: url("../../assets/imgs/customicons/entregado.png");
+    }
+
+    .price{
+        margin-top: 10px;
+        text-align: left;
+        color: rgb(126, 126, 126)
+    }
+
+    .value-price{
+        text-align: left;
+    }
+
+    .icon-status{
+        margin-top: 10px;
+        width: 50px;
+        height: 50px;
+        text-align: center;
+    }
+
+    .icon-status-trans{
+        margin-top: 10px;
+        width: 70px;
+        height: 70px;
+        text-align: center;
+    }
+
+    .title-bot{
+        color: #ffffff; 
+        font-size: 15px; 
+        vertical-align: middle;
+    }
+
+}

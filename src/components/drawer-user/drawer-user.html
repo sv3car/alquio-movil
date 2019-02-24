@@ -1,0 +1,72 @@
+<ion-content center text-center class="contentUser">
+  
+  <div class="user-option">
+    <div class="images-user" 
+    [style.background-image]="'url(../../assets/imgs/user-images/' + userImg + ')'">
+    </div>
+    
+    <div class = "img-user-small" 
+    [style.background-image]="'url(../../assets/imgs/user-images/' + userImg + ')'">
+    </div>
+
+    <h3 class="name-user">Marco Garcia</h3>
+   
+    <div class="options-class">
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <button class="button-opction">
+              <img class="icon-perfil" src="../../assets/imgs/customicons/favoritos.png"/>
+              <h4 class="icon-name">Favoritos</h4>
+            </button>
+          </ion-col>
+          <ion-col>
+            <button class="button-opction" (click)="goOrder()">
+              <img class="icon-perfil" src="../../assets/imgs/customicons/orden.png"/>
+              <h4 class="icon-name" >Orden</h4>
+            </button>
+          </ion-col>
+          <ion-col>
+            <button class="button-opction">
+              <img class="icon-perfil" src="../../assets/imgs/customicons/ofertas.png"/>
+              <h4 class="icon-name" >Ofertas</h4>
+            </button>
+          </ion-col>
+        </ion-row>
+        
+        <ion-row>
+            <ion-col>
+              <button class="button-opction" (click)="goChat()">
+                <img class="icon-perfil" src="../../assets/imgs/customicons/mensajes.png"/>
+                <h4 class="icon-name">Mensajes</h4>
+              </button>
+            </ion-col>
+            <ion-col>
+              <button class="button-opction">
+                <img class="icon-perfil" src="../../assets/imgs/customicons/ayuda.png"/>
+                <h4 class="icon-name">Ayuda</h4>
+              </button>
+            </ion-col>
+            <ion-col>
+              <button class="button-opction">
+                <img class="icon-perfil" src="../../assets/imgs/customicons/config.png"/>
+                <h4 class="icon-name">Config</h4>
+              </button>
+            </ion-col>
+          </ion-row>
+      </ion-grid>
+    </div>
+
+    <div class="divButton">
+      <button (click)="hideContent()" class="buttonCancel">
+        <ion-icon name="close" style="zoom:2;"></ion-icon>
+      </button>
+    </div>
+
+  </div>
+
+  <drawer-user-panel-hide class="hide-gesture"></drawer-user-panel-hide>
+
+</ion-content>
+
+

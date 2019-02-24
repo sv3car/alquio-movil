@@ -1,0 +1,80 @@
+<ion-content padding>
+  <div class="mid">
+
+    <div class="div-slides">
+      <ion-slides pager>
+        <ion-slide *ngFor="let slide of slides">
+          <div class="slides-img" 
+          [style.background-image]="'url(../../assets/imgs/prueba/' + slide.image + ')'">
+          </div>
+        </ion-slide>
+      </ion-slides>
+    </div>
+
+    <div class="title-search">
+      <h4>Los mas buscados</h4>
+    </div>
+
+    <hr style="border:5px; width: 70%; text-align: center">
+
+    <!--Cargar productos mas buscados-->
+    <div class="card">
+      <ion-row wrap>
+        <ion-col col-6 *ngFor="let product of products">
+          <ion-card tappable (click)="goProduct(product)">
+            <img [src]="'https://alquio.com/productos/' + product.foto" class="imgCard"/>
+            <ion-card-content>
+              <p>{{ '$ ' + product.precio }}</p>
+              <p><strong>{{ product.titulo }}</strong></p>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+        <ion-infinite-scroll (ionInfinite)="loadMore($event)" loadingSpinner="bubbles" loadingText="Cargando productos...">
+          <ion-infinite-scroll-content></ion-infinite-scroll-content>
+        </ion-infinite-scroll>
+      </ion-row>
+    </div>
+  </div>
+
+  <div class="initial">
+
+    <!--Header-->
+    <header-app></header-app>
+
+    <!--bottom-->
+    <div id="bottom" class="bar">
+      <button id="left" class="buttonBar" (click)="moveLeft(1)">
+          <img src="../../assets/imgs/customicons/left.png" class="icon-bar">
+      </button>
+      
+      <!--Categorias-->
+      <ion-slides class="categories">
+        <ion-slide *ngFor="let category of categ">
+          <p id="categoy"><strong>{{ category.name }}</strong></p>
+        </ion-slide>
+      </ion-slides>
+
+      <button id="right" class="buttonBar" (click)="moveRight(1)">
+          <img src="../../assets/imgs/customicons/right.png" class="icon-bar">
+      </button>
+    </div>
+    <button class="button-home" (click)="backPage()">
+        <ion-icon name="power" style="color: white"></ion-icon>
+    </button>
+  </div>
+  
+</ion-content>
+
+<drawer-category [sideBar]="sideBar" [categ]="categ">
+</drawer-category>
+
+<drawer-category-panel>
+</drawer-category-panel>
+
+<drawer-filter [options]="drawerOptions" [sideBar]="sideBar">
+</drawer-filter>
+
+<drawer-user [options]="namePage" [sideBar]="sideBar"></drawer-user>
+<drawer-user-panel></drawer-user-panel>
+
+<drawer-opacity #sideBar></drawer-opacity>
