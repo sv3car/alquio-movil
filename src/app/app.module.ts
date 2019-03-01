@@ -2,39 +2,49 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler} from 'ionic-angular';
 import { MyApp } from './app.component';
-
-import { AboutPage } from '../pages/about/about';
-import { ContactPage } from '../pages/contact/contact';
-import { HomePage } from '../pages/home/home';
-import { LoginPage } from '../pages/login/login';
-
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { StartPage } from '../pages/start/start';
-import { SingInPage } from '../pages/sing-in/sing-in';
-import { ModalPruebaPage } from '../pages/modal-prueba/modal-prueba';
-import { ActionCategoryPage } from '../pages/action-category/action-category';
-import { DrawerFilter } from '../components/drawer-filter/drawer-filter';
-import { DrawerCategoryPanel } from '../components/drawer-category-panel/drawer-category-panel';
 import { StartService } from '../pages/start/start-service';
+import { OrdertService } from '../pages/order/order-service';
+import { HttpClientModule } from '@angular/common/http';
+
+//Components
+import { HeaderComponent } from '../components/header-app/header-app';
+import { DrawerCategoryPanelHide } from '../components/drawer-category-panel-hide/drawer-category-panel-hide';
+import { DrawerUserPanelHide } from '../components/drawer-user-panel-hide/drawer-user-panel-hide';
+import { DrawerOpacity } from '../components/drawer-opacity/drawer-opacity';
+import { DrawerSearch } from '../components/drawer-search/drawer-search';
+import { DrawerProductDetailPanel } from '../components/drawer-product-detail-panel/drawer-product-detail-panel';
 import { DrawerCategoryService } from '../components/drawer-category/drawer-category-service';
 import { DrawerCategory } from '../components/drawer-category/drawer-category';
 import { DrawerUser } from '../components/drawer-user/drawer-user';
 import { DrawerUserPanel } from '../components/drawer-user-panel/drawer-user-panel';
 import { DrawerUserService } from '../components/drawer-user/drawer-user-service';
-import { OrderPage } from '../pages/order/order';
-import { OrdertService } from '../pages/order/order-service';
-import { DrawerCategoryPanelHide } from '../components/drawer-category-panel-hide/drawer-category-panel-hide';
-import { DrawerUserPanelHide } from '../components/drawer-user-panel-hide/drawer-user-panel-hide';
-import { ProductPage } from '../pages/product/product';
-import { DrawerOpacity } from '../components/drawer-opacity/drawer-opacity';
-import { DrawerSearch } from '../components/drawer-search/drawer-search';
-import { DrawerProductDetailPanel } from '../components/drawer-product-detail-panel/drawer-product-detail-panel';
-import { UserDetailPage } from '../pages/user-detail/user-detail';
-import { HeaderComponent } from '../components/header-app/header-app';
-import { RestProvider } from '../providers/rest/rest';
-import { HttpClientModule } from '@angular/common/http';
+import { DrawerFilter } from '../components/drawer-filter/drawer-filter';
+import { DrawerCategoryPanel } from '../components/drawer-category-panel/drawer-category-panel';
+
+
+//Pages
+
 import { JivoChatPage } from '../pages/jivo-chat/jivo-chat';
+import { UserDetailPage } from '../pages/user-detail/user-detail';
+import { ProductPage } from '../pages/product/product';
+import { OrderPage } from '../pages/order/order';
+import { StartPage } from '../pages/start/start';
+import { SingInPage } from '../pages/sing-in/sing-in';
+import { ModalPruebaPage } from '../pages/modal-prueba/modal-prueba';
+import { ActionCategoryPage } from '../pages/action-category/action-category';
+import { AboutPage } from '../pages/about/about';
+import { ContactPage } from '../pages/contact/contact';
+import { HomePage } from '../pages/home/home';
+import { LoginPage } from '../pages/login/login';
+
+
+//Providers
+
+import { RestProvider } from '../providers/rest/rest';
+import { GlobalProvider } from '../providers/global/global';
+
 
 @NgModule({
   declarations: [
@@ -92,7 +102,8 @@ import { JivoChatPage } from '../pages/jivo-chat/jivo-chat';
     DrawerCategoryService,
     DrawerUserService,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    RestProvider
+    RestProvider,
+    GlobalProvider
   ]
 })
 export class AppModule {}
