@@ -29,13 +29,29 @@
         </ion-list>
         <button ion-button round class="buttonLogin" [disabled]="myForm.invalid">Ingresar</button>
       </form>
-      <div class="buttonSecondary">
-            <button id="buttonGoFB" class="buttonSocial">
-                    <ion-icon name="logo-facebook" style="color: #3b5998; zoom: 1.1;"></ion-icon>
-                </button>
-                <button id="buttonGoGoo" class="buttonSocial">
-                    <ion-icon name="logo-googleplus" style="color: #db4a39; zoom: 1.1;"></ion-icon>
-              </button>
-      </div>
+
+      
+      <div style="margin-top: 20px">
+          <div style="width: 100%">
+            <button ion-button id="buttonGoFB" class="buttonSocial">
+              <div style="width: 10%">
+                <ion-icon name="logo-facebook" style="zoom: 1.1;"></ion-icon>
+              </div>
+              <div style="width: 100%">
+                <p>Iniciar sesión con Facebook</p>
+              </div>
+            </button>
+          </div>
+          <div style="width: 100%">
+            <button ion-button id="buttonGoGoo" class="buttonSocial">
+              <div style="width: 10%">
+                <ion-icon name="logo-googleplus" style="zoom: 1.1;"></ion-icon>
+              </div>
+              <div style="width: 100%">
+                <p>Iniciar sesión con Google</p>
+              </div>
+            </button>
+          </div>
+        </div>
   </div>
 </ion-content>

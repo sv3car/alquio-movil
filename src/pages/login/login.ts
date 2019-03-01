@@ -12,8 +12,6 @@ export class LoginPage {
 
   myForm: FormGroup;
 
-  log: boolean = false;
-
   resp: any;
 
   FormLog = {
@@ -43,6 +41,9 @@ export class LoginPage {
     });
     loading.present();
     loading.dismiss().then(() => { 
+      /*this.restProvider.getDataUrl('https://jsonplaceholder.typicode.com/users').then(data => {
+        console.log(data);
+      });*/
       this.getFromStorageAsync();
    });
   }
@@ -54,13 +55,17 @@ export class LoginPage {
   userLog() {
     this.restProvider.userLog(this.FormLog.email, this.FormLog.password)
     .then(data => {
+      console.log(data);
       this.resp = data;
-      if(this.resp.Error){
+      /*if(this.resp.Error){
         this.showAlert(this.resp.Error);
       } else {
         localStorage.setItem("token", this.resp.api_token);
         this.navCtrl.push(StartPage);
-      }
+      }*/
+    }).catch((error) =>{
+      console.log('----ERROR----');
+      console.log(error)
     });
   }
   
