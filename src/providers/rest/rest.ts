@@ -1,6 +1,10 @@
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
+//Providers
+
+import { GlobalProvider } from '../global/global';
+
 /*
   Generated class for the RestProvider provider.
 
@@ -10,7 +14,6 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class RestProvider {
 
-  apiUrl = 'https://alquio.com/api';
 
   /*headers = new Headers({
     'Access-Control-Allow-Origin': '*',
@@ -21,7 +24,8 @@ export class RestProvider {
 
   header = new HttpHeaders();
 
-  constructor(public http: HttpClient) {
+  constructor(public http: HttpClient,
+              public globalProv: GlobalProvider) {
   }
 
   //POST
@@ -48,7 +52,7 @@ export class RestProvider {
       password: password
     }
     let headers = new HttpHeaders({"Content-type":"application/json"});
-    return this.http.post(this.apiUrl+'/login', params, {headers: headers}).toPromise()
+    return this.http.post(this.globalProv.apiURL+'/login', params, {headers: headers}).toPromise()
   }
 
 
@@ -59,7 +63,7 @@ export class RestProvider {
   //GET
   get(token, mod) {
     return new Promise(resolve => {
-      this.http.get(this.apiUrl+'/' + mod, {params: new HttpParams().set('api_token', token),
+      this.http.get(this.globalProv.apiURL+'/' + mod, {params: new HttpParams().set('api_token', token),
       }).subscribe(data => {
         resolve(data);
       }, err => {
@@ -69,7 +73,7 @@ export class RestProvider {
   }
   getAddParam(token, mod, filter, valueFilter) {
     return new Promise(resolve => {
-      this.http.get(this.apiUrl+'/' + mod, {
+      this.http.get(this.globalProv.apiURL+'/' + mod, {
         params: new HttpParams().set('api_token', token).append(filter,valueFilter)
       },).subscribe(data => {
         resolve(data);
@@ -86,6 +90,34 @@ export class RestProvider {
         console.log(err);
       });
     });
+  }
+
+  /**
+   * 
+   * Metodo para el consumo de apis get
+   * 
+   * @param metodo : string nombre del metodo a consumir
+   * 
+   */
+  getData(metodo){
+
+    let headers = new HttpHeaders({"Content-Type": "application/json"});
+
+    return this.http.get(this.globalProv.apiURL + metodo, {headers: headers}).toPromise();
+  }
+
+  /**
+   * 
+   * Metodo para el consumo de apis post
+   * 
+   * @param metodo : string nombre del metodo a consumir
+   * 
+   */
+  postData(metodo, params=null){
+  
+    let headers = new HttpHeaders({"Content-Type": "application/json"});
+
+    return this.http.post(this.globalProv.apiURL + metodo, params, {headers:headers}).toPromise();
   }
 
 }
