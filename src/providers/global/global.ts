@@ -10,6 +10,8 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class GlobalProvider {
 
+  apiURL: string = 'https://alquio.com/api';
+
   constructor(public http: HttpClient) {
     console.log('Hello GlobalProvider Provider');
   }
