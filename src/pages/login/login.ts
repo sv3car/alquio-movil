@@ -76,7 +76,8 @@ export class LoginPage {
     this.restProvider.postData("login",params)
     .then((data:any)=>{
       console.log("LOGIN SUCCESS",data);
-      localStorage.setItem("token", data.api_token)
+      // localStorage.setItem("token", "1234567890");
+      this.globalProv.api_token = data.api_token;
       this.navCtrl.push(StartPage);
       loading.dismiss();
     },
