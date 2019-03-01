@@ -1,8 +1,15 @@
 import { Component, ViewChildren, QueryList } from '@angular/core';
 import { NavController, NavParams, Slides, ModalController} from 'ionic-angular';
-import { ProductPage } from '../product/product';
+
+
+//Providers
 import { RestProvider } from '../../providers/rest/rest';
+import { GlobalProvider } from '../../providers/global/global';
+
+//Pages
 import { HomePage } from '../home/home';
+import { ProductPage } from '../product/product';
+
 
 @Component({
   selector: 'page-start',
@@ -37,8 +44,12 @@ export class StartPage {
     }
   ];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, 
-    public modalCtrl: ModalController, public restProvider: RestProvider) {
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              public modalCtrl: ModalController,
+              public restProvider: RestProvider,
+              public globalProv: GlobalProvider) {
+
     this.drawerOptions = {
       handleWidth: 17.25,
       type: '%'
@@ -62,17 +73,34 @@ export class StartPage {
   }
 
   getPageProducts() {
-    this.restProvider.get(localStorage.getItem("token"), 'productos')
-    .then(data => {
+    // this.restProvider.get(localStorage.getItem("token"), 'productos')
+    // .then(data => {
+    //   this.pagesProd.push(data);
+    //   for(let page of this.pagesProd){
+    //     for (let prod of page.data){
+    //       this.products.push(prod);
+    //     }
+    //     this.nextPage = page.next_page_url;
+    //   }
+    //   this.next();
+    // });
+
+    this.restProvider.getData("productos", "?api_token="+this.globalProv.api_token)
+    .then((data)=>{
+      console.log("PRODUCTOS SUCCESS", data);
+      
       this.pagesProd.push(data);
-      for(let page of this.pagesProd){
-        for (let prod of page.data){
-          this.products.push(prod);
+        for(let page of this.pagesProd){
+          for (let prod of page.data){
+            this.products.push(prod);
+          }
+          this.nextPage = page.next_page_url;
         }
-        this.nextPage = page.next_page_url;
-      }
-      this.next();
-    });
+        this.next();
+
+    },(err)=>{
+      console.log("PRODUCTOS ERROR", err);
+    })
   }
 
   next(infiniteScroll?) {
