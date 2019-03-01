@@ -12,6 +12,7 @@ import { LoadingController } from 'ionic-angular';
 export class GlobalProvider {
 
   apiURL: string = 'https://alquio.com/api/';
+  api_token: string = '';
   loading: any;
 
   constructor(public http: HttpClient,
