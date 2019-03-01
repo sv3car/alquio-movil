@@ -99,11 +99,11 @@ export class RestProvider {
    * @param metodo : string nombre del metodo a consumir
    * 
    */
-  getData(metodo){
+  getData(metodo, params=""){
 
     let headers = new HttpHeaders({"Content-Type": "application/json"});
 
-    return this.http.get(this.globalProv.apiURL + metodo, {headers: headers}).toPromise();
+    return this.http.get(this.globalProv.apiURL + metodo + params, {headers: headers}).toPromise();
   }
 
   /**
