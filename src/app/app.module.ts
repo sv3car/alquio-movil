@@ -7,9 +7,11 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StartService } from '../pages/start/start-service';
 import { OrdertService } from '../pages/order/order-service';
 import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
 
 //Components
 import { HeaderComponent } from '../components/header-app/header-app';
+import { BottomComponent } from '../components/bottom-app/bottom-app';
 import { DrawerCategoryPanelHide } from '../components/drawer-category-panel-hide/drawer-category-panel-hide';
 import { DrawerUserPanelHide } from '../components/drawer-user-panel-hide/drawer-user-panel-hide';
 import { DrawerOpacity } from '../components/drawer-opacity/drawer-opacity';
@@ -38,7 +40,8 @@ import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
-
+import { CartPage } from '../pages/cart/cart';
+import { ConfigPage } from '../pages/config/config';
 
 //Providers
 
@@ -55,13 +58,16 @@ import { GlobalProvider } from '../providers/global/global';
     LoginPage,
     SingInPage,
     StartPage,
+    ConfigPage,
     OrderPage,
     ProductPage,
+    CartPage,
     JivoChatPage,
     ActionCategoryPage,
     ModalPruebaPage,
     UserDetailPage,
     HeaderComponent,
+    BottomComponent,
     DrawerFilter,
     DrawerCategory,
     DrawerCategoryPanel,
@@ -75,6 +81,7 @@ import { GlobalProvider } from '../providers/global/global';
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     HttpClientModule,
     IonicModule.forRoot(MyApp)
   ],
@@ -87,9 +94,11 @@ import { GlobalProvider } from '../providers/global/global';
     LoginPage,
     SingInPage,
     StartPage,
+    ConfigPage,
     OrderPage,
     JivoChatPage,
     ProductPage,
+    CartPage,
     ActionCategoryPage,
     ModalPruebaPage,
     UserDetailPage

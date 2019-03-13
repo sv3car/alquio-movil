@@ -5,6 +5,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
 import { StartPage } from '../pages/start/start';
+import { CartPage } from '../pages/cart/cart';
+import { ProductPage } from '../pages/product/product';
 
 @Component({
   templateUrl: 'app.html'
@@ -12,7 +14,8 @@ import { StartPage } from '../pages/start/start';
 export class MyApp {
   rootPage:any;
 
-  constructor(platform: Platform, 
+  constructor(
+    platform: Platform, 
     statusBar: StatusBar, 
     splashScreen: SplashScreen) {
     platform.ready().then(() => {
@@ -25,6 +28,7 @@ export class MyApp {
       } else {
         this.rootPage = StartPage;
       }
+      //this.rootPage = ProductPage;
     });
   }
 }

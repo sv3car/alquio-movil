@@ -1,5 +1,5 @@
 page-start {
-
+    
     .scroll-content {
         padding: 0px !important;
         contain: none !important;
@@ -161,6 +161,35 @@ page-start {
         background: #ffffff;
         padding: 5px;
     }
+
+    //---------Div Opacity-----------
+    
+    .transition-content{
+        position: fixed;
+        background-color: rgba(0, 0, 0, 0.692);
+        -webkit-transition: opacity 600ms, visibility 600ms;
+        transition: opacity 600ms, visibility 600ms;
+        width: 100%;
+        height: 100%;
+        opacity: 1;
+        z-index: 15;
+    }
+
+    /*.is-filter{
+        z-index: 5;
+    }
+
+    .is-not-filter{
+        z-index: 15;
+    }
+
+    .opacity-content{
+        opacity: 1;
+    }
+
+    .no-opacity-content{
+        opacity: 0;
+    }*/
 
 }
 

@@ -11,16 +11,52 @@
     </div>
 
     <div class="title-search">
-      <h4>{{product.name}}</h4>
+      <!-- <h4>{{product.titulo}}</h4> -->
+      <h4>Producto Prueba</h4>
     </div>
 
-    <hr style="border:5px; width: 70%; text-align: center">
+    <hr style="border:5px; width: 90%; text-align: center">
+
+    <div>
+      <ion-grid>
+        <ion-row class="class-center">
+          <ion-col>
+            <button ion-button class="buttons">
+              <!-- [class]="iconoFavoritos" -->
+              <ion-icon name="heart" class="icon-color-false"></ion-icon>
+            </button>
+          </ion-col>
+          <hr style="border:5px; height: 90%; text-align: center">
+          <ion-col>
+            <button ion-button class="buttons" (click)="addToCart()">
+              <!-- [class]="iconoCarrito" -->
+              <div *ngIf="existCart">
+                <ion-icon name="cart" class="icon-color-true"></ion-icon>
+              </div>
+              <div *ngIf="!existCart">
+                <ion-icon name="cart" class="icon-color-false"></ion-icon>
+              </div>
+            </button>
+          </ion-col>
+          <hr style="border:5px; height: 90%; text-align: center">
+          <ion-col>
+            <button ion-button class="buttons">
+              <!-- [class]="iconoCompartir" -->
+              <ion-icon name="share-alt" class="icon-color-false"></ion-icon>
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+
+    <hr style="border:5px; width: 90%; text-align: center">
 
     <ion-grid>
       <ion-row class="price-calc">
         <ion-col>
           <div class="price">
-            <p>{{product.precio}}</p>
+            <!-- <p>{{product.precio}}</p> -->
+            <p>10000</p>
           </div>
         </ion-col>
         <ion-col>
@@ -41,121 +77,141 @@
 
     <hr style="border:5px; width: 90%; text-align: center">
 
-    <div style="width: 100%;position: relative;text-align: center">
-        <p style="position: relative;"><strong>Variantes</strong></p>
+    <div *ngIf="isVariant">
+      <div style="width: 100%;position: relative;text-align: center">
+          <p style="position: relative;"><strong>Variantes</strong></p>
+      </div>
+      <ion-grid>
+        <ion-row class="price-calc">
+          <ion-col>
+            <div style="position: absolute; top: 0; bottom: 0; margin-top: auto; margin-bottom: auto ">
+              <ion-grid center>
+                <ion-row class="price-calc">
+                  <ion-col>
+                    <ion-checkbox [(ngModel)]="color1" (ionChange)="updateColor(1)" class="check-color1"></ion-checkbox>
+                  </ion-col>
+                  <ion-col>
+                    <ion-checkbox [(ngModel)]="color2" (ionChange)="updateColor(2)" class="check-color2"></ion-checkbox>
+                  </ion-col>
+                  <ion-col>
+                    <ion-checkbox [(ngModel)]="color3" (ionChange)="updateColor(3)" class="check-color3"></ion-checkbox>
+                  </ion-col>
+                </ion-row>
+                <ion-row class="price-calc">
+                  <ion-col>
+                    <ion-checkbox [(ngModel)]="color4" (ionChange)="updateColor(4)" class="check-color4"></ion-checkbox>
+                  </ion-col>
+                  <ion-col>
+                    <ion-checkbox [(ngModel)]="color5" (ionChange)="updateColor(5)" class="check-color5"></ion-checkbox>
+                  </ion-col>
+                  <ion-col>
+                    <ion-checkbox [(ngModel)]="color6" (ionChange)="updateColor(6)" class="check-color6"></ion-checkbox>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </div>
+          </ion-col>
+          <ion-col>
+            <div>
+              <ion-grid>
+                <ion-row>
+                  <ion-col>
+                      <p style="margin: 0">S</p>
+                  </ion-col>
+                  <ion-col>
+                      <p style="margin: 0">M</p>
+                  </ion-col>
+                  <ion-col>
+                      <p style="margin: 0">L</p>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+              <ion-grid>
+                <ion-row>
+                  <ion-col>
+                    <ion-checkbox [(ngModel)]="s" (ionChange)="updateSize('s')" class="check-size1"></ion-checkbox>
+                  </ion-col>
+                  <ion-col>
+                    <ion-checkbox [(ngModel)]="m" (ionChange)="updateSize('m')" class="check-size2"></ion-checkbox>
+                  </ion-col>
+                  <ion-col>
+                    <ion-checkbox [(ngModel)]="l" (ionChange)="updateSize('l')" class="check-size3"></ion-checkbox>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </div>
+          </ion-col>
+          <ion-col>
+              <p style="margin-bottom: 0">10 a 15 dias</p>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
     </div>
 
-    <ion-grid>
-      <ion-row class="price-calc">
-        <ion-col>
-          <div style="position: absolute; top: 0; bottom: 0; margin-top: auto; margin-bottom: auto ">
-            <ion-grid center>
-              <ion-row class="price-calc">
-                <ion-col>
-                  <ion-checkbox [(ngModel)]="color1" class="check-color1"></ion-checkbox>
-                </ion-col>
-                <ion-col>
-                  <ion-checkbox [(ngModel)]="color2" class="check-color2"></ion-checkbox>
-                </ion-col>
-                <ion-col>
-                  <ion-checkbox [(ngModel)]="color3" class="check-color3"></ion-checkbox>
-                </ion-col>
-              </ion-row>
-              <ion-row class="price-calc">
-                <ion-col>
-                  <ion-checkbox [(ngModel)]="color4" class="check-color4"></ion-checkbox>
-                </ion-col>
-                <ion-col>
-                  <ion-checkbox [(ngModel)]="color5" class="check-color5"></ion-checkbox>
-                </ion-col>
-                <ion-col>
-                  <ion-checkbox [(ngModel)]="color6" class="check-color6"></ion-checkbox>
-                </ion-col>
-              </ion-row>
-            </ion-grid>
-          </div>
-        </ion-col>
-        <ion-col>
-          <div>
-            <ion-grid>
-              <ion-row>
-                <ion-col>
-                    <p style="margin: 0">S</p>
-                </ion-col>
-                <ion-col>
-                    <p style="margin: 0">M</p>
-                </ion-col>
-                <ion-col>
-                    <p style="margin: 0">L</p>
-                </ion-col>
-              </ion-row>
-            </ion-grid>
-            <ion-grid>
-              <ion-row>
-                <ion-col>
-                  <ion-checkbox [(ngModel)]="s" class="check-size1"></ion-checkbox>
-                </ion-col>
-                <ion-col>
-                  <ion-checkbox [(ngModel)]="m" class="check-size2"></ion-checkbox>
-                </ion-col>
-                <ion-col>
-                  <ion-checkbox [(ngModel)]="l" class="check-size3"></ion-checkbox>
-                </ion-col>
-              </ion-row>
-            </ion-grid>
-          </div>
-        </ion-col>
-        <ion-col>
-            <p style="margin-bottom: 0">10 a 15 dias</p>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-
-    <div style="width: 100%;position: relative;text-align: center">
-      <button ion-button round 
-      style="position: relative; background-color: #7b55c6;">
-          Comprar Ahora</button>
+    <div padding style ="background-color: #eeeeee">
+      <ion-segment [(ngModel)]="detail">
+        <ion-segment-button value="description">
+          Descripción
+        </ion-segment-button>
+        <ion-segment-button value="shipping-and-return">
+          Envio y devolución
+        </ion-segment-button>
+      </ion-segment>
     </div>
-    
-
+      
+    <div [ngSwitch]="detail" style ="padding-left: 30px; padding-right: 30px; padding-bottom: 20%; margin-top: 0; background-color: #eeeeee">
+      <!-- <ion-list *ngSwitchCase="'description'">
+        <ion-item>
+          <p>{{product.descripcion_corta}}</p>
+        </ion-item>
+      </ion-list>
+      <ion-list *ngSwitchCase="'shipping-and-return'">
+        <ion-item>
+          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+        </ion-item>
+      </ion-list> -->
+      <p *ngSwitchCase="'description'" style="margin: 0">
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+      </p>
+      <p *ngSwitchCase="'shipping-and-return'" style="margin: 0">
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+        when an unknown printer took a galley of type and scrambled it to make a type 
+        specimen book. It has survived not only five centuries, but also the leap into 
+        electronic typesetting, remaining essentially unchanged. It was popularised in 
+        the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, 
+        and more recently with desktop publishing software like Aldus PageMaker including 
+        versions of Lorem Ipsum.
+      </p>
+    </div>
   </div>
 
   <div class="initial">
-    <div id="header" class="bar">
-
-      <button id="search" class="buttonBar">
-        <img src="assets/imgs/customicons/search.png" class="icon-bar">
-      </button>
-      <button id="user" class="buttonBar">
-          <img src="assets/imgs/customicons/user.png" class="icon-bar-user">
-      </button>
-      <button id="cart" class="buttonBar">
-          <img src="assets/imgs/customicons/shopping-cart.png" class="icon-bar">
-      </button>
-    </div>
     <div id="bottom" class="bar">
-        <!--<button id="left" class="buttonBar">
-            <img src="../../assets/imgs/customicons/left.png" class="icon-bar">
-        </button>-->
-        <ion-icon name="arrow-up" style="color: white; zoom: 1.5; padding-top: 5px"></ion-icon>
-        <button class="buttonBar">
-          <p class="title-bot"><strong>Detalles</strong></p>
+        <!-- <ion-icon name="arrow-up" style="color: white; zoom: 1.5; padding-top: 5px"></ion-icon> -->
+        <button class="buttonBar" (click)="goOrder()">
+          <p class="title-bot"><strong>Comprar Ahora</strong></p>
         </button>
-        <ion-icon name="arrow-up" style="color: white; zoom: 1.5; padding-top: 5px"></ion-icon>
-        <!--<button id="right" class="buttonBar">
-            <img src="../../assets/imgs/customicons/right.png" class="icon-bar">
-        </button>-->
+        <!-- <ion-icon name="arrow-up" style="color: white; zoom: 1.5; padding-top: 5px"></ion-icon> -->
     </div>
-
-    <button class="button-home" (click)="backPage()">
-        <ion-icon name="arrow-back" style="color: white"></ion-icon>
-    </button>
   </div>
 
 </ion-content>
 
+<!--Opacidad del Contenido-->
+<drawer-opacity #sideBar></drawer-opacity>
+
+<!--Volver-->
+<button class="button-back" (click)="backPage()">
+  <ion-icon name="arrow-back" style="color: white"></ion-icon>
+</button>
+
+<!--Header-->
+<header-app [options]="namePage"></header-app>
+
+<!--Opciones del usuario-->
 <drawer-user [options]="namePage" [sideBar]="sideBar"></drawer-user>
 <drawer-user-panel></drawer-user-panel>
 
-<drawer-opacity #sideBar></drawer-opacity>
 

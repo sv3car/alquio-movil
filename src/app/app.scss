@@ -40,3 +40,31 @@ ion-icon {
         mask-image: url(../assets/img/customicons/user.svg);
     }
 }
+
+.button-back{
+    position: fixed;
+    height: 45px;
+    width: 45px;
+    background-color: rgb(191, 178, 212);
+    text-align: center;
+    left: 0;
+    border-top-right-radius: 200px;
+    border-bottom-right-radius: 200px;
+    bottom: 12%;
+    background-image: linear-gradient(to right,#7B55B9, #40188F);
+}
+
+.bar{
+    position: fixed;
+    height: 8.5%;
+    width: 100%;
+    text-align: center
+}
+
+#bottom{
+    position: fixed;
+    top: 91.5%;
+    border-top-right-radius: 200px;
+    border-top-left-radius: 200px;
+    background-image: linear-gradient(#40188F, #7B55B9);
+}

@@ -1,6 +1,10 @@
 import { Component, ElementRef} from '@angular/core';
 import { DrawerUserService } from '../drawer-user/drawer-user-service';
 
+
+//Providers
+import { GlobalProvider } from '../../providers/global/global';
+
 /**
  * Generated class for the DrawerUserPanelHideComponent component.
  *
@@ -15,8 +19,9 @@ export class DrawerUserPanelHide {
 
   text: string;
 
-  constructor(public element: ElementRef,  
-    public drUserService: DrawerUserService) {
+  constructor(public element: ElementRef,
+              public drUserService: DrawerUserService,
+              public globalProv: GlobalProvider) {
   }
 
   ngAfterViewInit() {
@@ -25,11 +30,11 @@ export class DrawerUserPanelHide {
     hammer.on('pan', (ev) => {
       this.handlePan(ev);
     });
-
   }
 
   handlePan(ev){
-    if(ev.additionalEvent === "panup"){
+    if(ev.additionalEvent === "panup" /*&& this.globalProv.getDrawer()*/){
+      console.log("ocultar user");
       this.hideDrawerUser();
     }
   }

@@ -53,8 +53,6 @@ export class LoginPage {
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]],
     });
-
-
   }
 
 
@@ -76,13 +74,19 @@ export class LoginPage {
     this.restProvider.postData("login",params)
     .then((data:any)=>{
       console.log("LOGIN SUCCESS",data);
-      // localStorage.setItem("token", "1234567890");
-      this.globalProv.api_token = data.api_token;
-      this.navCtrl.push(StartPage);
-      loading.dismiss();
+      if(data.Error){
+        this.showAlert(data.Error);
+        loading.dismiss();
+      } else {
+        localStorage.setItem('token', data.api_token);
+        localStorage.setItem('user', JSON.stringify(data));
+        this.globalProv.setToken(data.api_token);
+        this.navCtrl.push(StartPage);
+        loading.dismiss();
+      }
     },
     (err)=>{
-      console.log("LOGIN ERROR",err);
+      this.showAlert("No se pudo iniciar sesión");
       loading.dismiss();
     });
   }

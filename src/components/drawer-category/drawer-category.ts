@@ -2,6 +2,8 @@ import { Component, Renderer, ElementRef, Input } from '@angular/core';
 import { DomController, Platform } from 'ionic-angular';
 import { DrawerCategoryService } from './drawer-category-service';
 import { DrawerOpacity } from '../drawer-opacity/drawer-opacity';
+import { GlobalProvider } from '../../providers/global/global';
+import { StartPage } from '../../pages/start/start';
 
 @Component({
   selector: 'drawer-category',
@@ -29,7 +31,8 @@ export class DrawerCategory {
 
   constructor(public domCtrl : DomController, public renderer: Renderer,
     public element: ElementRef, public platform: Platform, 
-    public drCategoryService: DrawerCategoryService) {
+    public drCategoryService: DrawerCategoryService,
+    public startPage: StartPage) {
   }
 
   ngAfterViewInit() {
@@ -48,6 +51,8 @@ export class DrawerCategory {
   }
 
   hideContent():void {
+    // GlobalProvider.setDrawer(false);
+    // this.startPage.globalDrawer = false;
     this.sideBar.content(false,false);
     this.domCtrl.write(() => {
       this.renderer.setElementStyle(this.element.nativeElement, 'transition', 'top 0.5s');
@@ -56,6 +61,8 @@ export class DrawerCategory {
   }
 
   showContent():void{
+    // GlobalProvider.setDrawer(true);
+    // this.startPage.globalDrawer = true;
     this.sideBar.content(true,false);
     this.domCtrl.write(() => {
       this.renderer.setElementStyle(this.element.nativeElement, 'transition', 'top 0.5s');
@@ -64,6 +71,15 @@ export class DrawerCategory {
   }
 
   viewCat(category){
+    this.hideContent();
+    if (!(category.id === this.startPage.categoryNumber)){
+      this.startPage.categoryNumber = category.id;
+      this.startPage.products = [];
+      this.startPage.pagesProd = [];
+      this.startPage.slidesList.toArray()[1].slideTo(category.id-1);
+      this.startPage.getPageProducts(category.id);
+    }
+
     console.log(category.name);
   }
   
