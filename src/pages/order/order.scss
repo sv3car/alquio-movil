@@ -25,18 +25,6 @@ page-order {
         background-color: #7B55B9;
         text-align: center
     }
-    .button-home{
-        position: fixed;
-        height: 45px;
-        width: 45px;
-        background-color: #7B55B9;
-        text-align: center;
-        left: 0;
-        border-top-right-radius: 200px;
-        border-bottom-right-radius: 200px;
-        bottom: 12%;
-        background-image: linear-gradient(to right,#7B55B9, #40188F);
-    }
     .buttonBar{
         align-content: center;
         text-decoration: none;
@@ -149,19 +137,6 @@ page-order {
         background-repeat: no-repeat;
         background-position: 50% 50%;
     }
-
-    #img-prod1{
-        background-image: url("../../assets/imgs/prueba/producto-1.png");
-    }
-    #img-prod2{
-        background-image: url("../../assets/imgs/prueba/producto-2.png");
-    }
-    #img-prod3{
-        background-image: url("../../assets/imgs/prueba/producto-3.png");
-    }
-    #img-prod4{
-        background-image: url("../../assets/imgs/prueba/producto-4.png");
-    }
     
     .icon-card{
         width: 70%;
@@ -169,19 +144,6 @@ page-order {
         background-size: auto;
         background-repeat: no-repeat;
         background-position: 50% 50%;
-    }
-
-    #status1{
-        background-image: url("../../assets/imgs/customicons/cancelado.png");
-    }
-    #status2{
-        background-image: url("../../assets/imgs/customicons/en-proceso.png");
-    }
-    #status3{
-        background-image: url("../../assets/imgs/customicons/en-transito.png");
-    }
-    #status4{
-        background-image: url("../../assets/imgs/customicons/entregado.png");
     }
 
     .price{

@@ -1,24 +1,41 @@
 <ion-content padding center text-center class="contentHome">
   <div class="initial">
 
-    <div>
-        <img src="../../assets/imgs/fondo-Inico.png" class="imgHome"
-        alt="fondo" />
-    </div>
-    <div class="buttonPrimary">
-        <button id="buttonGoLogin" class="buttonInitial" (click)="goLogin()">
-            Iniciar Sesión</button>
-          <button id="buttonGoRegister" class="buttonInitial" (click)="goSingIn()">
-              Registro
-          </button>
-          <div class="buttonSecondary">
-              <button id="buttonGoFB" class="buttonSocial">
-                    <ion-icon name="logo-facebook" style="color: #3b5998; zoom: 1.1;"></ion-icon>
-                </button>
-                <button id="buttonGoGoo" class="buttonSocial">
-                    <ion-icon name="logo-googleplus" style="color: #db4a39; zoom: 1.1;"></ion-icon>
-              </button>
+    <img src="assets/imgs/fondo-Inico.png" class="imgHome"/>
+
+    <div style="margin-top: 20px">
+      <div style="width: 100%">
+        <button ion-button id="buttonGoFB" class="buttonSocial">
+          <div style="width: 10%">
+            <ion-icon name="logo-facebook" style="zoom: 1.1;"></ion-icon>
           </div>
+          <div style="width: 100%">
+            <p>Iniciar sesión con Facebook</p>
+          </div>
+        </button>
+      </div>
+      <div style="width: 100%">
+        <button ion-button id="buttonGoGoo" class="buttonSocial">
+          <div style="width: 10%">
+            <ion-icon name="logo-googleplus" style="zoom: 1.1;"></ion-icon>
+          </div>
+          <div style="width: 100%">
+            <p>Iniciar sesión con Google</p>
+          </div>
+        </button>
+      </div>
     </div>
+
+    <br>
+    <div style="width: 100%">
+      <a (click)="goLogin()" style="font-size: 20px; color: #fff"><strong>INICIAR SESIÓN</strong></a>
+    </div>
+  
+    <br>
+    <div style="width: 100%">
+      <a (click)="goSingIn()" style="font-size: 12.5px; color: #fff; text-decoration: underline;">¿NO TIENES CUENTA?</a>
+    </div>
+    
   </div>
+
 </ion-content>

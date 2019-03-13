@@ -8,7 +8,7 @@
             </ion-col>
             <ion-col class="col-shape">
               <div class="img-shape">
-                <img src="../../assets/imgs/customicons/shape.png"/>
+                <img src="assets/imgs/customicons/shape.png"/>
               </div>
             </ion-col>
           </ion-row>
@@ -27,7 +27,7 @@
               <p class="value-price">{{ order.price }}</p>
             </ion-col>
             <ion-col>
-                <img [src]="'../../assets/imgs/customicons/' + order.statusImage" 
+                <img [src]="'assets/imgs/customicons/' + order.statusImage" 
                 class="icon-status"/>
               <p class="status"><strong>{{ order.statusName }}</strong></p>
             </ion-col>
@@ -43,17 +43,6 @@
   </div>
 
   <div class="initial">
-    <div id="header" class="bar">
-      <button id="search" class="buttonBar">
-        <img src="../../assets/imgs/customicons/search.png" class="icon-bar">
-      </button>
-      <button id="user" class="buttonBar">
-          <img src="../../assets/imgs/customicons/user.png" class="icon-bar-user">
-      </button>
-      <button id="cart" class="buttonBar">
-          <img src="../../assets/imgs/customicons/shopping-cart.png" class="icon-bar">
-      </button>
-    </div>
     <div id="bottom" class="bar">
         <!--<button id="left" class="buttonBar">
             <img src="../../assets/imgs/customicons/left.png" class="icon-bar">
@@ -65,13 +54,20 @@
             <img src="../../assets/imgs/customicons/right.png" class="icon-bar">
         </button>-->
     </div>
-    <button class="button-home" (click)="backPage()">
-        <ion-icon name="arrow-back" style="color: white"></ion-icon>
-    </button>
   </div>
 </ion-content>
 
+<!--Opacidad del Contenido-->
+<drawer-opacity #sideBar></drawer-opacity>
+
+<!--Volver-->
+<button class="button-back" (click)="backPage()">
+  <ion-icon name="arrow-back" style="color: white"></ion-icon>
+</button>
+
+<!--Header-->
+<header-app [options]="namePage"></header-app>
+
+<!--Opciones del usuario-->
 <drawer-user [options]="namePage" [sideBar]="sideBar"></drawer-user>
 <drawer-user-panel></drawer-user-panel>
-
-<drawer-opacity #sideBar></drawer-opacity>

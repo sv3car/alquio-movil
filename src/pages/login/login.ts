@@ -1,8 +1,15 @@
 import { Component } from '@angular/core';
 import { NavController, LoadingController, AlertController } from 'ionic-angular';
-import { RestProvider } from '../../providers/rest/rest';
-import { StartPage } from '../start/start';
+
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+
+
+//Providers
+import { RestProvider } from '../../providers/rest/rest';
+import { GlobalProvider } from '../../providers/global/global';
+
+//Pages
+import { StartPage } from '../start/start';
 
 @Component({
   selector: 'page-login',
@@ -12,8 +19,6 @@ export class LoginPage {
 
   myForm: FormGroup;
 
-  log: boolean = false;
-
   resp: any;
 
   FormLog = {
@@ -22,45 +27,67 @@ export class LoginPage {
   };
 
   constructor(public navCtrl: NavController, 
-    public loadingCtrl: LoadingController,
-    public restProvider: RestProvider,
-    public fb: FormBuilder,
-    public alertController: AlertController) {
-      this.myForm = this.fb.group({
-        email: ['', [Validators.required, Validators.email]],
-        password: ['', [Validators.required]],
-      });
+              public loadingCtrl: LoadingController,
+              public restProvider: RestProvider,
+              public globalProv: GlobalProvider,
+              public fb: FormBuilder,
+              public alertController: AlertController) {
+
+
+      this.myForm = this.crearFormulario();
+
   }
 
   goBack():void{
     this.navCtrl.pop();
   }
 
-  async goStart(){
-    const loading = this.loadingCtrl.create({
-      content: "Por favor espere...",
-      duration: 2000
+  /**
+   * 
+   * Metodo que retorna un nuevo FormGroup
+   * 
+   */
+  crearFormulario(){
+
+    return this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required]],
     });
+  }
+
+
+  /**
+   * 
+   * Metodo que hace login consumiendo el api
+   * 
+   */
+  login() {
+
+    let loading = this.globalProv.crearLoading();
     loading.present();
-    loading.dismiss().then(() => { 
-      this.getFromStorageAsync();
-   });
-  }
+    
+    let params = {
+      email : this.myForm.value.email,
+      password : this.myForm.value.password
+    };
 
-  async getFromStorageAsync(){
-    return await this.userLog();
-  }
-
-  userLog() {
-    this.restProvider.userLog(this.FormLog.email, this.FormLog.password)
-    .then(data => {
-      this.resp = data;
-      if(this.resp.Error){
-        this.showAlert(this.resp.Error);
+    this.restProvider.postData("login",params)
+    .then((data:any)=>{
+      console.log("LOGIN SUCCESS",data);
+      if(data.Error){
+        this.showAlert(data.Error);
+        loading.dismiss();
       } else {
-        localStorage.setItem("token", this.resp.api_token);
+        localStorage.setItem('token', data.api_token);
+        localStorage.setItem('user', JSON.stringify(data));
+        this.globalProv.setToken(data.api_token);
         this.navCtrl.push(StartPage);
+        loading.dismiss();
       }
+    },
+    (err)=>{
+      this.showAlert("No se pudo iniciar sesión");
+      loading.dismiss();
     });
   }
   

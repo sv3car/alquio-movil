@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
-import { Platform, /*NavController*/ } from 'ionic-angular';
+import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
 import { StartPage } from '../pages/start/start';
+import { CartPage } from '../pages/cart/cart';
+import { ProductPage } from '../pages/product/product';
 
 @Component({
   templateUrl: 'app.html'
@@ -12,7 +14,7 @@ import { StartPage } from '../pages/start/start';
 export class MyApp {
   rootPage:any;
 
-  constructor(//public navCtrl: NavController,
+  constructor(
     platform: Platform, 
     statusBar: StatusBar, 
     splashScreen: SplashScreen) {
@@ -21,11 +23,12 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       statusBar.styleLightContent();
       splashScreen.hide();
-      if (localStorage.getItem('token') === "null") {
+      if (!localStorage.getItem('token') || localStorage.getItem('token') === "null") {
         this.rootPage = HomePage;
       } else {
         this.rootPage = StartPage;
       }
+      //this.rootPage = ProductPage;
     });
   }
 }

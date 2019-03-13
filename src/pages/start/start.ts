@@ -1,8 +1,15 @@
 import { Component, ViewChildren, QueryList } from '@angular/core';
 import { NavController, NavParams, Slides, ModalController} from 'ionic-angular';
-import { ProductPage } from '../product/product';
+
+
+//Providers
 import { RestProvider } from '../../providers/rest/rest';
+
+//Pages
 import { HomePage } from '../home/home';
+import { ProductPage } from '../product/product';
+
+
 
 @Component({
   selector: 'page-start',
@@ -11,13 +18,17 @@ import { HomePage } from '../home/home';
 
 export class StartPage {
 
+  categoryNumber: number = 1;
+
+  globalDrawer: boolean;
+
   drawerOptions: any;
 
   namePage: any;
 
   nextPage: string;
 
-  categ : any;
+  categ : any[] = [];
 
   pagesProd : any[] = [];
   
@@ -37,8 +48,11 @@ export class StartPage {
     }
   ];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, 
-    public modalCtrl: ModalController, public restProvider: RestProvider) {
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              public modalCtrl: ModalController,
+              public restProvider: RestProvider) {
+
     this.drawerOptions = {
       handleWidth: 17.25,
       type: '%'
@@ -47,32 +61,78 @@ export class StartPage {
     this.namePage = {
       name: 'start'
     };
+    let user : any = JSON.parse(localStorage.getItem("user"));
+    console.log(user);
   }
 
   ionViewDidLoad() {
     this.getCategories();
-    this.getPageProducts();
+    this.getPageProducts(this.categoryNumber);
   }
 
   getCategories() {
-    this.restProvider.get(localStorage.getItem("token"), 'categorias')
-     .then(data => {
+    this.restProvider.getData("categorias", "?api_token="+localStorage.getItem('token'))
+     .then((data:any) => {
       this.categ = data;
     });
   }
 
-  getPageProducts() {
-    this.restProvider.get(localStorage.getItem("token"), 'productos')
-    .then(data => {
+  getPageProducts(categoryNumber:number) {
+    /*this.restProvider.getData("categorias", "?api_token="+localStorage.getItem('token'))
+     .then(data => {
+      this.categ = data;
+    });*/
+
+    this.restProvider.getData("productos", "?api_token="+localStorage.getItem('token') + 
+    "&categoria_id=" + categoryNumber)
+    .then((data)=>{
+      console.log("PRODUCTOS SUCCESS", data);
+      
       this.pagesProd.push(data);
-      for(let page of this.pagesProd){
-        for (let prod of page.data){
-          this.products.push(prod);
+        for(let page of this.pagesProd){
+          for (let prod of page.data){
+            this.products.push(prod);
+          }
+          this.nextPage = page.next_page_url;
         }
-        this.nextPage = page.next_page_url;
-      }
-      this.next();
-    });
+        this.next();
+
+    },(err)=>{
+      console.log("PRODUCTOS ERROR", err);
+    })
+
+
+  }
+
+  getAllProducts() {
+    // this.restProvider.get(localStorage.getItem("token"), 'productos')
+    // .then(data => {
+    //   this.pagesProd.push(data);
+    //   for(let page of this.pagesProd){
+    //     for (let prod of page.data){
+    //       this.products.push(prod);
+    //     }
+    //     this.nextPage = page.next_page_url;
+    //   }
+    //   this.next();
+    // });
+
+    this.restProvider.getData("productos", "?api_token="+localStorage.getItem('token'))
+    .then((data)=>{
+      console.log("PRODUCTOS SUCCESS", data);
+      
+      this.pagesProd.push(data);
+        for(let page of this.pagesProd){
+          for (let prod of page.data){
+            this.products.push(prod);
+          }
+          this.nextPage = page.next_page_url;
+        }
+        this.next();
+
+    },(err)=>{
+      console.log("PRODUCTOS ERROR", err);
+    })
   }
 
   next(infiniteScroll?) {
@@ -105,11 +165,27 @@ export class StartPage {
   };
 
   moveLeft(index: number): void {
-    console.log(index);
+    if (this.categoryNumber > 1){
+      this.products = [];
+      this.pagesProd = [];
+      this.categoryNumber--;
+      this.getPageProducts(this.categoryNumber);
+    }
     this.slidesList.toArray()[index].slidePrev(500);
   }   
 
   moveRight(index: number): void {
+    
+    /*let numCategCuerrnt : number = 0;
+    for(let cat = 0NumberFormatStyle to this.categ.length){
+      numCategCuerrnt++;
+    }*/
+    if (this.categoryNumber < 7){
+      this.products = [];
+      this.pagesProd = [];
+      this.categoryNumber++;
+      this.getPageProducts(this.categoryNumber);
+    }
     this.slidesList.toArray()[index].slideNext(500);
   } 
 

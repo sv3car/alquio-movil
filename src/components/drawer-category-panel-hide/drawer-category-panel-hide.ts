@@ -1,5 +1,6 @@
 import { Component, ElementRef } from '@angular/core';
 import { DrawerCategoryService } from '../drawer-category/drawer-category-service';
+import { GlobalProvider } from '../../providers/global/global';
 
 /**
  * Generated class for the DrawerCategoryPanelHideComponent component.
@@ -16,7 +17,8 @@ export class DrawerCategoryPanelHide {
   text: string;
 
   constructor(public element: ElementRef,
-    public drCategoryDrService: DrawerCategoryService) {
+              public drCategoryDrService: DrawerCategoryService,
+              public globalProv: GlobalProvider) {
   }
 
   ngAfterViewInit() {
@@ -25,11 +27,10 @@ export class DrawerCategoryPanelHide {
     hammer.on('pan', (ev) => {
       this.handlePan(ev);
     });
-
   }
 
   handlePan(ev){
-    if(ev.additionalEvent === "pandown"){
+    if(ev.additionalEvent === "pandown" /*&& this.globalProv.getDrawer()*/){
       this.hideDrawerCategories();
     }
   }

@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
-
 @NgModule({
 	declarations: [
-		/*HeaderComponent
+		/*BottomComponent
+		HeaderComponent
 		DrawerFilter,
 		DrawerCategoryPanel,
 		DrawerCategory,
@@ -16,7 +16,8 @@ import { NgModule } from '@angular/core';
 	],
 	imports: [],
 	exports: [
-		/*HeaderComponent
+		/*BottomComponent
+		HeaderComponent
 		DrawerFilter,
 		DrawerCategoryPanel,
 		DrawerCategory,

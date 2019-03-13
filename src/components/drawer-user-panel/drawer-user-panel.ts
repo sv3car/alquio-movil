@@ -1,6 +1,9 @@
 import { Component, ElementRef, HostListener } from '@angular/core';
 import { DrawerUserService } from '../drawer-user/drawer-user-service';
 
+//Providers
+import { GlobalProvider } from '../../providers/global/global';
+
 @Component({
   selector: 'drawer-user-panel',
   templateUrl: 'drawer-user-panel.html'
@@ -10,7 +13,8 @@ export class DrawerUserPanel {
   text: string;
 
   constructor(public element: ElementRef, 
-    public drUserService: DrawerUserService) {
+              public drUserService: DrawerUserService,
+              public globalProv: GlobalProvider) {
   }
 
   @HostListener('click')
@@ -24,11 +28,10 @@ export class DrawerUserPanel {
     hammer.on('pan', (ev) => {
       this.handlePan(ev);
     });
-
   }
 
   handlePan(ev){
-    if(ev.additionalEvent === "pandown"){
+    if(ev.additionalEvent === "pandown" /*&& !this.globalProv.getDrawer()*/){
       this.showDrawerUser();
     }
   }

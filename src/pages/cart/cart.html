@@ -1,0 +1,112 @@
+<ion-content padding>
+
+  <!-- <div class="card-cart" *ngIf="cart!='null'">
+    <div style="width: 100%; text-align: center">
+      <h2>{{cart}}
+      </h2>
+    </div>
+    </div> -->
+  <!-- *ngIf="cart=='null'" -->
+  <div class="card-cart" >
+    <div style="width: 100%; text-align: center"><h2>Carrito de Compras</h2></div>
+    <ion-card *ngFor="let product of cartProd">
+    <div>
+      <ion-grid center>
+        <ion-row class="row-card">
+          <ion-col>
+            <!-- <div class="img-card" 
+              [style.background-image]="'url(assets/imgs/prueba/' + product.foto + ')'">
+            </div> -->
+          </ion-col>
+          <ion-col>
+            <div class="class-center">
+              <p>{{product.Name}}</p>
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <div class="class-center">
+              <div style="position: relative">
+                <p>{{product.Precio}}</p>
+              </div>
+            </div>
+          </ion-col>
+          <ion-col>
+            <div>
+              <div>
+                <button class="button-remove" (click)="decrement(product)">
+                    <ion-icon name="remove"></ion-icon>
+                </button>
+                <p class="quantity class-center" style="position: absolute">{{product.quantity}}</p>
+                <img class="img-control" src="assets/imgs/customicons/control.png" >
+      
+                <button class="button-add" (click)="increment(product)">
+                    <ion-icon name="add"></ion-icon>
+                </button>
+              </div>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      </div>
+      <hr style="border:5px; width: 90%; text-align: center; border-width: 5px">
+      <ion-card-content>
+          <p>{{product.Tipo_de_envio}}</p>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- <div style="width: 100%; text-align: center"><button ion-button (click)="goStart()">Realizar pedido</button>
+    </div> -->
+
+  </div>
+
+  <!-- <div style="text-align: center; margin-bottom: 20%">
+    <ion-row>
+      <ion-col>
+      </ion-col>
+      <ion-col>
+        <p class="class-center" style="text-align: right">Artículos:</p>
+      </ion-col>
+      <ion-col>
+        <p class="class-center" style="text-align: left">{{totalQty}}</p>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+      </ion-col>
+      <ion-col>
+        <p class="class-center" style="text-align: right">Total a pagar:</p>
+      </ion-col>
+      <ion-col >
+        <p class="class-center" style="text-align: left">{{totalPrice}}</p>
+      </ion-col>
+    </ion-row>
+  </div> -->
+  
+</ion-content>
+
+<div id="bottom" class="bar">
+  <!--Ordenar-->
+  <div class="order bar">
+    <p id="ord"><strong>Ordenar</strong></p>
+  </div>
+</div>
+
+<!--Opacidad del Contenido-->
+<drawer-opacity #sideBar></drawer-opacity>
+
+<!--Volver-->
+<button class="button-back" (click)="backPage()">
+  <ion-icon name="arrow-back" style="color: white"></ion-icon>
+</button>
+
+<!--Header-->
+<header-app [options]="namePage"></header-app>
+
+<!--Bottom-->
+<!-- <bottom-app></bottom-app> -->
+
+<!--Opciones del usuario-->
+<drawer-user [options]="namePage" [sideBar]="sideBar"></drawer-user>
+<drawer-user-panel></drawer-user-panel>
