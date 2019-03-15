@@ -69,8 +69,9 @@ export class StartPage {
   }
 
   getCategories() {
-    this.restProvider.getData("categorias", "?api_token="+localStorage.getItem('token'))
-     .then((data:any) => {
+    this.restProvider.getTestServices("categorias", "?api_token="+localStorage.getItem('token'))
+    .then((data:any) => {
+      console.log("CATEGORIAS", data);
       this.categ = data;
     });
   }
@@ -81,19 +82,24 @@ export class StartPage {
       this.categ = data;
     });*/
 
-    this.restProvider.getData("productos", "?api_token="+localStorage.getItem('token') + 
+    this.restProvider.getTestServices("productos", "?api_token="+localStorage.getItem('token') + 
     "&categoria_id=" + categoryNumber)
-    .then((data)=>{
+    .then((data:any)=>{
       console.log("PRODUCTOS SUCCESS", data);
+      console.log("DATA DATA SUCCESS", data.data);
       
-      this.pagesProd.push(data);
-        for(let page of this.pagesProd){
-          for (let prod of page.data){
-            this.products.push(prod);
-          }
-          this.nextPage = page.next_page_url;
-        }
-        this.next();
+        // this.pagesProd.push(data);
+        // for(let page of this.pagesProd){
+        //   for (let prod of page.data){
+        //     this.products.push(prod);
+        //   }
+        //   this.nextPage = page.next_page_url;
+        // }
+        // this.next();
+
+        this.products = data.data;
+        this.nextPage = data.next_page_url;
+        this.next()
 
     },(err)=>{
       console.log("PRODUCTOS ERROR", err);
@@ -115,18 +121,23 @@ export class StartPage {
     //   this.next();
     // });
 
-    this.restProvider.getData("productos", "?api_token="+localStorage.getItem('token'))
-    .then((data)=>{
+    this.restProvider.getTestServices("productos", "?api_token="+localStorage.getItem('token'))
+    .then((data:any)=>{
       console.log("PRODUCTOS SUCCESS", data);
+      console.log("DATA DATA SUCCESS", data.data);
       
-      this.pagesProd.push(data);
-        for(let page of this.pagesProd){
-          for (let prod of page.data){
-            this.products.push(prod);
-          }
-          this.nextPage = page.next_page_url;
-        }
-        this.next();
+      // this.pagesProd.push(data);
+      //   for(let page of this.pagesProd){
+      //     for (let prod of page.data){
+      //       this.products.push(prod);
+      //     }
+      //     this.nextPage = page.next_page_url;
+      //   }
+      //   this.next();
+
+      this.products = data.data;
+      this.nextPage = data.next_page_url;
+      this.next();
 
     },(err)=>{
       console.log("PRODUCTOS ERROR", err);
@@ -134,21 +145,39 @@ export class StartPage {
   }
 
   next(infiniteScroll?) {
-    if (infiniteScroll) {
-      this.restProvider.getDataUrl(this.nextPage)
-        .then(data => {
+
+    if (infiniteScroll && this.nextPage) {
+
+      let arrayNextPage = this.nextPage.split("=");
+      let numberPage = arrayNextPage[arrayNextPage.length-1];
+
+      console.log(numberPage);
+
+      this.restProvider.getTestServices("productos", "?api_token="+localStorage.getItem('token')+"&categoria_id=1&page%5Bnumber%5D="+numberPage)
+      .then((data:any) => {
+        console.log("SUCCESS DATA URL",data);
           this.pagesProd.push(data);
-          let pageCuerrent : any[] = [];
-          pageCuerrent.push(data);
-          for(let page of pageCuerrent){
-            for (let prod of page.data){
-              this.products.push(prod);
-            }
-            this.nextPage = page.next_page_url;
+          // let pageCuerrent : any[] = [];
+          // pageCuerrent.push(data);
+          // for(let page of pageCuerrent){
+          //   for (let prod of page.data){
+          //     this.products.push(prod);
+          //   }
+          //   this.nextPage = page.next_page_url;
+          // }
+          for(let product of data.data){
+            this.products.push(product);
           }
+          this.nextPage = data.next_page_url;
           infiniteScroll.complete();
+      })
+      .catch((err)=>{
+        console.log("CATCH ERROR DATA URL",err);
+
       });
+
     }
+
   }
  
   loadMore(infiniteScroll) {

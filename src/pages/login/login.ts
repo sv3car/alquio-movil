@@ -71,7 +71,7 @@ export class LoginPage {
       password : this.myForm.value.password
     };
 
-    this.restProvider.postData("login",params)
+    this.restProvider.postTestServices("login",params)
     .then((data:any)=>{
       console.log("LOGIN SUCCESS",data);
       if(data.Error){

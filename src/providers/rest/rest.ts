@@ -52,7 +52,7 @@ export class RestProvider {
       password: password
     }
     let headers = new HttpHeaders({"Content-type":"application/json"});
-    return this.http.post(this.globalProv.apiURL+'/login', params, {headers: headers}).toPromise()
+    return this.http.post("https://alquio.com/api/", params, {headers: headers}).toPromise()
   }
 
 
@@ -118,6 +118,34 @@ export class RestProvider {
     let headers = new HttpHeaders({"Content-Type": "application/json"});
 
     return this.http.post(this.globalProv.apiURL + metodo, params, {headers:headers}).toPromise();
+  }
+  
+  /**
+   * 
+   * Metodo para el consumo de apis post desde el middleware
+   * 
+   * @param metodo : string nombre del metodo a consumir
+   * 
+   */
+  postTestServices(metodo, params=null){
+  
+    let headers = new HttpHeaders({"Content-Type": "application/json"});
+
+    return this.http.post("http://localhost:8001/post", params, {headers:headers}).toPromise();
+  }
+  
+  /**
+   * 
+   * Metodo para el consumo de apis post desde el middleware
+   * 
+   * @param metodo : string nombre del metodo a consumir
+   * 
+   */
+  getTestServices(metodo, params=null){
+  
+    let headers = new HttpHeaders({"Content-Type": "application/json"});
+
+    return this.http.post("http://localhost:8001/get", {params:params, metodo:metodo}, {headers:headers}).toPromise();
   }
 
 }
