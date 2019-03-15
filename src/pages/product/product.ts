@@ -57,6 +57,7 @@ export class ProductPage {
     } else {
       this.isVariant = true;
     }
+    this.isVariant = true;
 
     /*if(!this.global.cartExchage() && this.global.existProdCart(JSON.parse(localStorage.getItem("product_cart"))
     , this.product)){
@@ -159,8 +160,25 @@ export class ProductPage {
     }
   }
 
+  checkS(){
+    this.s = true;
+    this.m = false;
+    this.l = false;
+  }
+
+  checkM(){
+    this.s = false;
+    this.m = true;
+    this.l = false;
+  }
+
+  checkL(){
+    this.s = false;
+    this.m = false;
+    this.l = true;
+  }
+
   addToFavorite(){
 
   }
-
 }

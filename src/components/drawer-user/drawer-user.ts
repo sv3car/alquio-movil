@@ -11,6 +11,7 @@ import { GlobalProvider } from '../../providers/global/global';
 
 //Pages
 import { StartService } from '../../pages/start/start-service';
+import { ConfigPage } from '../../pages/config/config';
 
 @Component({
   selector: 'drawer-user',
@@ -89,6 +90,13 @@ export class DrawerUser {
     this.hideContent();
     if (!(this.name === 'chat')){
       this.navCtrl.push(JivoChatPage);
+    }
+  }
+
+  goConfig():void{
+    this.hideContent();
+    if (!(this.name === 'config')){
+      this.navCtrl.push(ConfigPage);
     }
   }
 
