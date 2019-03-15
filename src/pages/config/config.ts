@@ -7,7 +7,16 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class ConfigPage {
 
+  namePage: any;
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.namePage = {
+      name: 'config'
+    };
+  }
+
+  backPage():void{
+    this.navCtrl.pop();
   }
 
   ionViewDidLoad() {

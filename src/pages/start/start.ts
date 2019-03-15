@@ -9,8 +9,6 @@ import { RestProvider } from '../../providers/rest/rest';
 import { HomePage } from '../home/home';
 import { ProductPage } from '../product/product';
 
-
-
 @Component({
   selector: 'page-start',
   templateUrl: 'start.html',

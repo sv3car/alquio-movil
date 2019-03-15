@@ -7,6 +7,8 @@ import { HomePage } from '../pages/home/home';
 import { StartPage } from '../pages/start/start';
 import { CartPage } from '../pages/cart/cart';
 import { ProductPage } from '../pages/product/product';
+import { ConfigPage } from '../pages/config/config';
+import { AboutPage } from '../pages/about/about';
 
 @Component({
   templateUrl: 'app.html'
