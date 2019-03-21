@@ -59,7 +59,9 @@ export class CartPage {
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
               public global: GlobalProvider) {
-    console.log("cart");
+    /**
+     * Nombre de la Página
+     */
     this.namePage = {
       name: 'cart'
     };

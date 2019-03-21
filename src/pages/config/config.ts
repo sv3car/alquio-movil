@@ -9,7 +9,11 @@ export class ConfigPage {
 
   namePage: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, 
+              public navParams: NavParams) {
+    /**
+     * Nombre de la Página
+     */
     this.namePage = {
       name: 'config'
     };

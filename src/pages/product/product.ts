@@ -44,11 +44,15 @@ export class ProductPage {
     this.iconoCarrito = "icon-color-false";
     this.iconoCompartir = "icon-color-false";
 
-    //this.existCart = false;
-
+    /**
+     * Nombre de la Página
+     */
     this.namePage = {
       name: 'product'
     };
+  }
+
+  ionViewDidLoad() {
     this.product = this.navParams.data;
     this.currentNumber = 1;
 
@@ -57,7 +61,8 @@ export class ProductPage {
     } else {
       this.isVariant = true;
     }
-    this.isVariant = true;
+
+    this.addToCart();
 
     /*if(!this.global.cartExchage() && this.global.existProdCart(JSON.parse(localStorage.getItem("product_cart"))
     , this.product)){
@@ -67,10 +72,6 @@ export class ProductPage {
       console.log("carrito vacio");
       this.existCart = false;
     }*/
-  }
-
-  ionViewDidLoad() {
-    
   }
   
   increment():void {
@@ -141,9 +142,20 @@ export class ProductPage {
     }
   }
 
+  getCartArray(){
+    return JSON.parse(localStorage.getItem("cart_array"));;
+  }
+
+  setCartArray(array:any){
+    localStorage.setItem('cart_array', JSON.stringify(array));
+  }
+
   addToCart(){
-    let product_cart : any[] = [] 
-    if(this.global.cartExchage()){
+    let cart_array : any[] = []
+
+    console.log(cart_array.length);
+     
+    /*if(this.global.cartExchage()){
       product_cart.push(this.product);
       localStorage.setItem('product_cart', JSON.stringify(product_cart));
       this.existCart = true;
@@ -157,7 +169,7 @@ export class ProductPage {
         product_cart.splice(product_cart.indexOf(this.global.existProdCart(product_cart, this.product)), 1);
         this.existCart = false;
       }
-    }
+    }*/
   }
 
   checkS(){

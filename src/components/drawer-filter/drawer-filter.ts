@@ -2,12 +2,6 @@ import { Component, Input, ElementRef, Renderer } from '@angular/core';
 import { Platform, DomController } from 'ionic-angular';
 import { DrawerOpacity } from '../drawer-opacity/drawer-opacity';
 
-import { StartPage } from '../../pages/start/start';
-
-//Providers
-
-import { GlobalProvider } from '../../providers/global/global';
-
 @Component({
   selector: 'drawer-filter',
   templateUrl: 'drawer-filter.html'
@@ -17,25 +11,16 @@ export class DrawerFilter {
   @Input('options') options: any;
   @Input('sideBar') sideBar: DrawerOpacity;
 
-  handleWidth: number = 50;
+  handleWidth: number = 17.25;
   type: string = 'px';
 
   constructor(public element: ElementRef,
               public renderer: Renderer,
               public domCtrl: DomController,
-              public platform: Platform,
-              public globalProv: GlobalProvider) {
+              public platform: Platform) {
   }
 
   ngAfterViewInit() {
-
-    if(this.options.handleWidth){
-      this.handleWidth = this.options.handleWidth;
-    }
-
-    if(this.options.type){
-      this.type = this.options.type;
-    }
 
     if (this.type === '%'){
       this.handleWidth = ((parseFloat(this.handleWidth.toString()) * 
@@ -56,9 +41,7 @@ export class DrawerFilter {
 
   handlePan(ev){
 
-    if(ev.additionalEvent === "panright" /*&& this.globalProv.getDrawer()*/){
-      //this.globalProv.setDrawer(false);
-      // this.startPage.globalDrawer = false;
+    if(ev.additionalEvent === "panright"){
       this.sideBar.content(false, true);
       this.domCtrl.write(() => {
         this.renderer.setElementStyle(this.element.nativeElement, 'transition', 'left 0.5s');
@@ -69,9 +52,7 @@ export class DrawerFilter {
       });
     }
 
-    if(ev.additionalEvent === "panleft" /*&& !this.globalProv.getDrawer()*/){
-      //this.globalProv.setDrawer(true);
-      // this.startPage.globalDrawer = true;
+    if(ev.additionalEvent === "panleft"){
       this.sideBar.content(true, true);
       this.domCtrl.write(() => {
         this.renderer.setElementStyle(this.element.nativeElement, 'transition', 'left 0.5s');

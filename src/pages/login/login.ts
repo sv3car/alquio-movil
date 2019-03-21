@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, LoadingController, AlertController } from 'ionic-angular';
+import { NavController, AlertController } from 'ionic-angular';
 
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
@@ -26,14 +26,11 @@ export class LoginPage {
     password:""
   };
 
-  constructor(public navCtrl: NavController, 
-              public loadingCtrl: LoadingController,
+  constructor(public navCtrl: NavController,
               public restProvider: RestProvider,
               public globalProv: GlobalProvider,
               public fb: FormBuilder,
               public alertController: AlertController) {
-
-
       this.myForm = this.crearFormulario();
 
   }

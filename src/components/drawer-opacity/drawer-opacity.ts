@@ -1,12 +1,6 @@
 import { Component, Renderer, ElementRef } from '@angular/core';
 import { Platform } from 'ionic-angular';
 
-/**
- * Generated class for the DrawerOpacityComponent component.
- *
- * See https://angular.io/api/core/Component for more info on Angular
- * Components.
- */
 @Component({
   selector: 'drawer-opacity',
   templateUrl: 'drawer-opacity.html'
@@ -18,7 +12,8 @@ export class DrawerOpacity {
   contentOpacityDisplay: string = "no-opacity-content";
 
   constructor(public renderer: Renderer,
-    public element: ElementRef, public platform: Platform) {
+              public element: ElementRef, 
+              public platform: Platform) {
 
   }
 

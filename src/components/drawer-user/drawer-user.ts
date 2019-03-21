@@ -1,16 +1,11 @@
 import { Component, Renderer, ElementRef, Input } from '@angular/core';
 import { DomController, Platform, NavController } from 'ionic-angular';
 import { DrawerUserService } from './drawer-user-service';
-import { OrderPage } from '../../pages/order/order';
 import { DrawerOpacity } from '../drawer-opacity/drawer-opacity';
-import { JivoChatPage } from '../../pages/jivo-chat/jivo-chat';
-
-//Providers
-import { GlobalProvider } from '../../providers/global/global';
-
 
 //Pages
-import { StartService } from '../../pages/start/start-service';
+import { OrderPage } from '../../pages/order/order';
+import { JivoChatPage } from '../../pages/jivo-chat/jivo-chat';
 import { ConfigPage } from '../../pages/config/config';
 
 @Component({
@@ -31,9 +26,7 @@ export class DrawerUser {
               public element: ElementRef,
               public platform: Platform, 
               public drUserService: DrawerUserService,
-              public navCtrl: NavController,
-              public startServices: StartService,
-              public globalProv: GlobalProvider) {
+              public navCtrl: NavController) {
       this.userImg = "user-2.jpg";
   }
 
@@ -58,9 +51,6 @@ export class DrawerUser {
   }
 
   showContent():void{
-    //this.globalProv.setDrawer(true);
-    // this.startServices.globalDrawer = true;
-
     this.sideBar.content(true, false);
     this.domCtrl.write(() => {
       this.renderer.setElementStyle(this.element.nativeElement, 'transition', 'bottom 0.5s');
@@ -69,9 +59,6 @@ export class DrawerUser {
   }
 
   hideContent():void {
-    //this.globalProv.setDrawer(false);
-    // this.startServices.globalDrawer = false;
-
     this.sideBar.content(false, false);
     this.domCtrl.write(() => {
       this.renderer.setElementStyle(this.element.nativeElement, 'transition', 'bottom 0.5s');

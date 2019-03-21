@@ -11,81 +11,81 @@
     </div>
 
     <div class="primary-grid" style="margin-left: 20px; margin-right: 20px">
-    <ion-grid>
-      <ion-row>
-        <ion-col>
-            <div class="title-search" style="padding: 0">
-              <h4>{{product.titulo}}</h4>
-            </div>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+              <div style="padding: 10px; text-align: left">
+                <h4>{{product.titulo}}</h4>
+              </div>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <div class="price" style="margin-top: 17.5px">
+                    <p>{{product.precio}}</p>
+                  </div>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  <div style="margin-top: 27.5px">
+                    <img src="assets/imgs/social/Facebook-Logo.png" style="width: 30px; height: 30px;"/>
+                    <img src="assets/imgs/social/Whatsapp-Logo.png" style="width: 30px; height: 30px; margin-left: 15px"/>
+                    <img src="assets/imgs/social/Instagram-Logo.png" style="width: 30px; height: 30px; margin-left: 15px">
+                  </div>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
           </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <ion-grid>
-            <ion-row>
-              <ion-col>
-                <div class="price" style="margin-top: 17.5px">
-                  <p>{{product.precio}}</p>
-                </div>
-              </ion-col>
-            </ion-row>
-            <ion-row>
-              <ion-col>
-                <div style="margin-top: 27.5px">
-                  <img src="assets/imgs/social/Facebook-Logo.png" style="width: 30px; height: 30px;"/>
-                  <img src="assets/imgs/social/Whatsapp-Logo.png" style="width: 30px; height: 30px; margin-left: 15px"/>
-                  <img src="assets/imgs/social/Instagram-Logo.png" style="width: 30px; height: 30px; margin-left: 15px">
-                </div>
-              </ion-col>
-            </ion-row>
-          </ion-grid>
-        </ion-col>
-        <ion-col class="class-center">
-          <ion-grid>
-            <ion-row>
-              <ion-col>
-                <div style="height: 50px">
-                  <button class="button-remove" (click)="decrement()">
-                      <ion-icon name="remove"></ion-icon>
-                  </button>
-                  <p class="quantity">{{currentNumber}}</p>
-                  <img class="img-control" src="assets/imgs/customicons/control.png" >
-            
-                  <button class="button-add" (click)="increment()">
-                      <ion-icon name="add"></ion-icon>
-                  </button>
-                </div>
-              </ion-col>
-            </ion-row>
-            <ion-row>
-              <ion-col>
-                <ion-grid>
-                  <ion-row>
-                    <ion-col>
-                      <div style="width: 100%">
-                        <div style="width: 100%; position: relative; height: 25px; margin: 5px">
-                          <div style ="width: 75%; float:left; text-align: right">Agregar a favoritos</div>
-                          <div style ="width: 25%; float:left;">
-                            <ion-icon name="heart" style="zoom: 1.25"></ion-icon>
+          <ion-col class="class-center">
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <div style="height: 50px">
+                    <button class="button-remove" (click)="decrement()">
+                        <ion-icon name="remove"></ion-icon>
+                    </button>
+                    <p class="quantity">{{currentNumber}}</p>
+                    <img class="img-control" src="assets/imgs/customicons/control.png" >
+              
+                    <button class="button-add" (click)="increment()">
+                        <ion-icon name="add"></ion-icon>
+                    </button>
+                  </div>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  <ion-grid>
+                    <ion-row>
+                      <ion-col>
+                        <div style="width: 100%">
+                          <div style="width: 100%; position: relative; height: 25px; margin: 5px">
+                            <div style ="width: 75%; float:left; text-align: right">Agregar a favoritos</div>
+                            <div style ="width: 25%; float:left;">
+                              <ion-icon name="heart" style="zoom: 1.25"></ion-icon>
+                            </div>
+                          </div>
+                          <div style="width: 100%; position: relative; height: 25px; margin: 5px">
+                            <div style ="width: 75%; float:left; text-align: right">Agregar al carrito</div>
+                            <div style ="width: 25%; float:left;">
+                              <ion-icon name="cart" style="zoom: 1.25"></ion-icon>
+                            </div>
                           </div>
                         </div>
-                        <div style="width: 100%; position: relative; height: 25px; margin: 5px">
-                          <div style ="width: 75%; float:left; text-align: right">Agregar al carrito</div>
-                          <div style ="width: 25%; float:left;">
-                            <ion-icon name="cart" style="zoom: 1.25"></ion-icon>
-                          </div>
-                        </div>
-                      </div>
-                    </ion-col>
-                  </ion-row>
-                </ion-grid>
-              </ion-col>
-            </ion-row>
-          </ion-grid>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </div>
+                      </ion-col>
+                    </ion-row>
+                  </ion-grid>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
 
     <hr style="border:5px; width: 90%; text-align: center">
 
@@ -197,6 +197,7 @@
         versions of Lorem Ipsum.
       </p>
     </div>
+  <!--Cierre Mid-->
   </div>
 
   <div class="initial">

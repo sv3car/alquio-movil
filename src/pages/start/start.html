@@ -41,7 +41,7 @@
   <div class="initial">
     <!--bottom-->
     <div id="bottom" class="bar">
-      <button id="left" class="buttonBar" (click)="moveLeft(1)">
+      <button id="left" class="buttonBar" (click)="moveLeft()">
           <img src="assets/imgs/customicons/left.png" class="icon-bar">
       </button>
 
@@ -51,7 +51,7 @@
         </ion-slide>
       </ion-slides>
 
-      <button id="right" class="buttonBar" (click)="moveRight(1)">
+      <button id="right" class="buttonBar" (click)="moveRight()">
           <img src="assets/imgs/customicons/right.png" class="icon-bar">
       </button>
     </div>
@@ -83,14 +83,12 @@
 
 
 
-
-
 <!--Mostrar Categorias-->
 <drawer-category [sideBar]="sideBar" [categ]="categ"></drawer-category>
 <drawer-category-panel></drawer-category-panel>
 
 <!--Motrar Filtro de Variantes-->
-<drawer-filter [options]="drawerOptions" [sideBar]="sideBar">
+<drawer-filter [sideBar]="sideBar">
 </drawer-filter>
 
 

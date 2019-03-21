@@ -8,6 +8,7 @@ import { RestProvider } from '../../providers/rest/rest';
 //Pages
 import { HomePage } from '../home/home';
 import { ProductPage } from '../product/product';
+import { GlobalProvider } from '../../providers/global/global';
 
 @Component({
   selector: 'page-start',
@@ -16,19 +17,17 @@ import { ProductPage } from '../product/product';
 
 export class StartPage {
 
-  categoryNumber: number = 1;
-
-  globalDrawer: boolean;
-
-  drawerOptions: any;
-
   namePage: any;
 
+  loading: any;
+
+  categoryIndex: number = 0;
+
+  categoryId: number;
+  
   nextPage: string;
 
-  categ : any[] = [];
-
-  pagesProd : any[] = [];
+  categories : any[] = [];
   
   products : any[] = [];
 
@@ -49,122 +48,104 @@ export class StartPage {
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public modalCtrl: ModalController,
-              public restProvider: RestProvider) {
-
-    this.drawerOptions = {
-      handleWidth: 17.25,
-      type: '%'
-    };
-
+              public restProvider: RestProvider,
+              public globalProv: GlobalProvider) {
+    /**
+     * Nombre de la Página
+     */
     this.namePage = {
       name: 'start'
     };
-    let user : any = JSON.parse(localStorage.getItem("user"));
-    console.log(user);
   }
 
   ionViewDidLoad() {
-    this.getCategories();
-    this.getPageProducts(this.categoryNumber);
+    this.getCategoriesAndProducts(this.categoryIndex);
   }
 
-  getCategories() {
-    this.restProvider.getTestServices("categorias", "?api_token="+localStorage.getItem('token'))
-    .then((data:any) => {
-      console.log("CATEGORIAS", data);
-      this.categ = data;
+  /**
+   * Método que retorna el id de un
+   * elemento de un array segun su indice
+   * 
+   * @param array 
+   * @param indexCat 
+   */
+  getArrayIdByIndex(array:any, index:number):number{
+    return array.find((element:any, ind: number) => {
+      return ind == index;
+    }).id;
+  }
+
+  /**
+   * Método que retorna el índice de un
+   * elemento de un array segun su id
+   * 
+   * @param array 
+   * @param id 
+   */
+  getArrayIndexById(array:any, id:number):number{
+    return array.findIndex((element:any) => {
+      return element.id == id;
     });
   }
 
-  getPageProducts(categoryNumber:number) {
-    /*this.restProvider.getData("categorias", "?api_token="+localStorage.getItem('token'))
-     .then(data => {
-      this.categ = data;
-    });*/
+  /**
+   * Médotodo los productos segun la categoría seleccionada
+   * en el template
+   * 
+   * @param index índice de la categoría en el array
+   * @param id id de la categoría en el array (opcional)
+   */
+  getCategoriesAndProducts(index:number, id?:number) {
+    this.loading = this.globalProv.crearLoading();
+    this.loading.present();
+    this.restProvider.getTestServices("categorias", "?api_token="+localStorage.getItem('token'))
+    .then((data:any) => {
+      this.categories = data;
+      let currentId: number;
+      if (!id){
+        currentId = this.getArrayIdByIndex(data, index);
+      } else {
+        currentId = id;
+      }
+      this.slidesList.toArray()[1].slideTo(this.getArrayIndexById(data, currentId), 500);
+      this.getPageProducts(currentId);
+    });
+  }
 
+  /**
+   * Método que carga los productos segun un id de categoría
+   * 
+   * @param categoryId id de categoría
+   */
+  getPageProducts(categoryId:number) {
+    this.nextPage = null;
+    this.products = [];
+    this.categoryId = categoryId;
     this.restProvider.getTestServices("productos", "?api_token="+localStorage.getItem('token') + 
-    "&categoria_id=" + categoryNumber)
+    "&categoria_id=" + categoryId)
     .then((data:any)=>{
-      console.log("PRODUCTOS SUCCESS", data);
-      console.log("DATA DATA SUCCESS", data.data);
-      
-        // this.pagesProd.push(data);
-        // for(let page of this.pagesProd){
-        //   for (let prod of page.data){
-        //     this.products.push(prod);
-        //   }
-        //   this.nextPage = page.next_page_url;
-        // }
-        // this.next();
-
         this.products = data.data;
         this.nextPage = data.next_page_url;
-        this.next()
-
+        this.next();
+        this.loading.dismiss();
     },(err)=>{
-      console.log("PRODUCTOS ERROR", err);
-    })
-
-
-  }
-
-  getAllProducts() {
-    // this.restProvider.get(localStorage.getItem("token"), 'productos')
-    // .then(data => {
-    //   this.pagesProd.push(data);
-    //   for(let page of this.pagesProd){
-    //     for (let prod of page.data){
-    //       this.products.push(prod);
-    //     }
-    //     this.nextPage = page.next_page_url;
-    //   }
-    //   this.next();
-    // });
-
-    this.restProvider.getTestServices("productos", "?api_token="+localStorage.getItem('token'))
-    .then((data:any)=>{
-      console.log("PRODUCTOS SUCCESS", data);
-      console.log("DATA DATA SUCCESS", data.data);
-      
-      // this.pagesProd.push(data);
-      //   for(let page of this.pagesProd){
-      //     for (let prod of page.data){
-      //       this.products.push(prod);
-      //     }
-      //     this.nextPage = page.next_page_url;
-      //   }
-      //   this.next();
-
-      this.products = data.data;
-      this.nextPage = data.next_page_url;
-      this.next();
-
-    },(err)=>{
+      this.loading.dismiss();
       console.log("PRODUCTOS ERROR", err);
     })
   }
 
+  /**
+   * Método que determina si se añadiran o no mas 
+   * artículos a la página
+   * 
+   * @param infiniteScroll 
+   */
   next(infiniteScroll?) {
-
     if (infiniteScroll && this.nextPage) {
-
       let arrayNextPage = this.nextPage.split("=");
       let numberPage = arrayNextPage[arrayNextPage.length-1];
-
-      console.log(numberPage);
-
-      this.restProvider.getTestServices("productos", "?api_token="+localStorage.getItem('token')+"&categoria_id=1&page%5Bnumber%5D="+numberPage)
+      this.restProvider.getTestServices("productos", "?api_token="+localStorage.getItem('token')+"&categoria_id="+this.categoryId+"&page%5Bnumber%5D="+numberPage)
       .then((data:any) => {
-        console.log("SUCCESS DATA URL",data);
-          this.pagesProd.push(data);
-          // let pageCuerrent : any[] = [];
-          // pageCuerrent.push(data);
-          // for(let page of pageCuerrent){
-          //   for (let prod of page.data){
-          //     this.products.push(prod);
-          //   }
-          //   this.nextPage = page.next_page_url;
-          // }
           for(let product of data.data){
             this.products.push(product);
           }
@@ -173,13 +154,16 @@ export class StartPage {
       })
       .catch((err)=>{
         console.log("CATCH ERROR DATA URL",err);
-
       });
-
     }
-
   }
  
+  /**
+   * Método que se llama desde el template para 
+   * el scroll infinito
+   * 
+   * @param infiniteScroll 
+   */
   loadMore(infiniteScroll) {
     this.next(infiniteScroll);
     if (this.nextPage === null) {
@@ -187,48 +171,34 @@ export class StartPage {
     }
   }
 
+  /**
+   * Redirecciona a la página de Productos
+   * 
+   * @param product pasa como parametro el producto seleccionado
+   */
   goProduct(product){   
     this.navCtrl.push(ProductPage, product);
   };
 
-  moveLeft(index: number): void {
-    if (this.categoryNumber > 1){
-      this.products = [];
-      this.pagesProd = [];
-      this.categoryNumber--;
-      this.getPageProducts(this.categoryNumber);
+  moveRight(): void {
+    if (this.categoryIndex < this.categories.length - 1){
+      this.getCategoriesAndProducts(++this.categoryIndex);
     }
-    this.slidesList.toArray()[index].slidePrev(500);
-  }   
-
-  moveRight(index: number): void {
-    
-    /*let numCategCuerrnt : number = 0;
-    for(let cat = 0NumberFormatStyle to this.categ.length){
-      numCategCuerrnt++;
-    }*/
-    if (this.categoryNumber < 7){
-      this.products = [];
-      this.pagesProd = [];
-      this.categoryNumber++;
-      this.getPageProducts(this.categoryNumber);
-    }
-    this.slidesList.toArray()[index].slideNext(500);
   } 
 
-  /*showCategories():void{
-    let modal = this.modalCtrl.create(ActionCategoryPage);
-    modal.present();
-  }*/
+  moveLeft(): void {
+    if (this.categoryIndex > 0){
+      this.getCategoriesAndProducts(--this.categoryIndex);
+    }
+  }   
 
   ngAfterViewInit() {
-    /*this.startService.change.subscribe(serviDisplay => {
-        this.changeContent(serviDisplay);
-        })*/
   }
 
+  /**
+   * 
+   */
   backPage():void{
-    //this.startService.toggle(false);
     localStorage.setItem("token", null);
     this.navCtrl.setRoot(HomePage);
     this.navCtrl.popToRoot();

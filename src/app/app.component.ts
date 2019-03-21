@@ -5,10 +5,6 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
 import { StartPage } from '../pages/start/start';
-import { CartPage } from '../pages/cart/cart';
-import { ProductPage } from '../pages/product/product';
-import { ConfigPage } from '../pages/config/config';
-import { AboutPage } from '../pages/about/about';
 
 @Component({
   templateUrl: 'app.html'
@@ -21,8 +17,6 @@ export class MyApp {
     statusBar: StatusBar, 
     splashScreen: SplashScreen) {
     platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
       statusBar.styleLightContent();
       splashScreen.hide();
       if (!localStorage.getItem('token') || localStorage.getItem('token') === "null") {
@@ -30,7 +24,6 @@ export class MyApp {
       } else {
         this.rootPage = StartPage;
       }
-      //this.rootPage = ProductPage;
     });
   }
 }

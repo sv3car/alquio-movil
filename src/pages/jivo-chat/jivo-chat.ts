@@ -10,27 +10,11 @@ export class JivoChatPage {
   namePage: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    /**
+     * Nombre de la Página
+     */
     this.namePage = {
       name: 'chat'
-    }
-    let widget_id = 'Dh11KkN4eM';
-    let d=document;
-    let w: any =window;
-    let func = () => {
-      let s = document.createElement('script'); 
-      s.type = 'text/javascript'; s.async = true;
-      s.src = '//code.jivosite.com/script/widget/'+widget_id; 
-      var ss = document.getElementsByTagName('script')[0]; 
-      ss.parentNode.insertBefore(s, ss);
-    }
-    if(d.readyState=='complete'){
-      func();
-    }else{
-      if(w.attachEvent){
-        w.attachEvent('onload',func);
-      } else{
-        w.addEventListener('load',func,false);
-      }
     }
   }
 
@@ -39,6 +23,7 @@ export class JivoChatPage {
   }
 
   backPage():void{
+    this.removeJivoChat();
     this.navCtrl.pop();
   }
 
@@ -92,10 +77,6 @@ export class JivoChatPage {
         }
       }
   }
-
-  /*ionViewWillLeave(){
-    this.removeJivoChat();
-  }*/
 
   /**
    * 

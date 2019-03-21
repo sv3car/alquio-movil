@@ -48,11 +48,16 @@ export class OrderPage {
     }
   ]
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, 
-    public orderService: OrdertService, public startService: StartService) {
-      this.namePage = {
-        name: 'order'
-      }
+  constructor(public navCtrl: NavController, 
+              public navParams: NavParams, 
+              public orderService: OrdertService, 
+              public startService: StartService) {
+    /**
+     * Nombre de la Página
+     */
+    this.namePage = {
+      name: 'order'
+    }
   }
 
   ngAfterViewInit() {
@@ -72,7 +77,6 @@ export class OrderPage {
   }
 
   backPage():void{
-    this.startService.toggle(false);
     this.navCtrl.pop();
   }
 

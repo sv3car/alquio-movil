@@ -29,7 +29,6 @@ export class GlobalProvider {
 
   constructor(public http: HttpClient,
               public loadingCtrl: LoadingController) {
-    console.log('Hello GlobalProvider Provider');
   }
 
   /**
