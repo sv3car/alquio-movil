@@ -1,6 +1,15 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+
+//Providers
+
 import { GlobalProvider } from '../../providers/global/global';
+
+
+//Pages
+
+import { OrdenesPage  } from '../../pages/ordenes/ordenes';
+
 
 @Component({
   selector: 'page-cart',
@@ -98,6 +107,18 @@ export class CartPage {
 
   backPage():void{
     this.navCtrl.pop();
+  }
+
+
+  /**
+   * 
+   * Metodo que navega a la pantalla ordenes
+   * 
+   */
+  nav(){
+
+    this.navCtrl.push(OrdenesPage);
+
   }
 
 }
