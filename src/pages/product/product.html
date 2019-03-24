@@ -10,11 +10,11 @@
       </ion-slides>
     </div>
 
-    <div class="primary-grid" style="margin-left: 20px; margin-right: 20px">
+    <div class="primary-grid" style="margin: 20px">
       <ion-grid>
         <ion-row>
           <ion-col>
-              <div style="padding: 10px; text-align: left">
+              <div style="text-align: left">
                 <h4>{{product.titulo}}</h4>
               </div>
             </ion-col>
@@ -63,16 +63,34 @@
                     <ion-row>
                       <ion-col>
                         <div style="width: 100%">
-                          <div style="width: 100%; position: relative; height: 25px; margin: 5px">
+
+                          <div style="width: 100%; position: relative; height: 25px; margin: 5px"
+                            *ngIf="!isFavorite" (click)="addFavorite()">
                             <div style ="width: 75%; float:left; text-align: right">Agregar a favoritos</div>
                             <div style ="width: 25%; float:left;">
-                              <ion-icon name="heart" style="zoom: 1.25"></ion-icon>
+                              <ion-icon name="heart" style="zoom: 1.25; color: rgb(100, 100, 100)"></ion-icon>
                             </div>
                           </div>
-                          <div style="width: 100%; position: relative; height: 25px; margin: 5px">
+                          <div style="width: 100%; position: relative; height: 25px; margin: 5px"
+                            *ngIf="isFavorite" (click)="removeFavorite()">
+                            <div style ="width: 75%; float:left; text-align: right"><strong>Favorito</strong></div>
+                            <div style ="width: 25%; float:left;">
+                              <ion-icon name="heart" style="zoom: 1.25; color: #7B55B9"></ion-icon>
+                            </div>
+                          </div>
+
+                          <div style="width: 100%; position: relative; height: 25px; margin: 5px"
+                            *ngIf="!isCart" (click)="addCart()">
                             <div style ="width: 75%; float:left; text-align: right">Agregar al carrito</div>
                             <div style ="width: 25%; float:left;">
-                              <ion-icon name="cart" style="zoom: 1.25"></ion-icon>
+                              <ion-icon name="cart" style="zoom: 1.25; color: rgb(100, 100, 100)"></ion-icon>
+                            </div>
+                          </div>
+                          <div style="width: 100%; position: relative; height: 25px; margin: 5px"
+                            *ngIf="isCart" (click)="removeCart()">
+                            <div style ="width: 75%; float:left; text-align: right"><strong>En el Carrito</strong></div>
+                            <div style ="width: 25%; float:left;">
+                              <ion-icon name="cart" style="zoom: 1.25; color: #7B55B9"></ion-icon>
                             </div>
                           </div>
                         </div>
@@ -89,7 +107,7 @@
 
     <hr style="border:5px; width: 90%; text-align: center">
 
-    <div *ngIf="isVariant" >
+    <div *ngIf="variantId" >
       <ion-grid style="padding: 0">
         <ion-row class="price-calc">
           <ion-col style="padding: 0">
@@ -182,10 +200,7 @@
           <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
         </ion-item>
       </ion-list> -->
-      <p *ngSwitchCase="'description'" style="margin: 0">
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-      </p>
+      <div *ngSwitchCase="'description'" style="margin: 0" [innerHTML]='product.descripcion'></div>
       <p *ngSwitchCase="'shipping-and-return'" style="margin: 0">
         Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
         Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
@@ -202,13 +217,13 @@
 
   <div class="initial">
     <div id="bottom" class="bar">
-        <img src="assets/imgs/customicons/right.png" class="icon-bar" style="margin-top: 15px">
-        <!-- <ion-icon name="arrow-up" style="color: white; zoom: 1.5; padding-top: 5px"></ion-icon> -->
-        <button class="buttonBar" (click)="goOrder()">
-          <p class="title-bot"><strong>Comprar</strong></p>
-        </button>
-        <img src="assets/imgs/customicons/right.png" class="icon-bar" style="margin-top: 15px">
-        <!-- <ion-icon name="arrow-up" style="color: white; zoom: 1.5; padding-top: 5px"></ion-icon> -->
+      <img src="assets/imgs/customicons/right.png" class="icon-bar" style="margin-top: 15px">
+      <!-- <ion-icon name="arrow-up" style="color: white; zoom: 1.5; padding-top: 5px"></ion-icon> -->
+      <button class="buttonBar" (click)="goOrder()">
+        <p class="title-bot"><strong>Comprar</strong></p>
+      </button>
+      <img src="assets/imgs/customicons/right.png" class="icon-bar" style="margin-top: 15px">
+      <!-- <ion-icon name="arrow-up" style="color: white; zoom: 1.5; padding-top: 5px"></ion-icon> -->
     </div>
   </div>
 

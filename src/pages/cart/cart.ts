@@ -65,13 +65,6 @@ export class CartPage {
     this.namePage = {
       name: 'cart'
     };
-
-    if (this.global.cartExchage()){
-      this.cart = "El Carrito esta vacío"
-    }else {
-      let products: any[] = JSON.parse(localStorage.getItem("product_cart"));
-      this.chargeTotal();
-    }
   }
 
   chargeTotal(){

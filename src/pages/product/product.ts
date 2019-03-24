@@ -10,17 +10,14 @@ export class ProductPage {
 
   currentNumber = 0;
 
-  isVariant : boolean;
+  variantId:any;
+
+  isCart:any;
+  isFavorite:any;
 
   detail: string = 'description';
 
   product: any;
-
-  existCart : boolean;
-
-  iconoFavoritos: string = "icon-color-false";
-  iconoCarrito: string = "icon-color-false";
-  iconoCompartir: string = "icon-color-false";
 
   s: boolean;
   m: boolean;
@@ -36,13 +33,17 @@ export class ProductPage {
   namePage: any;
 
   constructor(public navCtrl: NavController,
-              public navParams: NavParams/*,
-              public startService: StartService*/
-              ,public global: GlobalProvider) {
+              public navParams: NavParams,
+              public globalProv: GlobalProvider) {
 
-    this.iconoFavoritos = "icon-color-false";
-    this.iconoCarrito = "icon-color-false";
-    this.iconoCompartir = "icon-color-false";
+    this.product = this.navParams.data;
+
+    this.currentNumber = 1;
+
+    this.variantId = this.product.variante;
+
+    this.isCart = this.globalProv.isElementLocalStorageById(GlobalProvider.CART_LOCAL, this.product.id);
+    this.isFavorite = this.globalProv.isElementLocalStorageById(GlobalProvider.FAVORITE_LOCAL, this.product.id);
 
     /**
      * Nombre de la Página
@@ -52,26 +53,31 @@ export class ProductPage {
     };
   }
 
+  addCart(){
+    this.globalProv.addElementToJSONOfLocalStorage(GlobalProvider.CART_LOCAL, this.product);
+    this.globalProv.showToast("Agregado al carrito", "middle").present();
+    this.isCart = true;
+  }
+
+  removeCart(){
+    this.globalProv.removeElementToJSONOfLocalStorageById(GlobalProvider.CART_LOCAL, this.product.id);
+    this.globalProv.showToast("Removido del carrito", "middle").present();
+    this.isCart = false;
+  }
+
+  addFavorite(){
+    this.globalProv.addElementToJSONOfLocalStorage(GlobalProvider.FAVORITE_LOCAL, this.product);
+    this.globalProv.showToast("Agregado a favoritos", "middle").present();
+    this.isFavorite = true;
+  }
+
+  removeFavorite(){
+    this.globalProv.removeElementToJSONOfLocalStorageById(GlobalProvider.FAVORITE_LOCAL, this.product.id);
+    this.globalProv.showToast("Removido de favoritos", "middle").present();
+    this.isFavorite = false;
+  }
+
   ionViewDidLoad() {
-    this.product = this.navParams.data;
-    this.currentNumber = 1;
-
-    if(this.product.variante == null){
-      this.isVariant = false;
-    } else {
-      this.isVariant = true;
-    }
-
-    this.addToCart();
-
-    /*if(!this.global.cartExchage() && this.global.existProdCart(JSON.parse(localStorage.getItem("product_cart"))
-    , this.product)){
-      console.log("carrito llena");
-      this.existCart = true;
-    } else {
-      console.log("carrito vacio");
-      this.existCart = false;
-    }*/
   }
   
   increment():void {
@@ -142,36 +148,6 @@ export class ProductPage {
     }
   }
 
-  getCartArray(){
-    return JSON.parse(localStorage.getItem("cart_array"));;
-  }
-
-  setCartArray(array:any){
-    localStorage.setItem('cart_array', JSON.stringify(array));
-  }
-
-  addToCart(){
-    let cart_array : any[] = []
-
-    console.log(cart_array.length);
-     
-    /*if(this.global.cartExchage()){
-      product_cart.push(this.product);
-      localStorage.setItem('product_cart', JSON.stringify(product_cart));
-      this.existCart = true;
-    } else{
-      product_cart = JSON.parse(localStorage.getItem("product_cart"));
-      if (!this.global.existProdCart(product_cart, this.product)){
-        product_cart.push(this.product);
-        localStorage.setItem('product_cart', JSON.stringify(product_cart));
-        this.existCart = true;
-      } else{
-        product_cart.splice(product_cart.indexOf(this.global.existProdCart(product_cart, this.product)), 1);
-        this.existCart = false;
-      }
-    }*/
-  }
-
   checkS(){
     this.s = true;
     this.m = false;
@@ -191,6 +167,5 @@ export class ProductPage {
   }
 
   addToFavorite(){
-
   }
 }

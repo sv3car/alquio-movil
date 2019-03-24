@@ -6,7 +6,6 @@ import { NavController, NavParams, Slides, ModalController} from 'ionic-angular'
 import { RestProvider } from '../../providers/rest/rest';
 
 //Pages
-import { HomePage } from '../home/home';
 import { ProductPage } from '../product/product';
 import { GlobalProvider } from '../../providers/global/global';
 
@@ -63,32 +62,6 @@ export class StartPage {
   }
 
   /**
-   * Método que retorna el id de un
-   * elemento de un array segun su indice
-   * 
-   * @param array 
-   * @param indexCat 
-   */
-  getArrayIdByIndex(array:any, index:number):number{
-    return array.find((element:any, ind: number) => {
-      return ind == index;
-    }).id;
-  }
-
-  /**
-   * Método que retorna el índice de un
-   * elemento de un array segun su id
-   * 
-   * @param array 
-   * @param id 
-   */
-  getArrayIndexById(array:any, id:number):number{
-    return array.findIndex((element:any) => {
-      return element.id == id;
-    });
-  }
-
-  /**
    * Médotodo los productos segun la categoría seleccionada
    * en el template
    * 
@@ -100,14 +73,15 @@ export class StartPage {
     this.loading.present();
     this.restProvider.getTestServices("categorias", "?api_token="+localStorage.getItem('token'))
     .then((data:any) => {
+      console.log(data);
       this.categories = data;
       let currentId: number;
       if (!id){
-        currentId = this.getArrayIdByIndex(data, index);
+        currentId = this.globalProv.getArrayIdByIndex(data, index);
       } else {
         currentId = id;
       }
-      this.slidesList.toArray()[1].slideTo(this.getArrayIndexById(data, currentId), 500);
+      this.slidesList.toArray()[1].slideTo(this.globalProv.getArrayIndexById(data, currentId), 500);
       this.getPageProducts(currentId);
     });
   }
@@ -198,10 +172,10 @@ export class StartPage {
   /**
    * 
    */
-  backPage():void{
+  /*backPage():void{
     localStorage.setItem("token", null);
     this.navCtrl.setRoot(HomePage);
     this.navCtrl.popToRoot();
-  }
+  }*/
 
 }
