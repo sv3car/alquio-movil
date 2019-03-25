@@ -15,11 +15,29 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class OrdenesPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+
+  //Nombre de la pagina
+  namePage: any = {
+                    name: 'ordenes'
+                  };
+
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad OrdenesPage');
+  }
+
+  /**
+   * 
+   * Metodo que regresa una pagina
+   * 
+   */
+  backPage(){
+
+    this.navCtrl.pop();
+
   }
 
 }
