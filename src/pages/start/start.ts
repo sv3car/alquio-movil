@@ -30,6 +30,16 @@ export class StartPage {
   
   products : any[] = [];
 
+
+  //ANIMACION FILTER 
+  initialPosition: boolean = true;
+  leftPosition: boolean = false;
+  initialColor: boolean = true;
+  leftColor: boolean = false;
+  initialButton: boolean = true;
+  leftButton: boolean = false;
+  //
+
   @ViewChildren(Slides) slidesList: QueryList<Slides>;
 
   slides = [
@@ -166,7 +176,20 @@ export class StartPage {
     }
   }   
 
-  ngAfterViewInit() {
+  /**
+   * 
+   * Metodo para mostrar u ocultar el filter
+   * 
+   */
+  filterTransition(){
+
+    this.initialPosition = !this.initialPosition;
+    this.leftPosition = !this.leftPosition;
+    this.initialColor = !this.initialColor;
+    this.leftColor = !this.leftColor;
+    this.initialButton = !this.initialButton;
+    this.leftButton = !this.leftButton;
+
   }
 
   /**

@@ -9,6 +9,7 @@ import { DrawerOpacity } from '../drawer-opacity/drawer-opacity';
 export class DrawerFilter {
 
   @Input('options') options: any;
+  @Input('btnAction') btnAction: any;
   @Input('sideBar') sideBar: DrawerOpacity;
 
   handleWidth: number = 17.25;
@@ -20,26 +21,30 @@ export class DrawerFilter {
               public platform: Platform) {
   }
 
-  ngAfterViewInit() {
+  ionViewDidLoad() {
 
-    if (this.type === '%'){
-      this.handleWidth = ((parseFloat(this.handleWidth.toString()) * 
-      parseFloat(this.platform.width().toString()))/100);
-    }
+    // if (this.type === '%'){
+    //   this.handleWidth = ((parseFloat(this.handleWidth.toString()) * 
+    //   parseFloat(this.platform.width().toString()))/100);
+    // }
 
-    this.renderer.setElementStyle(this.element.nativeElement, 'left', 
-    this.platform.width() - this.handleWidth + 'px');
+    // this.renderer.setElementStyle(this.element.nativeElement, 'left', 
+    // this.platform.width() - this.handleWidth + 'px');
 
-    let hammer = new window['Hammer'](this.element.nativeElement);
-    hammer.get('pan').set({ direction: window['Hammer'].DIRECTION_HORIZONTAL });
+    // let hammer = new window['Hammer'](this.element.nativeElement);
+    // hammer.get('pan').set({ direction: window['Hammer'].DIRECTION_HORIZONTAL });
 
-    hammer.on('pan', (ev) => {
-      this.handlePan(ev);
-    });
+    // hammer.on('pan', (ev) => {
+    //   this.handlePan(ev);
+    // });
+
+    //this.handlePan(ev);
 
   }
 
   handlePan(ev){
+
+    console.log("HANDLE PAN");
 
     if(ev.additionalEvent === "panright"){
       this.sideBar.content(false, true);
