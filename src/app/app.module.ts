@@ -42,6 +42,7 @@ import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { CartPage } from '../pages/cart/cart';
 import { ConfigPage } from '../pages/config/config';
+import { OrdenesPage } from '../pages/ordenes/ordenes';
 
 //Providers
 
@@ -66,6 +67,7 @@ import { GlobalProvider } from '../providers/global/global';
     ActionCategoryPage,
     ModalPruebaPage,
     UserDetailPage,
+    OrdenesPage,
     HeaderComponent,
     BottomComponent,
     DrawerFilter,
@@ -101,7 +103,8 @@ import { GlobalProvider } from '../providers/global/global';
     CartPage,
     ActionCategoryPage,
     ModalPruebaPage,
-    UserDetailPage
+    UserDetailPage,
+    OrdenesPage
   ],
   providers: [
     StatusBar,

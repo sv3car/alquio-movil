@@ -46,7 +46,7 @@
       </button>
 
       <ion-slides class="categories">
-        <ion-slide *ngFor="let category of categ">
+        <ion-slide *ngFor="let category of categories">
           <p id="categoy"><strong>{{ category.name }}</strong></p>
         </ion-slide>
       </ion-slides>
@@ -85,7 +85,9 @@
 <drawer-category-panel></drawer-category-panel>
 
 <!--Motrar Filtro de Variantes-->
-<drawer-filter [sideBar]="sideBar">
-</drawer-filter>
+<!-- <drawer-filter [sideBar]="sideBar"></drawer-filter> -->
+<div [ngClass]="{'backgroundNoColor': initialColor, 'backgroundBlack': leftColor}"></div>
+<div (click)="filterTransition()" [ngClass]="{'fakeButtonInitial': initialButton, 'fakeButtonLeft': leftButton}" class="fakeButton"></div>
+<drawer-filter [ngClass]="{'idle': initialPosition, 'left': leftPosition}"></drawer-filter>
 
 

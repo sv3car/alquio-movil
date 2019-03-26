@@ -1,0 +1,255 @@
+<ion-content no-padding>
+
+  <ion-label class="orders-body">ALQUIO</ion-label>
+
+  <ion-row class="rowOrderSummary rowBorders" align-items-center text-wrap (click)="showSummaryAction()">
+
+    <ion-col col-1 text-center>
+      <ion-icon name="cart"></ion-icon>
+    </ion-col>
+
+    <ion-col col-7 *ngIf="!showSummary">
+      <ion-label>Show order summary <ion-icon ios="ios-arrow-up" md="ios-arrow-up"></ion-icon>
+      </ion-label>
+    </ion-col>
+    
+    <ion-col col-7 *ngIf="showSummary">
+      <ion-label>Hide order summary <ion-icon ios="ios-arrow-down" md="ios-arrow-down"></ion-icon>
+      </ion-label>
+    </ion-col>
+
+    <ion-col col-4 text-right>
+      <ion-label>$35.00</ion-label>
+    </ion-col>
+
+  </ion-row>
+  
+  <ion-list *ngIf="showSummary">
+    <ion-item>
+      <ion-thumbnail item-start>
+        <img
+          src="https://c.76.my/Malaysia/air-dragon-portable-air-compressor-tire-inflator-emergency-car-pump-kwingcollection-1709-06-kwingcollection@27.jpg">
+      </ion-thumbnail>
+      <h2><b>Portable Air Compressor</b></h2>
+      <p>Portable Air Compressor</p>
+      <button ion-button clear item-end>$35.00</button>
+    </ion-item>
+  </ion-list>
+  
+  <div padding *ngIf="showSummary">
+    
+    
+    <!-- <ion-row class="rowBorders" align-items-center text-wrap padding>
+    
+      <ion-col col-10>
+        <ion-input class="input-discount" type="text" placeholder="Discount code"></ion-input>
+      </ion-col>
+    
+      <ion-col col-2>
+        <button class="button-discount" ion-button>
+          <ion-icon name="arrow-forward"></ion-icon>
+        </button>
+      </ion-col>
+    
+    </ion-row> -->
+    
+    <ion-row class="rowBorderBottom" align-items-center text-wrap no-padding>
+    
+      <ion-col col-12>
+        
+        <ion-row>
+
+          <ion-col col-6>
+             Subtotal
+          </ion-col>
+
+          <ion-col col-6 text-right>
+            <b>$35.00</b>
+          </ion-col>
+          
+        </ion-row>
+        
+        <ion-row>
+
+          <ion-col col-6>
+            Shipping
+          </ion-col>
+
+          <ion-col col-6 text-right>
+            <b>Free</b>
+          </ion-col>
+
+        </ion-row>
+
+      </ion-col>
+    
+    </ion-row>
+
+    <ion-row class="rowBorderBottom" align-items-center text-wrap no-padding>
+    
+      <ion-col col-7>
+
+        <ion-row>
+          <ion-col col-12 >
+            <ion-label class="noneMargin">Total</ion-label>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col col-12 >
+            <ion-label class="noneMargin">Including $4.57 in taxes</ion-label>
+          </ion-col>
+        </ion-row>
+
+      </ion-col>
+
+      <ion-col col-1 text-center>
+        <p class="moneda">USD</p>
+      </ion-col>
+
+      <ion-col col-4>
+          <h2>$35.00</h2>
+      </ion-col>
+    
+    </ion-row>
+
+  </div>
+
+  <div padding>
+
+      <div class="boxBorders">
+
+          <ion-list>
+
+            <ion-item>
+              <h2><b>Contact</b></h2>
+              <p>carlos_andres95@outlook.com</p>
+              <button ion-button clear item-end>Change</button>
+            </ion-item>
+
+            <ion-item>
+              <h2><b>Ship to</b></h2>
+              <p>CALLE 1 F 3918, CASA 111611</p>
+              <p>BOGOTA DC, Colombia</p>
+              <button ion-button clear item-end>change</button>
+            </ion-item>
+            
+            <ion-item>
+              <h2><b>Method</b></h2>
+              <p>Free Shipping - <b>Free</b></p>
+            </ion-item>
+
+
+          </ion-list>
+
+      </div>
+  </div>
+
+  <div padding-left>
+
+    <ion-row no-padding>
+      <ion-col col-12>
+        <span>Discount</span>
+      </ion-col>
+    </ion-row>
+
+  </div>
+
+  <div padding>
+  
+    <ion-row align-items-center text-wrap padding>
+      
+      <ion-col col-10>
+        <ion-input class="input-discount" type="text" placeholder="Discount code"></ion-input>
+      </ion-col>
+    
+      <ion-col col-2>
+        <button class="button-discount" ion-button>
+          <ion-icon name="arrow-forward"></ion-icon>
+        </button>
+      </ion-col>
+    
+    </ion-row>
+    
+  </div>
+
+  <div padding-left>
+
+    <ion-row no-padding>
+      <ion-col col-12>
+        <span>Payment method</span>
+      </ion-col>
+    </ion-row>
+    <ion-row no-padding>
+      <ion-col col-12>
+          <span class="font-small">All transactions are secure and encrypted</span>
+      </ion-col>
+    </ion-row>
+
+  </div>
+
+  <div padding>
+
+    <div class="boxBorders">
+
+      <ion-row>
+
+        <ion-col col-6>
+            <ion-row>
+                <img height="45px" src="https://i2.wp.com/elclubdeapuestas.com/wp-content/uploads/2017/07/paypal-logo.png?fit=672%2C261&ssl=1">
+            </ion-row>
+            <ion-row>
+                <img height="45px" src="https://www.businessdirect.bt.com/images/1/merch/vendors/dabs/payment-method/images/payment-methods_01.jpg">  
+            </ion-row>
+        </ion-col>
+        <ion-col col-6>
+            <ion-list radio-group>
+            
+              <ion-item>
+                <!-- <ion-label>Paypal</ion-label> -->
+                <ion-radio value="paypal"></ion-radio>
+              </ion-item>
+            
+              <ion-item>
+                <!-- <ion-label>VISA</ion-label> -->
+                <ion-radio value="visa"></ion-radio>
+              </ion-item>
+            
+            </ion-list>
+        </ion-col>
+
+
+      </ion-row>
+
+    </div>
+
+  </div>
+
+  <div class="bottom-space"></div>
+
+</ion-content>
+
+<div id="bottom" class="bar">
+  <!--Ordenar-->
+  <div class="order bar">
+    <p id="ord"><strong (click)="nav()">Ordenar</strong></p>
+  </div>
+</div>
+
+<!--Opacidad del Contenido-->
+<drawer-opacity #sideBar></drawer-opacity>
+
+<!--Volver-->
+<button class="button-back" (click)="backPage()">
+  <ion-icon name="arrow-back" style="color: white"></ion-icon>
+</button>
+
+<!--Header-->
+<header-app [options]="namePage"></header-app>
+
+<!--Bottom-->
+<!-- <bottom-app></bottom-app> -->
+
+<!--Opciones del usuario-->
+<drawer-user [options]="namePage" [sideBar]="sideBar"></drawer-user>
+<drawer-user-panel></drawer-user-panel>
