@@ -87,7 +87,7 @@
 <!--Motrar Filtro de Variantes-->
 <!-- <drawer-filter [sideBar]="sideBar"></drawer-filter> -->
 <div [ngClass]="{'backgroundNoColor': initialColor, 'backgroundBlack': leftColor}"></div>
-<div (click)="filterTransition()" [ngClass]="{'fakeButtonInitial': initialButton, 'fakeButtonLeft': leftButton}" class="fakeButton"></div>
+<div (click)="filterTransition()" (swipe)="filterTransitionWithGesture($event)" [ngClass]="{'fakeButtonInitial': initialButton, 'fakeButtonLeft': leftButton}" class="fakeButton"></div>
 <drawer-filter [ngClass]="{'idle': initialPosition, 'left': leftPosition}"></drawer-filter>
 
 
