@@ -195,6 +195,47 @@ export class StartPage {
 
   /**
    * 
+   * Metodo para mostrar u ocultar el filter con un gesture swipe
+   * 
+   */
+  filterTransitionWithGesture(event){
+
+    
+
+    switch(event.direction){
+
+      case 2:
+        console.log("izquierda");
+        this.initialPosition = false;
+        this.leftPosition = true;
+        this.initialColor = false;
+        this.leftColor = true;
+        this.initialButton = false;
+        this.leftButton = true;
+      break;
+      case 4:
+        console.log("derecha");
+        this.initialPosition = true;
+        this.leftPosition = false;
+        this.initialColor = true;
+        this.leftColor = false;
+        this.initialButton = true;
+        this.leftButton = false;
+      break;
+
+    }
+
+    // this.initialPosition = !this.initialPosition;
+    // this.leftPosition = !this.leftPosition;
+    // this.initialColor = !this.initialColor;
+    // this.leftColor = !this.leftColor;
+    // this.initialButton = !this.initialButton;
+    // this.leftButton = !this.leftButton;
+
+  }
+
+  /**
+   * 
    */
   /*backPage():void{
     localStorage.setItem("token", null);
