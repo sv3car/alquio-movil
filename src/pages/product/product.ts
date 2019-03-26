@@ -8,7 +8,7 @@ import { GlobalProvider } from '../../providers/global/global';
 })
 export class ProductPage {
 
-  currentNumber = 0;
+  currentNumber : number = 1;
 
   variantId:any;
 
@@ -38,7 +38,7 @@ export class ProductPage {
 
     this.product = this.navParams.data;
 
-    this.currentNumber = 1;
+    this.product.cantidad = this.currentNumber;
 
     this.variantId = this.product.variante;
 
@@ -85,7 +85,7 @@ export class ProductPage {
   }
   
   decrement():void {
-    if (this.currentNumber > 0) { 
+    if (this.currentNumber > 1) { 
       this.currentNumber--;
     }
   }
@@ -164,8 +164,5 @@ export class ProductPage {
     this.s = false;
     this.m = false;
     this.l = true;
-  }
-
-  addToFavorite(){
   }
 }

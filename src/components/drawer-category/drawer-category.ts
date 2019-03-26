@@ -11,9 +11,9 @@ import { StartPage } from '../../pages/start/start';
 export class DrawerCategory {
 
   @Input('sideBar') sideBar: DrawerOpacity;
-  @Input('categ') categ: any;
+  @Input('categories') categories: any;
 
-  categories = [
+  /*categories = [
     {
       name: "Tecnología",
       image: "tegnology-category.jpg"
@@ -26,7 +26,7 @@ export class DrawerCategory {
       name: "Accesorios",
       image: "accessory.jpg"
     }
-  ]
+  ]*/
 
   constructor(public domCtrl : DomController, 
               public renderer: Renderer,
