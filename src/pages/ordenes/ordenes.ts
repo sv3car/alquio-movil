@@ -21,6 +21,9 @@ export class OrdenesPage {
                     name: 'ordenes'
                   };
 
+  //
+  showSummary: boolean = false;
+
   constructor(public navCtrl: NavController,
               public navParams: NavParams) {
   }
@@ -38,6 +41,15 @@ export class OrdenesPage {
 
     this.navCtrl.pop();
 
+  }
+
+  /**
+   * 
+   * Metodo que muestra el resumen
+   * 
+   */
+  showSummaryAction(){
+    this.showSummary = !this.showSummary;
   }
 
 }

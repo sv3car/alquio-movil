@@ -6,6 +6,14 @@ page-ordenes {
         padding: 0;
     }
 
+    .bottom-space{
+        padding-bottom: 200px;
+    }
+    
+    .font-small{
+        font-size: 12px;
+    }
+
     .orders-body{
         padding-top: 50px;
         padding-left: 10px;
@@ -17,6 +25,13 @@ page-ordenes {
     
     .moneda{
         font-size: 9px;
+    }
+
+    .boxBorders{
+        border: 2px solid;
+        border-radius: 2px;
+        border-color: rgb(228, 228, 228);
+        width: 100%;
     }
 
     .rowOrderSummary{
