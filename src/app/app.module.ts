@@ -48,6 +48,7 @@ import { OrdenesPage } from '../pages/ordenes/ordenes';
 
 import { RestProvider } from '../providers/rest/rest';
 import { GlobalProvider } from '../providers/global/global';
+import { FavoritePage } from '../pages/favorite/favorite';
 
 
 @NgModule({
@@ -63,6 +64,7 @@ import { GlobalProvider } from '../providers/global/global';
     OrderPage,
     ProductPage,
     CartPage,
+    FavoritePage,
     JivoChatPage,
     ActionCategoryPage,
     ModalPruebaPage,
@@ -101,6 +103,7 @@ import { GlobalProvider } from '../providers/global/global';
     JivoChatPage,
     ProductPage,
     CartPage,
+    FavoritePage,
     ActionCategoryPage,
     ModalPruebaPage,
     UserDetailPage,
