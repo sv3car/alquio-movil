@@ -81,7 +81,7 @@ export class StartPage {
   getCategoriesAndProducts(index:number, id?:number) {
     this.loading = this.globalProv.crearLoading();
     this.loading.present();
-    this.restProvider.getTestServices("categorias", "?api_token="+localStorage.getItem('token'))
+    this.restProvider.getData("categorias", "?api_token="+localStorage.getItem('token'))
     .then((data:any) => {
       console.log(data);
       this.categories = data;
@@ -105,7 +105,7 @@ export class StartPage {
     this.nextPage = null;
     this.products = [];
     this.categoryId = categoryId;
-    this.restProvider.getTestServices("productos", "?api_token="+localStorage.getItem('token') + 
+    this.restProvider.getData("productos", "?api_token="+localStorage.getItem('token') + 
     "&categoria_id=" + categoryId)
     .then((data:any)=>{
         this.products = data.data;
@@ -128,7 +128,7 @@ export class StartPage {
     if (infiniteScroll && this.nextPage) {
       let arrayNextPage = this.nextPage.split("=");
       let numberPage = arrayNextPage[arrayNextPage.length-1];
-      this.restProvider.getTestServices("productos", "?api_token="+localStorage.getItem('token')+"&categoria_id="+this.categoryId+"&page%5Bnumber%5D="+numberPage)
+      this.restProvider.getData("productos", "?api_token="+localStorage.getItem('token')+"&categoria_id="+this.categoryId+"&page%5Bnumber%5D="+numberPage)
       .then((data:any) => {
           for(let product of data.data){
             this.products.push(product);
