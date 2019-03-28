@@ -9,6 +9,7 @@ import { GlobalProvider } from '../../providers/global/global';
 //Pages
 
 import { OrdenesPage  } from '../../pages/ordenes/ordenes';
+import { ProductPage } from '../product/product';
 
 
 @Component({
@@ -17,12 +18,12 @@ import { OrdenesPage  } from '../../pages/ordenes/ordenes';
 })
 export class CartPage {
 
-  cart: string = null;
   namePage: any;
   totalQty : number = 0;
   totalPrice : number = 0;
+  cartProd : any[] = []
 
-  cartProd : any[] = [
+  /*cartProd : any[] = [
     {
       foto : "prod1-slide1.jpg",
       Name : "Audifonos Inteligentes",
@@ -63,14 +64,17 @@ export class CartPage {
       Precio: "100",
       quantity: 1
     }
-  ]
+  ]*/
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
-              public global: GlobalProvider) {
+              public globalProv: GlobalProvider,) {       
     /**
      * Nombre de la Página
      */
+    
+    this.cartProd = this.globalProv.getJSONLocalStorage(GlobalProvider.CART_LOCAL);
+
     this.namePage = {
       name: 'cart'
     };
@@ -80,8 +84,8 @@ export class CartPage {
     this.totalQty = 0;
     this.totalPrice = 0;
     for(let prod of this.cartProd){
-      this.totalQty = this.totalQty + Number(prod.quantity);
-      this.totalPrice = this.totalPrice + (Number(prod.Precio) * Number(prod.quantity));
+      this.totalQty = this.totalQty + Number(prod.cantidad);
+      this.totalPrice = this.totalPrice + (Number(prod.precio) * Number(prod.cantidad));
     }
   }
 
@@ -89,14 +93,14 @@ export class CartPage {
     console.log('ionViewDidLoad CartPage');
   }
 
-  increment(cartProd):void {
-    cartProd.quantity++;
+  increment(prod):void {
+    prod.cantidad++;
     this.chargeTotal();
   }
   
-  decrement(cartProd):void {
-    if (cartProd.quantity > 0) { 
-      cartProd.quantity--;
+  decrement(prod):void {
+    if (prod.cantidad > 1) { 
+      prod.cantidad--;
       this.chargeTotal();
     }
   }
@@ -120,5 +124,9 @@ export class CartPage {
     this.navCtrl.push(OrdenesPage);
 
   }
+
+  goProduct(product){   
+    this.navCtrl.push(ProductPage, product);
+  };
 
 }

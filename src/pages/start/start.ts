@@ -91,7 +91,8 @@ export class StartPage {
       } else {
         currentId = id;
       }
-      this.slidesList.toArray()[1].slideTo(this.globalProv.getArrayIndexById(data, currentId), 500);
+      this.categoryIndex = this.globalProv.getArrayIndexById(data, currentId);
+      this.slidesList.toArray()[1].slideTo(this.categoryIndex, 500);
       this.getPageProducts(currentId);
     });
   }

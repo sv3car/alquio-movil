@@ -10,6 +10,8 @@ export class JivoChatPage {
   namePage: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+
+    this.jivoChatIsCreated();
     /**
      * Nombre de la Página
      */

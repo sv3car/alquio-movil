@@ -1,8 +1,8 @@
 <ion-content padding>
-  <div *ngIf="!cartProd" class="card-cart"><h2 style="color:rgb(218, 218, 218); text-align: center">El carrito de compras está vacío</h2></div>
-  <div *ngIf="cartProd" class="card-cart" >
-    <div style="width: 100%; text-align: center"><h2>Carrito de compras</h2></div>
-    <ion-card *ngFor="let product of cartProd">
+  <div *ngIf="!favoriteProd" class="card-cart"><h2 style="color:rgb(218, 218, 218); text-align: center">No tiene ningun producto como favorito</h2></div>
+  <div *ngIf="favoriteProd" class="card-cart" >
+    <div style="width: 100%; text-align: center"><h2>Favoritos</h2></div>
+    <ion-card *ngFor="let product of favoriteProd">
     <div>
       <ion-grid center>
         <ion-row class="row-card">
@@ -25,7 +25,7 @@
               </div>
             </div>
           </ion-col>
-          <ion-col>
+          <!-- <ion-col>
             <div>
               <div>
                 <button class="button-remove" (click)="decrement(product)">
@@ -39,7 +39,7 @@
                 </button>
               </div>
             </div>
-          </ion-col>
+          </ion-col> -->
         </ion-row>
       </ion-grid>
       </div>
