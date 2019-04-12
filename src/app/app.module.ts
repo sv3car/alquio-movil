@@ -34,7 +34,7 @@ import { ProductPage } from '../pages/product/product';
 import { OrderPage } from '../pages/order/order';
 import { StartPage } from '../pages/start/start';
 import { SingInPage } from '../pages/sing-in/sing-in';
-import { ModalPruebaPage } from '../pages/modal-prueba/modal-prueba';
+import { SearchPage } from '../pages/search/search';
 import { ActionCategoryPage } from '../pages/action-category/action-category';
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
@@ -67,7 +67,7 @@ import { FavoritePage } from '../pages/favorite/favorite';
     FavoritePage,
     JivoChatPage,
     ActionCategoryPage,
-    ModalPruebaPage,
+    SearchPage,
     UserDetailPage,
     OrdenesPage,
     HeaderComponent,
@@ -105,7 +105,7 @@ import { FavoritePage } from '../pages/favorite/favorite';
     CartPage,
     FavoritePage,
     ActionCategoryPage,
-    ModalPruebaPage,
+    SearchPage,
     UserDetailPage,
     OrdenesPage
   ],

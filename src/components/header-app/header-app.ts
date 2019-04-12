@@ -1,5 +1,8 @@
 import { Component, Input } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, ModalController } from 'ionic-angular';
+
+//Pages
+import { SearchPage } from '../../pages/search/search';
 import { CartPage } from '../../pages/cart/cart';
 
 @Component({
@@ -13,7 +16,8 @@ export class HeaderComponent {
   name : string;
   text: string;
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController,
+              public modalCtrl: ModalController) {
   }
 
   ngAfterViewInit() {
@@ -26,6 +30,11 @@ export class HeaderComponent {
     if (!(this.name === 'cart')){
       this.navCtrl.push(CartPage);
     }
+  }
+
+  showSearch() {
+    const modal = this.modalCtrl.create(SearchPage);
+    modal.present();
   }
 
 }
