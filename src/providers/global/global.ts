@@ -91,6 +91,32 @@ export class GlobalProvider {
     });
     return this.alertConfirm;
   }
+  
+  /**
+   * 
+   * Metodo que crea un alert y lo retorna
+   * 
+   * @param titulo string : titulo del alert pop up 
+   * 
+   * @param contenido string: contenido del alert pop up
+   * 
+   * @param buttons array : opcional => de botones a mostrar.
+   * 
+   */
+  crearAlert(titulo:string, contenido:string, buttons: any = [
+                                                                {
+                                                                  text: 'Aceptar',
+                                                                  handler: null
+                                                                }
+                                                              ])
+  {
+    this.alertConfirm = this.alertCtrl.create({
+      title: titulo,
+      message: contenido,
+      buttons: buttons
+    });
+    return this.alertConfirm;
+  }
 
   showToast(mensaje:string ,position: string) {
     this.toast = this.toastCtrl.create({
