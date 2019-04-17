@@ -19,52 +19,7 @@ import { ProductPage } from '../product/product';
 export class CartPage {
 
   namePage: any;
-  totalQty : number = 0;
-  totalPrice : number = 0;
-  cartProd : any[] = []
-
-  /*cartProd : any[] = [
-    {
-      foto : "prod1-slide1.jpg",
-      Name : "Audifonos Inteligentes",
-      Description : "",
-      Tipo_de_envio : "Envio Gratis",
-      Precio: "60",
-      quantity: 1
-    },
-    {
-      foto : "producto-2.png",
-      Name : "Reloj Inteligente",
-      Description : "",
-      Tipo_de_envio : "Envio Gratis",
-      Precio: "100",
-      quantity: 1
-    },
-    {
-      foto : "producto-2.png",
-      Name : "Reloj Inteligente",
-      Description : "",
-      Tipo_de_envio : "Envio Gratis",
-      Precio: "100",
-      quantity: 1
-    },
-    {
-      foto : "producto-2.png",
-      Name : "Reloj Inteligente",
-      Description : "",
-      Tipo_de_envio : "Envio Gratis",
-      Precio: "100",
-      quantity: 1
-    },
-    {
-      foto : "producto-2.png",
-      Name : "Reloj Inteligente",
-      Description : "",
-      Tipo_de_envio : "Envio Gratis",
-      Precio: "100",
-      quantity: 1
-    }
-  ]*/
+  cartProd : any[] = [];
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
@@ -80,28 +35,54 @@ export class CartPage {
     };
   }
 
-  chargeTotal(){
-    this.totalQty = 0;
-    this.totalPrice = 0;
-    for(let prod of this.cartProd){
-      this.totalQty = this.totalQty + Number(prod.cantidad);
-      this.totalPrice = this.totalPrice + (Number(prod.precio) * Number(prod.cantidad));
+  concatComma(element, value){
+    if (element){
+      element = element + "," + value
+    } else{
+      element = value
     }
+    return element;
+  }
+
+  fabricateOrder():any{
+    let order: any = {};
+    let productos: any[] = [];
+    let totalQty = 0;
+    let totalPrice = 0;
+    let user = this.globalProv.getJSONLocalStorage(GlobalProvider.CART_LOCAL);
+    for(let prod of this.cartProd){
+      order.sku_id = this.concatComma(order.sku_id, prod.id);
+      order.sku_precio = this.concatComma(order.sku_precio, prod.precio);
+      order.sku_cantidad = this.concatComma(order.sku_cantidad, prod.cantidad);
+      order.sku_name = this.concatComma(order.sku_name, prod.titulo);
+      productos.push(prod); 
+      totalQty = totalQty + Number(prod.cantidad);
+      totalPrice = totalPrice + (Number(prod.precio) * Number(prod.cantidad));
+    }
+    order.direccion = user.direccion;
+    order.telefono = user.telefono_celular;
+    order.monto = totalPrice;
+    order.detalles = productos;
+    console.log(order);
+    return order;
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CartPage');
+    /*if (this.cartProd){
+      this.chargeTotal();
+    }*/
   }
 
   increment(prod):void {
     prod.cantidad++;
-    this.chargeTotal();
+    //this.chargeTotal();
   }
   
   decrement(prod):void {
     if (prod.cantidad > 1) { 
       prod.cantidad--;
-      this.chargeTotal();
+      //this.chargeTotal();
     }
   }
 
@@ -120,9 +101,8 @@ export class CartPage {
    * 
    */
   nav(){
-
-    this.navCtrl.push(OrdenesPage);
-
+    let order = this.fabricateOrder();
+    this.navCtrl.push(OrdenesPage, order);
   }
 
   goProduct(product){   
