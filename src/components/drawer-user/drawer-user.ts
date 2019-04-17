@@ -7,6 +7,7 @@ import { DrawerOpacity } from '../drawer-opacity/drawer-opacity';
 import { OrderPage } from '../../pages/order/order';
 import { JivoChatPage } from '../../pages/jivo-chat/jivo-chat';
 import { ConfigPage } from '../../pages/config/config';
+import { FavoritePage } from '../../pages/favorite/favorite';
 
 @Component({
   selector: 'drawer-user',
@@ -84,6 +85,13 @@ export class DrawerUser {
     this.hideContent();
     if (!(this.name === 'config')){
       this.navCtrl.push(ConfigPage);
+    }
+  }
+
+  goFavorite():void{
+    this.hideContent();
+    if (!(this.name === 'favorite')){
+      this.navCtrl.push(FavoritePage);
     }
   }
 
