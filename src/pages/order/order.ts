@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { OrdertService } from './order-service';
-import { StartService } from '../start/start-service';
+
+//Providers
+import { RestProvider } from '../../providers/rest/rest';
+import { GlobalProvider } from '../../providers/global/global';
 
 @Component({
   selector: 'page-order',
@@ -11,47 +13,16 @@ export class OrderPage {
 
   contentOpacityDisplay: string = 'no-exist-content';
 
+  loading: any;
+
   namePage: any;
 
-  orders = [
-    {
-      number: "No. 337102",
-      product: "producto-1.png",
-      price: "$100",
-      statusImage: "cancelado.png",
-      statusName: "Cancelado",
-      description: "1- Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s."
-    },
-    {
-      number: "No. 097458",
-      product: "producto-2.png",
-      price: "$200",
-      statusImage: "en-proceso.png",
-      statusName: "En proceso",
-      description: "2- Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s."
-    },
-    {
-      number: "No. 764109",
-      product: "producto-3.png",
-      price: "$40",
-      statusImage: "en-transito.png",
-      statusName: "En transito",
-      description: "3- Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s."
-    },
-    {
-      number: "No. 96896",
-      product: "producto-4.png",
-      price: "$35",
-      statusImage: "entregado.png",
-      statusName: "Entregado",
-      description: "4- Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s."
-    }
-  ]
+  orders : any[] = [];
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams, 
-              public orderService: OrdertService, 
-              public startService: StartService) {
+              public restService: RestProvider,
+              public globalProv: GlobalProvider) {
     /**
      * Nombre de la Página
      */
@@ -60,20 +31,63 @@ export class OrderPage {
     }
   }
 
-  ngAfterViewInit() {
-    this.orderService.change.subscribe(serviDisplay => {
-        this.changeContent(serviDisplay);
-        })
+  ionViewDidLoad() {
+    this.getOrder();
   }
 
-  changeContent(display: boolean):void{
-    if (display) {
-        //this.hideFilter = 'true-class';
-        this.contentOpacityDisplay = 'exist-content transition-content opacity-content';
-    } else {
-        //this.hideFilter = 'false-class';
-        this.contentOpacityDisplay = 'no-exist-content transition-content no-opacity-content';
-    }
+  getOrder(){
+    this.loading = this.globalProv.crearLoading();
+    this.loading.present().then(()=>{
+    this.restService.getData('pedidos', "?api_token="+localStorage.getItem('token')).then(
+      (data:any)=>{
+        for(let order of data.data){
+          this.restService.getData('pedidos', "/" + order.id + "?api_token="+localStorage.getItem('token')).then(
+            (data:any)=>{
+              let productos : any[] = [];
+              let order = data.encabezado;
+              for(let prod of data.encabezado.detalles){
+                this.restService.getData('productos', "/" + prod.producto_id + "?api_token="+localStorage.getItem('token')).then(
+                  (data:any)=>{
+                    let product = data;
+                    product.cantidad = prod.cantidad;
+                    product.name_detalle = prod.name;
+                    productos.push(data);
+                  },(err)=>{
+                    this.loading.dismiss();
+                    console.log("PRODUCTOS ERROR", err);
+                  })
+              }
+              if (order.estatus=="PENDIENTE"){
+                order.estatus_image = "en-proceso.png";
+              }
+
+              let meses = [
+                "Enero", "Febrero", "Marzo",
+                "Abril", "Mayo", "Junio", "Julio",
+                "Agosto", "Septiembre", "Octubre",
+                "Noviembre", "Diciembre"
+              ]
+              
+              let d = new Date(order.created_at);
+              let dia = d.getDate();
+              let mes = d.getMonth();
+              let yyy = d.getFullYear();
+              let fecha_formateada = dia + ' de ' + meses[mes] + ' de ' + yyy;
+
+              order.fecha = fecha_formateada;
+              order.detalles = productos;
+              this.orders.push(order);
+              this.loading.dismiss();
+            },(err)=>{
+              this.loading.dismiss();
+              console.log("PRODUCTOS ERROR", err);
+            })
+        }
+      },(err)=>{
+        this.loading.dismiss();
+        console.log("PRODUCTOS ERROR", err);
+      }
+    );});
   }
 
   backPage():void{
