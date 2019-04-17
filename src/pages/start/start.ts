@@ -243,4 +243,8 @@ export class StartPage {
     this.navCtrl.popToRoot();
   }*/
 
+  restarSlides(){
+    this.slidesList.toArray()[0].startAutoplay();
+  }
+
 }
