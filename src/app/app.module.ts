@@ -34,7 +34,7 @@ import { ProductPage } from '../pages/product/product';
 import { OrderPage } from '../pages/order/order';
 import { StartPage } from '../pages/start/start';
 import { SingInPage } from '../pages/sing-in/sing-in';
-import { ModalPruebaPage } from '../pages/modal-prueba/modal-prueba';
+import { SearchPage } from '../pages/search/search';
 import { ActionCategoryPage } from '../pages/action-category/action-category';
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
@@ -48,6 +48,7 @@ import { OrdenesPage } from '../pages/ordenes/ordenes';
 
 import { RestProvider } from '../providers/rest/rest';
 import { GlobalProvider } from '../providers/global/global';
+import { FavoritePage } from '../pages/favorite/favorite';
 
 
 @NgModule({
@@ -63,9 +64,10 @@ import { GlobalProvider } from '../providers/global/global';
     OrderPage,
     ProductPage,
     CartPage,
+    FavoritePage,
     JivoChatPage,
     ActionCategoryPage,
-    ModalPruebaPage,
+    SearchPage,
     UserDetailPage,
     OrdenesPage,
     HeaderComponent,
@@ -101,8 +103,9 @@ import { GlobalProvider } from '../providers/global/global';
     JivoChatPage,
     ProductPage,
     CartPage,
+    FavoritePage,
     ActionCategoryPage,
-    ModalPruebaPage,
+    SearchPage,
     UserDetailPage,
     OrdenesPage
   ],

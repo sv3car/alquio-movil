@@ -14,7 +14,7 @@
           <ion-label>
             <ion-icon name="person"></ion-icon>
           </ion-label>
-          <ion-input formControlName="email" placeholder="Correo" [(ngModel)]="FormLog.email"></ion-input>
+          <ion-input formControlName="email" placeholder="Correo" type="email" [(ngModel)]="FormLog.email"></ion-input>
         </ion-item>
         <ion-item *ngIf="myForm.get('email').errors && myForm.get('email').dirty">
           <p color="danger" ion-text *ngIf="myForm.get('email').hasError('required')">Debe escribir un correo</p>

@@ -9,6 +9,7 @@ import { GlobalProvider } from '../../providers/global/global';
 //Pages
 
 import { OrdenesPage  } from '../../pages/ordenes/ordenes';
+import { ProductPage } from '../product/product';
 
 
 @Component({
@@ -17,87 +18,71 @@ import { OrdenesPage  } from '../../pages/ordenes/ordenes';
 })
 export class CartPage {
 
-  cart: string = null;
   namePage: any;
-  totalQty : number = 0;
-  totalPrice : number = 0;
-
-  cartProd : any[] = [
-    {
-      foto : "prod1-slide1.jpg",
-      Name : "Audifonos Inteligentes",
-      Description : "",
-      Tipo_de_envio : "Envio Gratis",
-      Precio: "60",
-      quantity: 1
-    },
-    {
-      foto : "producto-2.png",
-      Name : "Reloj Inteligente",
-      Description : "",
-      Tipo_de_envio : "Envio Gratis",
-      Precio: "100",
-      quantity: 1
-    },
-    {
-      foto : "producto-2.png",
-      Name : "Reloj Inteligente",
-      Description : "",
-      Tipo_de_envio : "Envio Gratis",
-      Precio: "100",
-      quantity: 1
-    },
-    {
-      foto : "producto-2.png",
-      Name : "Reloj Inteligente",
-      Description : "",
-      Tipo_de_envio : "Envio Gratis",
-      Precio: "100",
-      quantity: 1
-    },
-    {
-      foto : "producto-2.png",
-      Name : "Reloj Inteligente",
-      Description : "",
-      Tipo_de_envio : "Envio Gratis",
-      Precio: "100",
-      quantity: 1
-    }
-  ]
+  cartProd : any[] = [];
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
-              public global: GlobalProvider) {
+              public globalProv: GlobalProvider,) {       
     /**
      * Nombre de la Página
      */
+    
+    this.cartProd = this.globalProv.getJSONLocalStorage(GlobalProvider.CART_LOCAL);
+
     this.namePage = {
       name: 'cart'
     };
   }
 
-  chargeTotal(){
-    this.totalQty = 0;
-    this.totalPrice = 0;
-    for(let prod of this.cartProd){
-      this.totalQty = this.totalQty + Number(prod.quantity);
-      this.totalPrice = this.totalPrice + (Number(prod.Precio) * Number(prod.quantity));
+  concatComma(element, value){
+    if (element){
+      element = element + "," + value
+    } else{
+      element = value
     }
+    return element;
+  }
+
+  fabricateOrder():any{
+    let order: any = {};
+    let productos: any[] = [];
+    let totalQty = 0;
+    let totalPrice = 0;
+    let user = this.globalProv.getJSONLocalStorage(GlobalProvider.CART_LOCAL);
+    for(let prod of this.cartProd){
+      order.sku_id = this.concatComma(order.sku_id, prod.id);
+      order.sku_precio = this.concatComma(order.sku_precio, prod.precio);
+      order.sku_cantidad = this.concatComma(order.sku_cantidad, prod.cantidad);
+      order.sku_name = this.concatComma(order.sku_name, prod.titulo);
+      productos.push(prod); 
+      totalQty = totalQty + Number(prod.cantidad);
+      totalPrice = totalPrice + (Number(prod.precio) * Number(prod.cantidad));
+    }
+    order.direccion = user.direccion;
+    order.telefono = user.telefono_celular;
+    order.monto = totalPrice;
+    order.detalles = productos;
+    console.log(order);
+    return order;
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CartPage');
+    /*if (this.cartProd){
+      this.chargeTotal();
+    }*/
   }
 
-  increment(cartProd):void {
-    cartProd.quantity++;
-    this.chargeTotal();
+  increment(prod):void {
+    prod.cantidad++;
+    //this.chargeTotal();
   }
   
-  decrement(cartProd):void {
-    if (cartProd.quantity > 0) { 
-      cartProd.quantity--;
-      this.chargeTotal();
+  decrement(prod):void {
+    if (prod.cantidad > 1) { 
+      prod.cantidad--;
+      //this.chargeTotal();
     }
   }
 
@@ -116,9 +101,12 @@ export class CartPage {
    * 
    */
   nav(){
-
-    this.navCtrl.push(OrdenesPage);
-
+    let order = this.fabricateOrder();
+    this.navCtrl.push(OrdenesPage, order);
   }
+
+  goProduct(product){   
+    this.navCtrl.push(ProductPage, product);
+  };
 
 }

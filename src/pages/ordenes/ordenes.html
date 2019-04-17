@@ -9,33 +9,36 @@
     </ion-col>
 
     <ion-col col-7 *ngIf="!showSummary">
-      <ion-label>Show order summary <ion-icon ios="ios-arrow-up" md="ios-arrow-up"></ion-icon>
+      <ion-label>Mostrar orden <ion-icon ios="ios-arrow-down" md="ios-arrow-down"></ion-icon>
       </ion-label>
     </ion-col>
     
     <ion-col col-7 *ngIf="showSummary">
-      <ion-label>Hide order summary <ion-icon ios="ios-arrow-down" md="ios-arrow-down"></ion-icon>
+      <ion-label>Ocultar orden <ion-icon ios="ios-arrow-up" md="ios-arrow-up"></ion-icon>
       </ion-label>
     </ion-col>
 
     <ion-col col-4 text-right>
-      <ion-label>$35.00</ion-label>
+      <ion-label>Total: ${{order.monto}}</ion-label>
     </ion-col>
 
   </ion-row>
-  
-  <ion-list *ngIf="showSummary">
-    <ion-item>
-      <ion-thumbnail item-start>
-        <img
-          src="https://c.76.my/Malaysia/air-dragon-portable-air-compressor-tire-inflator-emergency-car-pump-kwingcollection-1709-06-kwingcollection@27.jpg">
-      </ion-thumbnail>
-      <h2><b>Portable Air Compressor</b></h2>
-      <p>Portable Air Compressor</p>
-      <button ion-button clear item-end>$35.00</button>
-    </ion-item>
-  </ion-list>
-  
+  <ion-card *ngFor="let prod of order.detalles" >
+    <ion-list *ngIf="showSummary">
+      <ion-item>
+        <div class="quantity-order"><p class="quantity-value">{{prod.cantidad}}</p>
+        </div>
+        <ion-thumbnail item-start>
+          <img
+            [src]="'https://alquio.com/productos/' + prod.foto">
+        </ion-thumbnail>
+        <h2><b>{{prod.titulo}}</b></h2>
+        <p>{{prod.descripcion_corta}}</p>
+        <button ion-button clear item-end>${{prod.precio}}</button>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+
   <div padding *ngIf="showSummary">
     
     
@@ -64,25 +67,19 @@
           </ion-col>
 
           <ion-col col-6 text-right>
-            <b>$35.00</b>
+            <b>${{order.monto}}</b>
           </ion-col>
           
         </ion-row>
-        
         <ion-row>
-
           <ion-col col-6>
-            Shipping
+            Envío
           </ion-col>
-
           <ion-col col-6 text-right>
-            <b>Free</b>
+            <b>{{order.cart_envio}}</b>
           </ion-col>
-
         </ion-row>
-
       </ion-col>
-    
     </ion-row>
 
     <ion-row class="rowBorderBottom" align-items-center text-wrap no-padding>
@@ -97,7 +94,7 @@
 
         <ion-row>
           <ion-col col-12 >
-            <ion-label class="noneMargin">Including $4.57 in taxes</ion-label>
+            <ion-label class="noneMargin">Incluido $4.57 en impuestos</ion-label>
           </ion-col>
         </ion-row>
 
@@ -108,7 +105,7 @@
       </ion-col>
 
       <ion-col col-4>
-          <h2>$35.00</h2>
+          <h2>${{order.monto}}</h2>
       </ion-col>
     
     </ion-row>
@@ -122,16 +119,16 @@
           <ion-list>
 
             <ion-item>
-              <h2><b>Contact</b></h2>
+              <h2><b>Contacto</b></h2>
               <p>carlos_andres95@outlook.com</p>
-              <button ion-button clear item-end>Change</button>
+              <button ion-button clear item-end>Cambiar</button>
             </ion-item>
 
             <ion-item>
-              <h2><b>Ship to</b></h2>
+              <h2><b>Enviar a</b></h2>
               <p>CALLE 1 F 3918, CASA 111611</p>
               <p>BOGOTA DC, Colombia</p>
-              <button ion-button clear item-end>change</button>
+              <button ion-button clear item-end>Cambiar</button>
             </ion-item>
             
             <ion-item>
@@ -149,18 +146,18 @@
 
     <ion-row no-padding>
       <ion-col col-12>
-        <span>Discount</span>
+        <span>Descuento</span>
       </ion-col>
     </ion-row>
 
   </div>
 
-  <div padding>
+  <div>
   
     <ion-row align-items-center text-wrap padding>
       
       <ion-col col-10>
-        <ion-input class="input-discount" type="text" placeholder="Discount code"></ion-input>
+        <ion-input class="input-discount" type="text" placeholder="Código de descuento"></ion-input>
       </ion-col>
     
       <ion-col col-2>
@@ -177,12 +174,12 @@
 
     <ion-row no-padding>
       <ion-col col-12>
-        <span>Payment method</span>
+        <span>Método de pago</span>
       </ion-col>
     </ion-row>
     <ion-row no-padding>
       <ion-col col-12>
-          <span class="font-small">All transactions are secure and encrypted</span>
+          <span class="font-small">Todas las transacciones son seguras y encriptadas</span>
       </ion-col>
     </ion-row>
 

@@ -64,4 +64,19 @@ page-ordenes {
         background-color: rgb(228, 228, 228);
     }
 
+    .quantity-order{
+        position: fixed;
+        top: 5px;
+        left: 80px;
+        width: 25px;
+        height: 25px;
+        border-radius: 50px;
+        border: 2px solid #7B55B9;
+        text-align: center;
+    }
+
+    .quantity-value{
+        margin-top: 2.5px;
+    }
+
 }

@@ -15,6 +15,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class OrdenesPage {
 
+  order: any;
 
   //Nombre de la pagina
   namePage: any = {
@@ -26,10 +27,15 @@ export class OrdenesPage {
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams) {
+      this.order = this.navParams.data;
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad OrdenesPage');
+  }
+
+  getOrder(){
+    
   }
 
   /**

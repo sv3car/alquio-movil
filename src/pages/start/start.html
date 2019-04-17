@@ -2,7 +2,7 @@
   <div class="mid">
 
     <div class="div-slides">
-      <ion-slides pager>
+      <ion-slides pager autoplay="4000" loop zoom (ionSlideAutoplayStop)="restarSlides()">
         <ion-slide *ngFor="let slide of slides">
           <div class="slides-img" 
           [style.background-image]="'url(assets/imgs/prueba/' + slide.image + ')'">
@@ -45,7 +45,7 @@
           <img src="assets/imgs/customicons/left.png" class="icon-bar">
       </button>
 
-      <ion-slides class="categories">
+      <ion-slides class="categories" loop>
         <ion-slide *ngFor="let category of categories">
           <p id="categoy"><strong>{{ category.name }}</strong></p>
         </ion-slide>
@@ -81,7 +81,7 @@
 
 
 <!--Mostrar Categorias-->
-<drawer-category [sideBar]="sideBar" [categ]="categ"></drawer-category>
+<drawer-category [sideBar]="sideBar" [categories]="categories"></drawer-category>
 <drawer-category-panel></drawer-category-panel>
 
 <!--Motrar Filtro de Variantes-->
