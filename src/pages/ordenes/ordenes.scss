@@ -7,7 +7,7 @@ page-ordenes {
     }
 
     .bottom-space{
-        padding-bottom: 200px;
+        padding-bottom: 16%;
     }
     
     .font-small{
@@ -19,11 +19,20 @@ page-ordenes {
         padding-left: 10px;
     }
 
+    .img-inicio{
+        margin-top: 18%;
+        margin-left: 4%;
+        margin-bottom: 2%;
+        height: 45px;
+        width: auto;
+    }
+
     .noneMargin{
         margin: 0px;
     }
     
     .moneda{
+        float: left;
         font-size: 9px;
     }
 
@@ -73,10 +82,24 @@ page-ordenes {
         border-radius: 50px;
         border: 2px solid #7B55B9;
         text-align: center;
+        background-color: #e8dbf8;
     }
 
     .quantity-value{
         margin-top: 2.5px;
+    }
+
+    .radio-pay{
+        margin-left: 30px;
+        margin-top: 17.5px;
+    }
+
+    .hide-show-order{
+        background-color: rgb(247, 247, 247);
+    }
+
+    .item{
+        background: transparent;
     }
 
 }

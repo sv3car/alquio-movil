@@ -1,0 +1,33 @@
+page-credit-card {
+
+    .content {
+        background: rgba(24, 24, 24, 0.445);
+    }
+
+    .card-custom{
+        margin-top: 50%;
+    }
+
+    .separator{
+        font-size: 30px;
+        color: #a4a4a4;
+    }
+
+    .action{
+        text-align: center;
+        width: 100%;
+        padding: 5px;
+    }
+
+    .cancel{
+        background-color: rgb(255, 80, 80);
+    }
+
+    .process{
+        background-color: rgb(71, 141, 71)
+    }
+
+    .title{
+        font-size: 20px;
+    }
+}

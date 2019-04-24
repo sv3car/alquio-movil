@@ -30,6 +30,10 @@ export class StartPage {
   
   products : any[] = [];
 
+  productsPar : any[] = []
+  
+  productsImpar : any[] = []
+
 
   //ANIMACION FILTER 
   initialPosition: boolean = true;
@@ -92,9 +96,32 @@ export class StartPage {
         currentId = id;
       }
       this.categoryIndex = this.globalProv.getArrayIndexById(data, currentId);
-      this.slidesList.toArray()[1].slideTo(this.categoryIndex, 500);
       this.getPageProducts(currentId);
     });
+  }
+
+  /**
+   * Método que odena los productos para que se visualicen de forma correcta
+   * en el gred asimétrico
+   * 
+   * @param products array de productos a ordenar
+   */
+  getReorderProducts(products:any):any{
+    let indexProd = 0;
+    for (let prod of products){
+      let tipo = (indexProd % 2)==0 ? true : false;
+      if (tipo){
+        this.productsPar.push(prod);
+      }else{
+        this.productsImpar.push(prod);
+      }
+      indexProd = indexProd + 1;
+    }
+    /*let productsAux = productsPar;
+    for (let prodImp of productsImpar){
+      productsAux.push(prodImp);
+    }*/
+    //return productsAux
   }
 
   /**
@@ -110,6 +137,10 @@ export class StartPage {
     "&categoria_id=" + categoryId)
     .then((data:any)=>{
         this.products = data.data;
+        this.productsImpar = [];
+        this.productsPar = [];
+        this.slidesList.toArray()[1].slideTo(this.categoryIndex, 500);
+        this.getReorderProducts(this.products);
         this.nextPage = data.next_page_url;
         this.next();
         this.loading.dismiss();
@@ -131,9 +162,30 @@ export class StartPage {
       let numberPage = arrayNextPage[arrayNextPage.length-1];
       this.restProvider.getData("productos", "?api_token="+localStorage.getItem('token')+"&categoria_id="+this.categoryId+"&page%5Bnumber%5D="+numberPage)
       .then((data:any) => {
-          for(let product of data.data){
+          /*let productsAux : any[] = this.getReorderProducts(data.data);
+
+          let middleNewProducts : number = productsAux.length/2;
+          let positionCurrent : number = 1;
+          let quantityTotalsProducts : number = this.products.length;
+          let positionAddLeft : number = (quantityTotalsProducts/2) - 1;
+
+          for (let product of productsAux){
+            if (positionCurrent===middleNewProducts){
+              let positionAddRight = (this.products.length) - 1;
+              this.products.splice(positionAddRight, 0, product);
+            } else {
+              this.products.splice(positionAddLeft++, 0, product);
+              positionCurrent++;
+            }
+          }*/
+
+          let nextProducts : any[] = data.data
+
+          for(let product of nextProducts){
             this.products.push(product);
           }
+
+          this.getReorderProducts(nextProducts);
           this.nextPage = data.next_page_url;
           infiniteScroll.complete();
       })

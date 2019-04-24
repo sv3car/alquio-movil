@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+import { CreditCardPage } from '../credit-card/credit-card';
 
 /**
  * Generated class for the OrdenesPage page.
@@ -15,6 +16,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class OrdenesPage {
 
+  radcd: boolean = true;
   order: any;
 
   //Nombre de la pagina
@@ -26,7 +28,9 @@ export class OrdenesPage {
   showSummary: boolean = false;
 
   constructor(public navCtrl: NavController,
-              public navParams: NavParams) {
+              public navParams: NavParams,
+              public modalCtrl: ModalController) {
+      this.radcd = true;
       this.order = this.navParams.data;
   }
 
@@ -56,6 +60,11 @@ export class OrdenesPage {
    */
   showSummaryAction(){
     this.showSummary = !this.showSummary;
+  }
+
+  paidCreditCard(){
+      let modal = this.modalCtrl.create(CreditCardPage);
+      modal.present();
   }
 
 }

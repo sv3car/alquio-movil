@@ -43,12 +43,14 @@ import { LoginPage } from '../pages/login/login';
 import { CartPage } from '../pages/cart/cart';
 import { ConfigPage } from '../pages/config/config';
 import { OrdenesPage } from '../pages/ordenes/ordenes';
+import { CreditCardPage } from '../pages/credit-card/credit-card';
 
 //Providers
 
 import { RestProvider } from '../providers/rest/rest';
 import { GlobalProvider } from '../providers/global/global';
 import { FavoritePage } from '../pages/favorite/favorite';
+
 
 
 @NgModule({
@@ -70,6 +72,7 @@ import { FavoritePage } from '../pages/favorite/favorite';
     SearchPage,
     UserDetailPage,
     OrdenesPage,
+    CreditCardPage,
     HeaderComponent,
     BottomComponent,
     DrawerFilter,
@@ -107,7 +110,8 @@ import { FavoritePage } from '../pages/favorite/favorite';
     ActionCategoryPage,
     SearchPage,
     UserDetailPage,
-    OrdenesPage
+    OrdenesPage,
+    CreditCardPage
   ],
   providers: [
     StatusBar,
