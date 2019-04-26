@@ -16,7 +16,8 @@ page-start {
 
     .mid{
         contain: layout;
-        background: #d6d6d6
+        //background: #d6d6d6
+        background-color: #fff;
     }
 
     .div-slides{
@@ -283,8 +284,7 @@ page-start {
         max-width: 100%;
         max-height: 50%;
         text-align: center;
-        border-top-right-radius: 5px;
-        border-top-left-radius: 5px;
+        border-radius: 5px;
     }
     
     .precio{
@@ -302,6 +302,10 @@ page-start {
         font-family: Arial, Helvetica, sans-serif;
         color: #6e6e6e;
         line-height: 18px
+    }
+
+    .card-cont{
+        padding: 10px;
     }
 
 }
