@@ -7,9 +7,11 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StartService } from '../pages/start/start-service';
 import { OrdertService } from '../pages/order/order-service';
 import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
 
 //Components
 import { HeaderComponent } from '../components/header-app/header-app';
+import { BottomComponent } from '../components/bottom-app/bottom-app';
 import { DrawerCategoryPanelHide } from '../components/drawer-category-panel-hide/drawer-category-panel-hide';
 import { DrawerUserPanelHide } from '../components/drawer-user-panel-hide/drawer-user-panel-hide';
 import { DrawerOpacity } from '../components/drawer-opacity/drawer-opacity';
@@ -32,18 +34,21 @@ import { ProductPage } from '../pages/product/product';
 import { OrderPage } from '../pages/order/order';
 import { StartPage } from '../pages/start/start';
 import { SingInPage } from '../pages/sing-in/sing-in';
-import { ModalPruebaPage } from '../pages/modal-prueba/modal-prueba';
+import { SearchPage } from '../pages/search/search';
 import { ActionCategoryPage } from '../pages/action-category/action-category';
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
-
+import { CartPage } from '../pages/cart/cart';
+import { ConfigPage } from '../pages/config/config';
+import { OrdenesPage } from '../pages/ordenes/ordenes';
 
 //Providers
 
 import { RestProvider } from '../providers/rest/rest';
 import { GlobalProvider } from '../providers/global/global';
+import { FavoritePage } from '../pages/favorite/favorite';
 
 
 @NgModule({
@@ -55,13 +60,18 @@ import { GlobalProvider } from '../providers/global/global';
     LoginPage,
     SingInPage,
     StartPage,
+    ConfigPage,
     OrderPage,
     ProductPage,
+    CartPage,
+    FavoritePage,
     JivoChatPage,
     ActionCategoryPage,
-    ModalPruebaPage,
+    SearchPage,
     UserDetailPage,
+    OrdenesPage,
     HeaderComponent,
+    BottomComponent,
     DrawerFilter,
     DrawerCategory,
     DrawerCategoryPanel,
@@ -75,6 +85,7 @@ import { GlobalProvider } from '../providers/global/global';
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     HttpClientModule,
     IonicModule.forRoot(MyApp)
   ],
@@ -87,12 +98,16 @@ import { GlobalProvider } from '../providers/global/global';
     LoginPage,
     SingInPage,
     StartPage,
+    ConfigPage,
     OrderPage,
     JivoChatPage,
     ProductPage,
+    CartPage,
+    FavoritePage,
     ActionCategoryPage,
-    ModalPruebaPage,
-    UserDetailPage
+    SearchPage,
+    UserDetailPage,
+    OrdenesPage
   ],
   providers: [
     StatusBar,

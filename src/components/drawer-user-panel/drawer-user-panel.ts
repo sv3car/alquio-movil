@@ -10,7 +10,7 @@ export class DrawerUserPanel {
   text: string;
 
   constructor(public element: ElementRef, 
-    public drUserService: DrawerUserService) {
+              public drUserService: DrawerUserService) {
   }
 
   @HostListener('click')
@@ -24,7 +24,6 @@ export class DrawerUserPanel {
     hammer.on('pan', (ev) => {
       this.handlePan(ev);
     });
-
   }
 
   handlePan(ev){

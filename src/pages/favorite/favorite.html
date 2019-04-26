@@ -1,0 +1,80 @@
+<ion-content padding>
+  <div *ngIf="!favoriteProd" class="card-cart"><h2 style="color:rgb(218, 218, 218); text-align: center">No tiene ningun producto como favorito</h2></div>
+  <div *ngIf="favoriteProd" class="card-cart" >
+    <div style="width: 100%; text-align: center"><h2>Favoritos</h2></div>
+    <ion-card *ngFor="let product of favoriteProd">
+    <div>
+      <ion-grid center>
+        <ion-row class="row-card">
+          <ion-col>
+            <div class="img-card" 
+              [style.background-image]="'url(https://alquio.com/productos/' + product.foto + ')'">
+            </div>
+          </ion-col>
+          <ion-col>
+            <div class="class-center">
+              <p>{{product.titulo}}</p>
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <div class="class-center">
+              <div style="position: relative">
+                <p>$ {{product.precio}}</p>
+              </div>
+            </div>
+          </ion-col>
+          <!-- <ion-col>
+            <div>
+              <div>
+                <button class="button-remove" (click)="decrement(product)">
+                    <ion-icon name="remove"></ion-icon>
+                </button>
+                <p class="quantity class-center" style="position: absolute">{{product.cantidad}}</p>
+                <img class="img-control" src="assets/imgs/customicons/control.png" >
+      
+                <button class="button-add" (click)="increment(product)">
+                    <ion-icon name="add"></ion-icon>
+                </button>
+              </div>
+            </div>
+          </ion-col> -->
+        </ion-row>
+      </ion-grid>
+      </div>
+      <hr style="border:5px; width: 90%; text-align: center; border-width: 5px">
+      <ion-card-content (click)="goProduct(product)">
+          <div style="margin: 0" [innerHTML]='product.descripcion_corta'></div>
+          <!-- <p>{{product.descripcion_corta}}</p> -->
+      </ion-card-content>
+    </ion-card>
+
+  </div>
+  
+</ion-content>
+
+<div id="bottom" class="bar">
+  <!--Ordenar-->
+  <div class="order bar">
+    <p id="ord"><strong (click)="nav()">Ordenar</strong></p>
+  </div>
+</div>
+
+<!--Opacidad del Contenido-->
+<drawer-opacity #sideBar></drawer-opacity>
+
+<!--Volver-->
+<button class="button-back" (click)="backPage()">
+  <ion-icon name="arrow-back" style="color: white"></ion-icon>
+</button>
+
+<!--Header-->
+<header-app [options]="namePage"></header-app>
+
+<!--Bottom-->
+<!-- <bottom-app></bottom-app> -->
+
+<!--Opciones del usuario-->
+<drawer-user [options]="namePage" [sideBar]="sideBar"></drawer-user>
+<drawer-user-panel></drawer-user-panel>

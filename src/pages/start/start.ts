@@ -4,12 +4,10 @@ import { NavController, NavParams, Slides, ModalController} from 'ionic-angular'
 
 //Providers
 import { RestProvider } from '../../providers/rest/rest';
-import { GlobalProvider } from '../../providers/global/global';
 
 //Pages
-import { HomePage } from '../home/home';
 import { ProductPage } from '../product/product';
-
+import { GlobalProvider } from '../../providers/global/global';
 
 @Component({
   selector: 'page-start',
@@ -18,17 +16,29 @@ import { ProductPage } from '../product/product';
 
 export class StartPage {
 
-  drawerOptions: any;
-
   namePage: any;
 
+  loading: any;
+
+  categoryIndex: number = 0;
+
+  categoryId: number;
+  
   nextPage: string;
 
-  categ : any;
-
-  pagesProd : any[] = [];
+  categories : any[] = [];
   
   products : any[] = [];
+
+
+  //ANIMACION FILTER 
+  initialPosition: boolean = true;
+  leftPosition: boolean = false;
+  initialColor: boolean = true;
+  leftColor: boolean = false;
+  initialButton: boolean = true;
+  leftButton: boolean = false;
+  //
 
   @ViewChildren(Slides) slidesList: QueryList<Slides>;
 
@@ -49,78 +59,96 @@ export class StartPage {
               public modalCtrl: ModalController,
               public restProvider: RestProvider,
               public globalProv: GlobalProvider) {
-
-    this.drawerOptions = {
-      handleWidth: 17.25,
-      type: '%'
-    };
-
+    /**
+     * Nombre de la Página
+     */
     this.namePage = {
       name: 'start'
     };
   }
 
   ionViewDidLoad() {
-    this.getCategories();
-    this.getPageProducts();
+    this.getCategoriesAndProducts(this.categoryIndex);
   }
 
-  getCategories() {
-    this.restProvider.get(localStorage.getItem("token"), 'categorias')
-     .then(data => {
-      this.categ = data;
+  /**
+   * Médotodo los productos segun la categoría seleccionada
+   * en el template
+   * 
+   * @param index índice de la categoría en el array
+   * @param id id de la categoría en el array (opcional)
+   */
+  getCategoriesAndProducts(index:number, id?:number) {
+    this.loading = this.globalProv.crearLoading();
+    this.loading.present();
+    this.restProvider.getData("categorias", "?api_token="+localStorage.getItem('token'))
+    .then((data:any) => {
+      console.log(data);
+      this.categories = data;
+      let currentId: number;
+      if (!id){
+        currentId = this.globalProv.getArrayIdByIndex(data, index);
+      } else {
+        currentId = id;
+      }
+      this.categoryIndex = this.globalProv.getArrayIndexById(data, currentId);
+      this.slidesList.toArray()[1].slideTo(this.categoryIndex, 500);
+      this.getPageProducts(currentId);
     });
   }
 
-  getPageProducts() {
-    // this.restProvider.get(localStorage.getItem("token"), 'productos')
-    // .then(data => {
-    //   this.pagesProd.push(data);
-    //   for(let page of this.pagesProd){
-    //     for (let prod of page.data){
-    //       this.products.push(prod);
-    //     }
-    //     this.nextPage = page.next_page_url;
-    //   }
-    //   this.next();
-    // });
-
-    this.restProvider.getData("productos", "?api_token="+this.globalProv.api_token)
-    .then((data)=>{
-      console.log("PRODUCTOS SUCCESS", data);
-      
-      this.pagesProd.push(data);
-        for(let page of this.pagesProd){
-          for (let prod of page.data){
-            this.products.push(prod);
-          }
-          this.nextPage = page.next_page_url;
-        }
+  /**
+   * Método que carga los productos segun un id de categoría
+   * 
+   * @param categoryId id de categoría
+   */
+  getPageProducts(categoryId:number) {
+    this.nextPage = null;
+    this.products = [];
+    this.categoryId = categoryId;
+    this.restProvider.getData("productos", "?api_token="+localStorage.getItem('token') + 
+    "&categoria_id=" + categoryId)
+    .then((data:any)=>{
+        this.products = data.data;
+        this.nextPage = data.next_page_url;
         this.next();
-
+        this.loading.dismiss();
     },(err)=>{
+      this.loading.dismiss();
       console.log("PRODUCTOS ERROR", err);
     })
   }
 
+  /**
+   * Método que determina si se añadiran o no mas 
+   * artículos a la página
+   * 
+   * @param infiniteScroll 
+   */
   next(infiniteScroll?) {
-    if (infiniteScroll) {
-      this.restProvider.getDataUrl(this.nextPage)
-        .then(data => {
-          this.pagesProd.push(data);
-          let pageCuerrent : any[] = [];
-          pageCuerrent.push(data);
-          for(let page of pageCuerrent){
-            for (let prod of page.data){
-              this.products.push(prod);
-            }
-            this.nextPage = page.next_page_url;
+    if (infiniteScroll && this.nextPage) {
+      let arrayNextPage = this.nextPage.split("=");
+      let numberPage = arrayNextPage[arrayNextPage.length-1];
+      this.restProvider.getData("productos", "?api_token="+localStorage.getItem('token')+"&categoria_id="+this.categoryId+"&page%5Bnumber%5D="+numberPage)
+      .then((data:any) => {
+          for(let product of data.data){
+            this.products.push(product);
           }
+          this.nextPage = data.next_page_url;
           infiniteScroll.complete();
+      })
+      .catch((err)=>{
+        console.log("CATCH ERROR DATA URL",err);
       });
     }
   }
  
+  /**
+   * Método que se llama desde el template para 
+   * el scroll infinito
+   * 
+   * @param infiniteScroll 
+   */
   loadMore(infiniteScroll) {
     this.next(infiniteScroll);
     if (this.nextPage === null) {
@@ -128,35 +156,95 @@ export class StartPage {
     }
   }
 
+  /**
+   * Redirecciona a la página de Productos
+   * 
+   * @param product pasa como parametro el producto seleccionado
+   */
   goProduct(product){   
     this.navCtrl.push(ProductPage, product);
   };
 
-  moveLeft(index: number): void {
-    console.log(index);
-    this.slidesList.toArray()[index].slidePrev(500);
-  }   
-
-  moveRight(index: number): void {
-    this.slidesList.toArray()[index].slideNext(500);
+  moveRight(): void {
+    if (this.categoryIndex < this.categories.length - 1){
+      this.getCategoriesAndProducts(++this.categoryIndex);
+    }
   } 
 
-  /*showCategories():void{
-    let modal = this.modalCtrl.create(ActionCategoryPage);
-    modal.present();
-  }*/
+  moveLeft(): void {
+    if (this.categoryIndex > 0){
+      this.getCategoriesAndProducts(--this.categoryIndex);
+    }
+  }   
 
-  ngAfterViewInit() {
-    /*this.startService.change.subscribe(serviDisplay => {
-        this.changeContent(serviDisplay);
-        })*/
+  /**
+   * 
+   * Metodo para mostrar u ocultar el filter
+   * 
+   */
+  filterTransition(){
+
+    this.initialPosition = !this.initialPosition;
+    this.leftPosition = !this.leftPosition;
+    this.initialColor = !this.initialColor;
+    this.leftColor = !this.leftColor;
+    this.initialButton = !this.initialButton;
+    this.leftButton = !this.leftButton;
+
   }
 
-  backPage():void{
-    //this.startService.toggle(false);
+  /**
+   * 
+   * Metodo para mostrar u ocultar el filter con un gesture swipe
+   * 
+   */
+  filterTransitionWithGesture(event){
+
+    
+
+    switch(event.direction){
+
+      case 2:
+        console.log("izquierda");
+        this.initialPosition = false;
+        this.leftPosition = true;
+        this.initialColor = false;
+        this.leftColor = true;
+        this.initialButton = false;
+        this.leftButton = true;
+      break;
+      case 4:
+        console.log("derecha");
+        this.initialPosition = true;
+        this.leftPosition = false;
+        this.initialColor = true;
+        this.leftColor = false;
+        this.initialButton = true;
+        this.leftButton = false;
+      break;
+
+    }
+
+    // this.initialPosition = !this.initialPosition;
+    // this.leftPosition = !this.leftPosition;
+    // this.initialColor = !this.initialColor;
+    // this.leftColor = !this.leftColor;
+    // this.initialButton = !this.initialButton;
+    // this.leftButton = !this.leftButton;
+
+  }
+
+  /**
+   * 
+   */
+  /*backPage():void{
     localStorage.setItem("token", null);
     this.navCtrl.setRoot(HomePage);
     this.navCtrl.popToRoot();
+  }*/
+
+  restarSlides(){
+    this.slidesList.toArray()[0].startAutoplay();
   }
 
 }

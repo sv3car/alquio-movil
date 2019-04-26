@@ -1,12 +1,6 @@
 import { Component, ElementRef } from '@angular/core';
 import { DrawerCategoryService } from '../drawer-category/drawer-category-service';
 
-/**
- * Generated class for the DrawerCategoryPanelHideComponent component.
- *
- * See https://angular.io/api/core/Component for more info on Angular
- * Components.
- */
 @Component({
   selector: 'drawer-category-panel-hide',
   templateUrl: 'drawer-category-panel-hide.html'
@@ -16,7 +10,7 @@ export class DrawerCategoryPanelHide {
   text: string;
 
   constructor(public element: ElementRef,
-    public drCategoryDrService: DrawerCategoryService) {
+              public drCategoryDrService: DrawerCategoryService) {
   }
 
   ngAfterViewInit() {
@@ -25,7 +19,6 @@ export class DrawerCategoryPanelHide {
     hammer.on('pan', (ev) => {
       this.handlePan(ev);
     });
-
   }
 
   handlePan(ev){

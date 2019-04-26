@@ -1,26 +1,22 @@
-import { Component, ElementRef, Renderer, HostListener } from '@angular/core';
-import { DomController, Platform, ModalController } from 'ionic-angular';
-import { StartService } from '../../pages/start/start-service';
+import { Component, ElementRef, HostListener } from '@angular/core';
 import { DrawerCategoryService } from '../drawer-category/drawer-category-service';
 
-/**
- * Generated class for the DrawerCategoryComponent component.
- *
- * See https://angular.io/api/core/Component for more info on Angular
- * Components.
- */
+//Providers
+
 @Component({
   selector: 'drawer-category-panel',
   templateUrl: 'drawer-category-panel.html'
 })
 export class DrawerCategoryPanel {
 
+  drawer: boolean;
+
   public static isOneGesture : boolean = true;
 
   text: string;
 
-  constructor(public element: ElementRef, public modalCtrl: ModalController, 
-    public drCategoryDrService: DrawerCategoryService) {
+  constructor(public element: ElementRef,
+              public drCategoryDrService: DrawerCategoryService) {
   }
 
   @HostListener('click')
@@ -29,20 +25,16 @@ export class DrawerCategoryPanel {
   }
 
   ngAfterViewInit() {
-    let hammer = new window['Hammer'](this.element.nativeElement);
-    hammer.get('pan').set({ direction: window['Hammer'].DIRECTION_VERTICAL });
-    hammer.on('pan', (ev) => {
-      this.handlePan(ev);
-    });
+      let hammer = new window['Hammer'](this.element.nativeElement);
+      hammer.get('pan').set({ direction: window['Hammer'].DIRECTION_VERTICAL });
+      hammer.on('pan', (ev) => {
+        this.handlePan(ev);
+      });
   }
 
   handlePan(ev){
-    if(ev.additionalEvent === "panup" /*&& DrawerCategoryPanel.isOneGesture*/){
-
+    if(ev.additionalEvent === "panup"){
       this.showDrawerCategories();
-      /*DrawerCategoryPanel.isOneGesture = false;
-      let modal = this.modalCtrl.create(ActionCategoryPage);
-      modal.present();*/
     }
   }
 

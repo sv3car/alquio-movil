@@ -9,43 +9,42 @@ import { DrawerOpacity } from '../drawer-opacity/drawer-opacity';
 export class DrawerFilter {
 
   @Input('options') options: any;
+  @Input('btnAction') btnAction: any;
   @Input('sideBar') sideBar: DrawerOpacity;
 
-  handleWidth: number = 50;
+  handleWidth: number = 17.25;
   type: string = 'px';
 
-  constructor(public element: ElementRef, public renderer: Renderer, 
-    public domCtrl: DomController, public platform: Platform) {
+  constructor(public element: ElementRef,
+              public renderer: Renderer,
+              public domCtrl: DomController,
+              public platform: Platform) {
   }
 
-  ngAfterViewInit() {
+  ionViewDidLoad() {
 
-    if(this.options.handleWidth){
-      this.handleWidth = this.options.handleWidth;
-    }
+    // if (this.type === '%'){
+    //   this.handleWidth = ((parseFloat(this.handleWidth.toString()) * 
+    //   parseFloat(this.platform.width().toString()))/100);
+    // }
 
-    if(this.options.type){
-      this.type = this.options.type;
-    }
+    // this.renderer.setElementStyle(this.element.nativeElement, 'left', 
+    // this.platform.width() - this.handleWidth + 'px');
 
-    if (this.type === '%'){
-      this.handleWidth = ((parseFloat(this.handleWidth.toString()) * 
-      parseFloat(this.platform.width().toString()))/100);
-    }
+    // let hammer = new window['Hammer'](this.element.nativeElement);
+    // hammer.get('pan').set({ direction: window['Hammer'].DIRECTION_HORIZONTAL });
 
-    this.renderer.setElementStyle(this.element.nativeElement, 'left', 
-    this.platform.width() - this.handleWidth + 'px');
+    // hammer.on('pan', (ev) => {
+    //   this.handlePan(ev);
+    // });
 
-    let hammer = new window['Hammer'](this.element.nativeElement);
-    hammer.get('pan').set({ direction: window['Hammer'].DIRECTION_HORIZONTAL });
-
-    hammer.on('pan', (ev) => {
-      this.handlePan(ev);
-    });
+    //this.handlePan(ev);
 
   }
 
   handlePan(ev){
+
+    console.log("HANDLE PAN");
 
     if(ev.additionalEvent === "panright"){
       this.sideBar.content(false, true);

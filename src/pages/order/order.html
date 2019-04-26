@@ -1,77 +1,89 @@
 <ion-content padding>
   <div class="card-order">
     <ion-card *ngFor="let order of orders">
-        <ion-grid center>
-          <ion-row>
-            <ion-col>
-              <div class="nro-card"><strong>{{ order.number }}</strong></div>
-            </ion-col>
-            <ion-col class="col-shape">
-              <div class="img-shape">
-                <img src="assets/imgs/customicons/shape.png"/>
-              </div>
-            </ion-col>
-          </ion-row>
-        </ion-grid> 
-      <hr style="border:5px; width: 90%; text-align: center; border-width: 5px">  
       <div>
-        <ion-grid center>
-          <ion-row class="row-card">
-            <ion-col>
-              <div class="img-card" 
-              [style.background-image]="'url(../../assets/imgs/prueba/' + order.product + ')'">
-            </div>
-            </ion-col>
-            <ion-col>
-              <p class="price">Precio</p>
-              <p class="value-price">{{ order.price }}</p>
-            </ion-col>
-            <ion-col>
-                <img [src]="'assets/imgs/customicons/' + order.statusImage" 
-                class="icon-status"/>
-              <p class="status"><strong>{{ order.statusName }}</strong></p>
-            </ion-col>
-          </ion-row>
-        </ion-grid>
+        <div class="div-slides">
+          <ion-slides pager>
+            <ion-slide *ngFor="let prod of order.detalles">
+              <ion-grid center>
+                <ion-row class="row-card">
+                  <ion-col>
+                    <div class="img-card" 
+                      [style.background-image]="'url(https://alquio.com/productos/' + prod.foto + ')'">
+                    </div>
+                  </ion-col>
+                  <ion-col>
+                    <p style="text-align: left">{{ prod.titulo }}</p>
+                    <div>
+                      <div style="width: 50%; float: left;">
+                        <p class="price">Precio:</p>
+                        <p class="value-price">{{ prod.precio }}</p>
+                      </div>
+                      <div style="width: 50%; float: left;">
+                        <p class="price">Cantidad:</p>
+                        <p class="value-price">{{ prod.cantidad }}</p>
+                      </div>
+                    </div>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+              <div style="height: 40px;"></div>
+            </ion-slide>
+          </ion-slides>
+        </div>
       </div>
       <hr style="border:5px; width: 90%; text-align: center; border-width: 5px">
-      <ion-card-content>
-          <p>{{ order.description }}
-          </p>
-      </ion-card-content>
+      <div style="width: 100%; float: left;" class="order-bot">
+        <div style="width: 50%; float: left; position: relative;">
+          <p class="price">Monto total:</p>
+          <p class="value-price">{{ order.monto }}</p>
+          <p></p>
+          <p class="price">Dirección:</p>
+          <p class="value-price">{{ order.direccion }}</p>
+          <p></p>
+          <p class="price">Tipo de envío:</p>
+          <p class="value-price">{{ order.cart_envio }}</p>
+        </div>
+        <div style="width: 50%; float: left; text-align: center" class="div-status">
+          <img [src]="'assets/imgs/customicons/' + order.estatus_image" 
+            class="icon-status"/>
+          <p class="status"><strong>{{ order.estatus }}</strong></p>
+        </div>
+        <hr style="border:5px; width: 90%; text-align: center; border-width: 5px">
+        <div style="text-align: center">
+          <p class="price" style="text-align: center">Fecha de orden</p>
+          <p class="value-price" style="text-align: center">{{ order.fecha }}</p>
+        </div>
+      </div>
     </ion-card>
   </div>
 
-  <div class="initial">
-    <div id="header" class="bar">
-      <button id="search" class="buttonBar">
-        <img src="assets/imgs/customicons/search.png" class="icon-bar">
-      </button>
-      <button id="user" class="buttonBar">
-          <img src="assets/imgs/customicons/user.png" class="icon-bar-user">
-      </button>
-      <button id="cart" class="buttonBar">
-          <img src="assets/imgs/customicons/shopping-cart.png" class="icon-bar">
-      </button>
-    </div>
-    <div id="bottom" class="bar">
+  <!-- <div class="initial">
+    <div id="bottom" class="bar"> -->
         <!--<button id="left" class="buttonBar">
             <img src="../../assets/imgs/customicons/left.png" class="icon-bar">
         </button>-->
-        <button class="buttonBar">
+        <!-- <button class="buttonBar">
           <p class="title-bot"><strong>Ordenes</strong></p>
-        </button>
+        </button> -->
         <!--<button id="right" class="buttonBar">
             <img src="../../assets/imgs/customicons/right.png" class="icon-bar">
         </button>-->
-    </div>
-    <button class="button-home" (click)="backPage()">
-        <ion-icon name="arrow-back" style="color: white"></ion-icon>
-    </button>
-  </div>
+    <!-- </div>
+  </div> -->
 </ion-content>
 
+<!--Opacidad del Contenido-->
+<drawer-opacity #sideBar></drawer-opacity>
+
+<!--Volver-->
+<button class="button-back" (click)="backPage()">
+  <ion-icon name="arrow-back" style="color: white"></ion-icon>
+</button>
+
+<!--Header-->
+<header-app [options]="namePage"></header-app>
+
+<!--Opciones del usuario-->
 <drawer-user [options]="namePage" [sideBar]="sideBar"></drawer-user>
 <drawer-user-panel></drawer-user-panel>
-
-<drawer-opacity #sideBar></drawer-opacity>

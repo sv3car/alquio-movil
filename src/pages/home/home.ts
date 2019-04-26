@@ -10,7 +10,6 @@ import { SingInPage } from '../sing-in/sing-in';
 export class HomePage {
 
   constructor(public navCtrl: NavController) {
-
   }
 
   goLogin():void{

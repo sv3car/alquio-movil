@@ -1,9 +1,13 @@
 import { Component, Renderer, ElementRef, Input } from '@angular/core';
 import { DomController, Platform, NavController } from 'ionic-angular';
 import { DrawerUserService } from './drawer-user-service';
-import { OrderPage } from '../../pages/order/order';
 import { DrawerOpacity } from '../drawer-opacity/drawer-opacity';
+
+//Pages
+import { OrderPage } from '../../pages/order/order';
 import { JivoChatPage } from '../../pages/jivo-chat/jivo-chat';
+import { ConfigPage } from '../../pages/config/config';
+import { FavoritePage } from '../../pages/favorite/favorite';
 
 @Component({
   selector: 'drawer-user',
@@ -18,10 +22,12 @@ export class DrawerUser {
 
   userImg: string = 'user-2.jpg';
 
-  constructor(public domCtrl : DomController, public renderer: Renderer,
-    public element: ElementRef, public platform: Platform, 
-    public drUserService: DrawerUserService,
-    public navCtrl: NavController) {
+  constructor(public domCtrl : DomController,
+              public renderer: Renderer,
+              public element: ElementRef,
+              public platform: Platform, 
+              public drUserService: DrawerUserService,
+              public navCtrl: NavController) {
       this.userImg = "user-2.jpg";
   }
 
@@ -72,6 +78,20 @@ export class DrawerUser {
     this.hideContent();
     if (!(this.name === 'chat')){
       this.navCtrl.push(JivoChatPage);
+    }
+  }
+
+  goConfig():void{
+    this.hideContent();
+    if (!(this.name === 'config')){
+      this.navCtrl.push(ConfigPage);
+    }
+  }
+
+  goFavorite():void{
+    this.hideContent();
+    if (!(this.name === 'favorite')){
+      this.navCtrl.push(FavoritePage);
     }
   }
 

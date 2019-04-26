@@ -1,12 +1,6 @@
 import { Component, ElementRef} from '@angular/core';
 import { DrawerUserService } from '../drawer-user/drawer-user-service';
 
-/**
- * Generated class for the DrawerUserPanelHideComponent component.
- *
- * See https://angular.io/api/core/Component for more info on Angular
- * Components.
- */
 @Component({
   selector: 'drawer-user-panel-hide',
   templateUrl: 'drawer-user-panel-hide.html'
@@ -15,8 +9,8 @@ export class DrawerUserPanelHide {
 
   text: string;
 
-  constructor(public element: ElementRef,  
-    public drUserService: DrawerUserService) {
+  constructor(public element: ElementRef,
+              public drUserService: DrawerUserService) {
   }
 
   ngAfterViewInit() {
@@ -25,7 +19,6 @@ export class DrawerUserPanelHide {
     hammer.on('pan', (ev) => {
       this.handlePan(ev);
     });
-
   }
 
   handlePan(ev){

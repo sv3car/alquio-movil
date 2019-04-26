@@ -2,6 +2,7 @@ import { Component, Renderer, ElementRef, Input } from '@angular/core';
 import { DomController, Platform } from 'ionic-angular';
 import { DrawerCategoryService } from './drawer-category-service';
 import { DrawerOpacity } from '../drawer-opacity/drawer-opacity';
+import { StartPage } from '../../pages/start/start';
 
 @Component({
   selector: 'drawer-category',
@@ -10,9 +11,9 @@ import { DrawerOpacity } from '../drawer-opacity/drawer-opacity';
 export class DrawerCategory {
 
   @Input('sideBar') sideBar: DrawerOpacity;
-  @Input('categ') categ: any;
+  @Input('categories') categories: any;
 
-  categories = [
+  /*categories = [
     {
       name: "Tecnología",
       image: "tegnology-category.jpg"
@@ -25,11 +26,14 @@ export class DrawerCategory {
       name: "Accesorios",
       image: "accessory.jpg"
     }
-  ]
+  ]*/
 
-  constructor(public domCtrl : DomController, public renderer: Renderer,
-    public element: ElementRef, public platform: Platform, 
-    public drCategoryService: DrawerCategoryService) {
+  constructor(public domCtrl : DomController, 
+              public renderer: Renderer,
+              public element: ElementRef, 
+              public platform: Platform, 
+              public drCategoryService: DrawerCategoryService,
+              public startPage: StartPage) {
   }
 
   ngAfterViewInit() {
@@ -63,8 +67,11 @@ export class DrawerCategory {
     })
   }
 
-  viewCat(category){
-    console.log(category.name);
+  viewCat(category:any){
+    this.hideContent();
+    if (!(category.id === this.startPage.categoryId)){
+      this.startPage.getCategoriesAndProducts(0,category.id);
+    }
   }
   
 }

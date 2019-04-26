@@ -1,11 +1,20 @@
 page-order {
+    
+    background-color: #eeeeee;
+
     .scroll-content {
         padding: 0px !important;
         contain: none !important;
     }
 
-    ion-card-content{
-        text-align: center;
+    .div-status{
+        margin-top: 10%;
+    }
+
+    .order-bot{
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-bottom: 10px;
         background-image: linear-gradient(#ffffff, #e0e0e0);
     }
 
@@ -24,18 +33,6 @@ page-order {
         width: 100%;
         background-color: #7B55B9;
         text-align: center
-    }
-    .button-home{
-        position: fixed;
-        height: 45px;
-        width: 45px;
-        background-color: #7B55B9;
-        text-align: center;
-        left: 0;
-        border-top-right-radius: 200px;
-        border-bottom-right-radius: 200px;
-        bottom: 12%;
-        background-image: linear-gradient(to right,#7B55B9, #40188F);
     }
     .buttonBar{
         align-content: center;
@@ -130,7 +127,7 @@ page-order {
     
     .card-order{
         margin-top: 20%;
-        margin-bottom: 20%;
+        margin-bottom: 0;
     }
 
     .card{
@@ -149,19 +146,6 @@ page-order {
         background-repeat: no-repeat;
         background-position: 50% 50%;
     }
-
-    #img-prod1{
-        background-image: url("assets/imgs/prueba/producto-1.png");
-    }
-    #img-prod2{
-        background-image: url("assets/imgs/prueba/producto-2.png");
-    }
-    #img-prod3{
-        background-image: url("assets/imgs/prueba/producto-3.png");
-    }
-    #img-prod4{
-        background-image: url("assets/imgs/prueba/producto-4.png");
-    }
     
     .icon-card{
         width: 70%;
@@ -169,19 +153,6 @@ page-order {
         background-size: auto;
         background-repeat: no-repeat;
         background-position: 50% 50%;
-    }
-
-    #status1{
-        background-image: url("assets/imgs/customicons/cancelado.png");
-    }
-    #status2{
-        background-image: url("assets/imgs/customicons/en-proceso.png");
-    }
-    #status3{
-        background-image: url("assets/imgs/customicons/en-transito.png");
-    }
-    #status4{
-        background-image: url("assets/imgs/customicons/entregado.png");
     }
 
     .price{
@@ -195,9 +166,8 @@ page-order {
     }
 
     .icon-status{
-        margin-top: 10px;
-        width: 50px;
-        height: 50px;
+        width: auto;
+        height: 80px;
         text-align: center;
     }
 
@@ -214,4 +184,23 @@ page-order {
         vertical-align: middle;
     }
 
+    .custom-grid{
+        .col{
+            padding: 0;
+        }
+        .grid{
+            padding: 0;
+        }
+        .row{
+            padding: 0;
+        }
+    }
+
+    .swiper-pagination {
+        //top: 110px;
+    }
+
+    ion-card img {
+        display: initial;
+    }
 }

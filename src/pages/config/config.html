@@ -1,0 +1,63 @@
+<ion-content padding style="background-color: #eeeeee;">
+    <div style="background-color: #eeeeee;">
+        <ion-list style="margin-top: 20%">
+            <ion-item>
+                <p>Perfil</p>
+            </ion-item>
+            <ion-item>
+                <p>Dirección de envío</p>
+            </ion-item>
+        </ion-list>
+    
+        <ion-list>
+            <ion-item>
+                <p>Notificaciones</p>
+            </ion-item>
+            <ion-item>
+                <p>Calidad de imagen</p>
+            </ion-item>
+            <ion-item>
+                <p>Limpiar historial</p>
+            </ion-item>
+        </ion-list>
+    
+        <ion-list>
+            <ion-item>
+                <p>Sugerencias</p>
+            </ion-item>
+            <ion-item>
+                <p>Califica Alquio</p>
+            </ion-item>
+            <ion-item>
+                <p>Politicas de privacidad</p>
+            </ion-item>
+            <ion-item>
+                <p>Información legal</p>
+            </ion-item>
+        </ion-list>
+        <div style="width: 100%; text-align: center">
+            <button ion-button 
+                style="width: 90%; text-align: center; background-color: rgb(255, 74, 74)"
+                (click)="closeSesion()">Cerrar Sesión
+            </button>
+        </div>
+    </div>
+</ion-content>
+
+<!--Opacidad del Contenido-->
+<drawer-opacity #sideBar></drawer-opacity>
+
+<!--Volver-->
+<button class="button-back" (click)="backPage()">
+    <ion-icon name="arrow-back" style="color: white"></ion-icon>
+</button>
+
+<!--Header-->
+<header-app [options]="namePage"></header-app>
+
+<!--Bottom-->
+<!-- <bottom-app></bottom-app> -->
+
+<!--Opciones del usuario-->
+<drawer-user [options]="namePage" [sideBar]="sideBar"></drawer-user>
+<drawer-user-panel></drawer-user-panel>

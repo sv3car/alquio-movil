@@ -29,10 +29,26 @@
 
   <link href="build/main.css" rel="stylesheet">
 
+  <!-- <script>
+      jivo_config = {
+          /*"plane_color":"red",
+          "agentMessage_bg_color":'green', //цвет агентского сообщения
+          "agentMessage_txt_color":'blue', //цвет текста агентского сообщения
+          "clientMessage_bg_color":'yellow', //цвет клиентского сообщения
+          "clientMessage_txt_color":'black', //цвет текста клиентского сообщения*/
+          "active_message": "Hola, ¿En que lo puedo ayudar?",
+          "widget_id": "B5h8pig626", //widget_id
+          "site_id": 878440, //site_id
+          "app_link":'Widget_Mobile',//ссылка, которая будет светиться у оператора
+          "placeholder": 'Enviar Mensaje'
+      }
+  </script> -->
+  <!-- <script src="script/bundle.js"></script> -->
 </head>
 <body>
 
   <!-- Ionic's root component and where the app will load -->
+  <!-- <div id="chat" style="display: none !important"></div> -->
   <ion-app></ion-app>
 
   <!-- The polyfills js is generated during the build process -->
@@ -44,6 +60,33 @@
 
   <!-- The main bundle js is generated during the build process -->
   <script src="build/main.js"></script>
+
+  <!-- BEGIN JIVOSITE CODE {literal} -->
+ <!-- <script type='text/javascript'>
+  (function(){ 
+    var widget_id = 'Dh11KkN4eM';
+    var d=document;
+    var w=window;
+    function l(){
+      var s = document.createElement('script'); 
+      s.type = 'text/javascript'; s.async = true;
+      s.src = '//code.jivosite.com/script/widget/'+widget_id; 
+      var ss = document.getElementsByTagName('script')[0]; 
+      ss.parentNode.insertBefore(s, ss);
+    }
+    if(d.readyState=='complete'){
+      l();
+    }else{
+        if(w.attachEvent){
+          w.attachEvent('onload',l);
+        }
+      else{
+        w.addEventListener('load',l,false);
+      }
+    }
+  })();
+  </script> -->
+  <!-- {/literal} END JIVOSITE CODE -->
 
 </body>
 </html>

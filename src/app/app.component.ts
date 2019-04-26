@@ -12,12 +12,11 @@ import { StartPage } from '../pages/start/start';
 export class MyApp {
   rootPage:any;
 
-  constructor(platform: Platform, 
+  constructor(
+    platform: Platform, 
     statusBar: StatusBar, 
     splashScreen: SplashScreen) {
     platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
       statusBar.styleLightContent();
       splashScreen.hide();
       if (!localStorage.getItem('token') || localStorage.getItem('token') === "null") {
