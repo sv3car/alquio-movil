@@ -8,6 +8,7 @@ import { OrderPage } from '../../pages/order/order';
 import { JivoChatPage } from '../../pages/jivo-chat/jivo-chat';
 import { ConfigPage } from '../../pages/config/config';
 import { FavoritePage } from '../../pages/favorite/favorite';
+import { AboutPage } from '../../pages/about/about';
 
 @Component({
   selector: 'drawer-user',
@@ -92,6 +93,13 @@ export class DrawerUser {
     this.hideContent();
     if (!(this.name === 'favorite')){
       this.navCtrl.push(FavoritePage);
+    }
+  }
+
+  goAbout():void{
+    this.hideContent();
+    if (!(this.name === 'about')){
+      this.navCtrl.push(AboutPage);
     }
   }
 

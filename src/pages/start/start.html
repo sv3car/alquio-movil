@@ -11,14 +11,15 @@
       </ion-slides>
     </div>
 
-    <div class="title-search">
+    <!-- <div class="title-search">
       <h4>Los mas buscados</h4>
-    </div>
+    </div> -->
 
-    <hr style="border:5px; width: 70%; text-align: center">
+    <!-- <hr style="border:5px; width: 70%; text-align: center"> -->
 
     <!--Cargar productos mas buscados-->
-    <div class="card">
+    <!------------------------------------->
+    <!-- <div class="card">
       <ion-row wrap>
         <ion-col col-6 *ngFor="let product of products">
           <ion-card tappable (click)="goProduct(product)">
@@ -36,6 +37,52 @@
         </ion-infinite-scroll>
       </ion-row>
     </div>
+  </div> -->
+
+
+
+    <div class="div-card-parent">
+
+      <div class="div-card-child">
+        <div class="products" *ngFor="let product of productsPar" (click)="goProduct(product)">
+          <div class="products-int">
+          <!-- <ion-card tappable (click)="goProduct(product)"> -->
+            <ion-thumbnail>
+              <img [src]="'https://alquio.com/productos/' + product.foto" class="imgCard"/>
+            </ion-thumbnail>
+            <div class="card-cont">
+              <p class="precio">{{ 'USD ' + product.precio }}</p>
+              <p class="titulo">{{ product.titulo }}</p>
+            </div>
+          </div>
+          <!-- </ion-card> -->
+        </div>
+      </div>
+
+      <div class="div-card-child">
+        <div class="products" *ngFor="let product of productsImpar" (click)="goProduct(product)">
+          <div class="products-int">
+          <!-- <ion-card tappable (click)="goProduct(product)"> -->
+            <ion-thumbnail>
+              <img [src]="'https://alquio.com/productos/' + product.foto" class="imgCard"/>
+            </ion-thumbnail>
+            <ion-card-content>
+              <p class="precio">{{ 'USD ' + product.precio }}</p>
+              <p class="titulo">{{ product.titulo }}</p>
+            </ion-card-content>
+          </div>
+          <!-- </ion-card> -->
+        </div>
+      </div>
+      <!-- <div class="div-card-load"> -->
+        <ion-infinite-scroll class="div-card-load" (ionInfinite)="loadMore($event)" loadingSpinner="bubbles" loadingText="Cargando productos...">
+          <ion-infinite-scroll-content></ion-infinite-scroll-content>
+        </ion-infinite-scroll>
+      <!-- </div>   -->
+
+    </div>
+
+
   </div>
 
   <div class="initial">
@@ -47,7 +94,7 @@
 
       <ion-slides class="categories" loop>
         <ion-slide *ngFor="let category of categories">
-          <p id="categoy"><strong>{{ category.name }}</strong></p>
+          <p id="categoy">{{ category.name }}</p>
         </ion-slide>
       </ion-slides>
 
