@@ -18,6 +18,8 @@ export class StartPage {
 
   namePage: any;
 
+  tutorial: boolean;
+
   loading: any;
 
   categoryIndex: number = 0;
@@ -72,7 +74,12 @@ export class StartPage {
   }
 
   ionViewDidLoad() {
+    this.tutorial = true//this.globalProv.isTutorial();
     this.getCategoriesAndProducts(this.categoryIndex);
+  }
+
+  dismissTut(){
+    this.tutorial = false;
   }
 
   /**

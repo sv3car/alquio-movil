@@ -66,10 +66,10 @@
             <ion-thumbnail>
               <img [src]="'https://alquio.com/productos/' + product.foto" class="imgCard"/>
             </ion-thumbnail>
-            <ion-card-content>
+            <div class="card-cont">
               <p class="precio">{{ 'USD ' + product.precio }}</p>
               <p class="titulo">{{ product.titulo }}</p>
-            </ion-card-content>
+            </div>
           </div>
           <!-- </ion-card> -->
         </div>
@@ -105,6 +105,72 @@
   </div>
   
 </ion-content>
+
+<div *ngIf="tutorial" class="tutorial" (click)="dismissTut()">
+  
+  <ion-slides pager>
+    <ion-slide>
+      <div class="info-tuto">
+        <p class="font-tutorial-big">Encuentra</p>
+        <p class="font-tutorial-normal"> tu </p>
+        <p class="font-tutorial-normal">categoría </p>
+        <p class="font-tutorial-big">favorita</p>
+      </div>
+      <img src="assets/imgs/tutorial/flecha1.png" class="flecha-1">
+    </ion-slide>
+    <ion-slide>
+      <div class="info-tuto">
+        <p class="font-tutorial-big">Desliza</p>
+        <p class="font-tutorial-normal"> hacia arriba </p>
+        <p class="font-tutorial-normal">para ver todas las </p>
+        <p class="font-tutorial-big">categorías</p>
+      </div>
+      <img src="assets/imgs/tutorial/flecha1.png" class="flecha-1">
+      <img src="assets/imgs/tutorial/flecha2.png" class="flecha-2">
+    </ion-slide>
+    <ion-slide>
+      <div class="info-tuto">
+        <p class="font-tutorial-normal">Encuentra</p>
+        <p class="font-tutorial-big"> todo </p>
+        <p class="font-tutorial-normal">Lo que tienes </p>
+        <p class="font-tutorial-normal">en </p>
+        <p class="font-tutorial-big">Mente</p>
+      </div>
+      <img src="assets/imgs/tutorial/flecha3.png" class="flecha-3">
+    </ion-slide>
+    <ion-slide>
+      <div class="info-tuto">
+        <p class="font-tutorial-normal" style="margin-left: 2px; margin-right: 2px;">En tu perfil</p>
+        <p class="font-tutorial-big"> encontraras </p>
+        <p class="font-tutorial-normal" style="margin-left: 40px">todas las </p>
+        <p class="font-tutorial-big" style="margin-left: 40px">herramientas </p>
+        <p class="font-tutorial-normal" style="margin-left: 160px">necesarias</p>
+      </div>
+      <img src="assets/imgs/tutorial/flecha2.png" class="flecha-3" style="width: 10%; left: 43%;">
+    </ion-slide>
+    <ion-slide>
+      <div class="info-tuto">
+        <p class="font-tutorial-normal">Ve a tu carrito</p>
+        <p class="font-tutorial-big"> modifica </p>
+        <p class="font-tutorial-normal">tu compra, </p>
+        <p class="font-tutorial-big">paga </p>
+        <p class="font-tutorial-normal">y espera tu </p>
+        <p class="font-tutorial-big" style="margin-left: 160px">pedido</p>
+      </div>
+      <img src="assets/imgs/tutorial/flecha2.png" class="flecha-3" style="width: 10%; left: 74%;">
+    </ion-slide>
+    <ion-slide>
+      <div class="info-tuto" style="top:75%">
+        <p class="font-tutorial-normal">Los</p>
+        <p class="font-tutorial-big"> filtros </p>
+        <p class="font-tutorial-normal">te ayudarán a encontrar, </p>
+        <p class="font-tutorial-normal" style="margin-left: 130px">lo que </p>
+        <p class="font-tutorial-big" style="margin-left: 160px">buscas</p>
+      </div>
+      <img src="assets/imgs/tutorial/flecha4.png" class="flecha-4">
+    </ion-slide>
+  </ion-slides>
+</div>
 
 <!--Opacidad del Contenido-->
 <drawer-opacity #sideBar></drawer-opacity>

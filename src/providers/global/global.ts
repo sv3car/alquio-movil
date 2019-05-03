@@ -32,6 +32,21 @@ export class GlobalProvider {
   }
 
   /**
+   * Metodo que determina si es el primer inicio de la app
+   */
+  isTutorial(){
+    if (localStorage.getItem('first')){
+      console.log('1');
+      console.log(localStorage.getItem('first'));
+      return false;
+    } else {
+      console.log('2');
+      console.log(localStorage.getItem('first'));
+      return true;
+    }
+  }
+
+  /**
    *
    * Getter del drawer
    * 

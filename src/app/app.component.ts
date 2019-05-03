@@ -19,11 +19,13 @@ export class MyApp {
     platform.ready().then(() => {
       statusBar.styleLightContent();
       splashScreen.hide();
+      
       if (!localStorage.getItem('token') || localStorage.getItem('token') === "null") {
         this.rootPage = HomePage;
       } else {
         this.rootPage = StartPage;
       }
+      
     });
   }
 }
