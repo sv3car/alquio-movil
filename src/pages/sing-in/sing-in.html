@@ -4,10 +4,11 @@
     </ion-icon>
   </button>
 
+  <!-- <img src="assets/imgs/login/logo-hd.png" class="fondo-all"/> -->
 
   <div class="initial">
     <div>
-      <img src="assets/imgs/fondo-Inico.png" class="imgSingIn" alt="fondo" />
+      <img src="assets/imgs/logo-hd.png" class="imgSingIn"/>
     </div>
 
     <form [formGroup]="frmRegister">
@@ -78,9 +79,22 @@
       </ion-list>
     </form>
 
-    <button ion-button round [disabled]="frmRegister.invalid || 
+    <div style="margin-top: 5px; float: left; margin-bottom: 30px;">
+      <div class="goGoo">
+          <img src="assets/imgs/login/icono-google.png" class="icono-google">
+          <div class="letras-icono-google">Iniciar sesión con Google
+          </div>
+      </div>
+      <div class="goFace">
+        <img src="assets/imgs/login/icono-facebook.png" class="icono-facebook">
+        <div class="letras-icono-facebook">Iniciar sesión con Facebook
+        </div>
+      </div>
+    </div>
+
+    <button [disabled]="frmRegister.invalid || 
                                          frmRegister.value.password !== frmRegister.value.confirmPassword"
-                                         (click)="registrarUsuario()" class="buttonSingIn">Registrarse</button>
+                                         (click)="registrarUsuario()" class="buttonSingIn"><div class="letras-button">Registrarse</div></button>
 
   </div>
 </ion-content>

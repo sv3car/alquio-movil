@@ -1,15 +1,31 @@
 <ion-content padding center text-center class="contentLogin">
-  <button (click)="goBack()" style="background-color: transparent;position: absolute;left: 15px;">
+  <!-- <button (click)="goBack()" style="background-color: transparent;position: absolute;left: 15px;">
     <ion-icon name="arrow-back" style="color: white; zoom: 2.5">
     </ion-icon>
-  </button>
+  </button> -->
+
+  <!-- <img src="assets/imgs/login/inicio-fondo-sin-logo.png" class="fondo-all"/> -->
 
   <div class="initial">
-    <div>
-      <img src="assets/imgs/fondo-Inico.png" class="imgLogin" alt="fondo" />
+    <div class="img-logo">
+      <img src="assets/imgs/logo-hd.png" class="imgLogin"/>
     </div>
+
+    <div style="margin-top: 30px; float: left; margin-bottom: 30px;">
+      <div class="goGoo">
+          <img src="assets/imgs/login/icono-google.png" class="icono-google">
+          <div class="letras-icono-google">Iniciar sesión con Google
+          </div>
+      </div>
+      <div class="goFace">
+        <img src="assets/imgs/login/icono-facebook.png" class="icono-facebook">
+        <div class="letras-icono-facebook">Iniciar sesión con Facebook
+        </div>
+      </div>
+    </div>
+
     <form [formGroup]="myForm" novalidate>
-      <ion-list class="list">
+      <ion-list class="list" style="margin-top: 30px">
         <ion-item>
           <ion-label>
             <ion-icon name="person"></ion-icon>
@@ -34,31 +50,13 @@
           <p color="danger" ion-text *ngIf="myForm.get('email').hasError('required')">Debe escribir una contraseña</p>
         </ion-item>
       </ion-list>
-      <button ion-button round class="buttonLogin" [disabled]="myForm.invalid" (click)="login()">Ingresar</button>
+      <button class="buttonLogin" [disabled]="myForm.invalid" (click)="login()"><div class="letras-button">Ingresar</div></button>
     </form>
 
-
-    <div style="margin-top: 20px">
-      <div style="width: 100%">
-        <button ion-button id="buttonGoFB" class="buttonSocial">
-          <div style="width: 10%">
-            <ion-icon name="logo-facebook" style="zoom: 1.1;"></ion-icon>
-          </div>
-          <div style="width: 100%">
-            <p>Iniciar sesión con Facebook</p>
-          </div>
-        </button>
-      </div>
-      <div style="width: 100%">
-        <button ion-button id="buttonGoGoo" class="buttonSocial">
-          <div style="width: 10%">
-            <ion-icon name="logo-googleplus" style="zoom: 1.1;"></ion-icon>
-          </div>
-          <div style="width: 100%">
-            <p>Iniciar sesión con Google</p>
-          </div>
-        </button>
-      </div>
+    <div style="width: 100%; margin-top: 40px">
+      <a (click)="goSingIn()" style="font-size: 12.5px; color: #fff">¿Aún no tienes una cuenta?</a>
     </div>
+
+
   </div>
 </ion-content>

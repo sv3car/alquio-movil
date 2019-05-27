@@ -51,7 +51,7 @@
               <img [src]="'https://alquio.com/productos/' + product.foto" class="imgCard"/>
             </ion-thumbnail>
             <div class="card-cont">
-              <p class="precio">{{ 'USD ' + product.precio }}</p>
+              <p class="precio">{{ 'COP ' + product.precio }}</p>
               <p class="titulo">{{ product.titulo }}</p>
             </div>
           </div>
@@ -110,6 +110,7 @@
   
   <ion-slides pager>
     <ion-slide>
+      <div></div>
       <div class="info-tuto">
         <p class="font-tutorial-big">Encuentra</p>
         <p class="font-tutorial-normal"> tu </p>

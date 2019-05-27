@@ -35,13 +35,10 @@ export class GlobalProvider {
    * Metodo que determina si es el primer inicio de la app
    */
   isTutorial(){
-    if (localStorage.getItem('first')){
-      console.log('1');
-      console.log(localStorage.getItem('first'));
+    if (localStorage.getItem('tuto')){
       return false;
     } else {
-      console.log('2');
-      console.log(localStorage.getItem('first'));
+      localStorage.setItem('tuto', 'true');
       return true;
     }
   }

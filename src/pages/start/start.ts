@@ -74,7 +74,7 @@ export class StartPage {
   }
 
   ionViewDidLoad() {
-    this.tutorial = true//this.globalProv.isTutorial();
+    this.tutorial = this.globalProv.isTutorial();//true
     this.getCategoriesAndProducts(this.categoryIndex);
   }
 

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { HomePage } from '../home/home';
+import { LoginPage } from '../login/login';
 import { GlobalProvider } from '../../providers/global/global';
 
 @Component({
@@ -34,7 +34,7 @@ export class ConfigPage {
     this.globalProv.crearConfirm("Cerrar sesión", "¿Esta seguro que desea cerrar la sesión actual?", 
     () => {
       localStorage.setItem("token", null);
-      this.navCtrl.setRoot(HomePage);
+      this.navCtrl.setRoot(LoginPage);
       this.navCtrl.popToRoot();
       console.log('Sesión cerrada');
     },

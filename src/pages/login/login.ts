@@ -10,6 +10,7 @@ import { GlobalProvider } from '../../providers/global/global';
 
 //Pages
 import { StartPage } from '../start/start';
+import { SingInPage } from '../sing-in/sing-in';
 
 @Component({
   selector: 'page-login',
@@ -95,6 +96,10 @@ export class LoginPage {
       buttons: ['OK']
     });
     alert.present();
+  }
+
+  goSingIn():void{
+    this.navCtrl.push(SingInPage);
   }
 
 }

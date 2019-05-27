@@ -1,8 +1,70 @@
 page-sing-in {
 
     .contentSingIn{
-        background-image: linear-gradient(to bottom right, rgb(123, 85, 185), rgb(123, 85, 185),  rgb(123, 85, 185),
-        rgb(78, 198, 179), rgb(78, 198, 179));
+        background-image: url(../assets/imgs/inicio-fondo-sin-logo.png);
+        height: 100%;
+        width: 100%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: 50% 50%;
+    }
+
+    .imgSingIn{
+        width: 30%;
+        height: auto;
+    }
+
+    .item-input{
+        background-color: transparent;
+    }
+
+    .item-block{
+        background-color: transparent;
+    }
+
+    input{
+        color: #fff;
+    }
+
+    .goGoo{
+        margin-top: 20px;
+        float: left;
+    }
+
+    .goFace{
+        margin-top: 20px;
+        float: left;
+        text-align: center;
+    }
+
+    .icono-google{
+        margin-left: 17.5%;
+        float: left;
+        width: 11.5%;
+        height: auto;
+    }
+
+    .letras-icono-google{
+        float: left;
+        text-align: left;
+        margin-top: 6.5px;
+        color: #fff;
+        margin-left: 10px;
+    }
+
+    .icono-facebook{
+        margin-left: 17.5%;
+        float: left;
+        width: 10%;
+        height: auto;
+    }
+
+    .letras-icono-facebook{
+        float: left;
+        text-align: left;
+        margin-top: 6.5px;
+        color: #fff;
+        margin-left: 10px;
     }
 
     .initial{
@@ -20,32 +82,24 @@ page-sing-in {
     }
 
     .buttonSingIn{
-        background-color: #7b55c6;
+        //margin-top: px;
+        width: 100px;
+        height: 35px;
+        background-color: #fff;
+        border-top-left-radius: 100px;
+        border-bottom-left-radius: 15px; 
+        border-top-right-radius: 15px;
+        border-bottom-right-radius: 100px; 
+    }
+
+    .letras-button{
+        color: #7B55B9;
+        font-size: 12.5px;
     }
 
     .buttonSecondary{
         margin-top: 15px;
     }
-    .buttonSocial{
-        align-content: center;
-        text-decoration: none;
-        padding: 10px;
-        font-weight: 550;
-        font-size: 15px;
-        padding-left: 15px; 
-        padding-right: 15px; 
-        //border: 1.5px solid #7B55B9;
-    }
-    #buttonGoFB{
-        border-top-left-radius: 35px;
-        border-bottom-left-radius: 35px;
-        background-image: linear-gradient(to right, #7B55B9, rgb(233, 221, 255), #ffffff);
-    }
-    #buttonGoGoo{
-        border-top-right-radius: 35px;
-        border-bottom-right-radius: 35px;
-        background-image: linear-gradient(to right, #ffffff, rgb(233, 221, 255), #7B55B9);
-    }
-    
+
 }
 
