@@ -25,6 +25,8 @@ export class StartPage {
   categoryIndex: number = 0;
 
   categoryId: number;
+
+  categoryName: string;
   
   nextPage: string;
 
@@ -137,12 +139,16 @@ export class StartPage {
    * @param categoryId id de categoría
    */
   getPageProducts(categoryId:number) {
+
+    this.changeCategoryTexts(categoryId);
+
     this.nextPage = null;
     this.products = [];
     this.categoryId = categoryId;
     this.restProvider.getData("productos", "?api_token="+localStorage.getItem('token') + 
     "&categoria_id=" + categoryId)
     .then((data:any)=>{
+        console.log("PRODUCTOS", data);
         this.products = data.data;
         this.productsImpar = [];
         this.productsPar = [];
@@ -253,6 +259,24 @@ export class StartPage {
   }
 
   /**
+   *
+   * Metodo que me permite saber en que categoria me encuentro 
+   * 
+   */
+  changeCategoryTexts(categoryId){
+
+    let category = this.categories.filter((item) => {
+        if(item.id === categoryId){
+          return item.name;
+        }
+    });
+
+    this.categoryName = category[0].name;
+
+    
+  }
+
+  /**
    * 
    * Metodo para mostrar u ocultar el filter con un gesture swipe
    * 
@@ -304,6 +328,25 @@ export class StartPage {
 
   restarSlides(){
     this.slidesList.toArray()[0].startAutoplay();
+  }
+
+
+  /**
+   * 
+   * 
+   * 
+   */
+  mySlidePrev(){
+    this.slidesList.toArray()[0].slidePrev();
+  }
+  
+  /**
+   * 
+   * 
+   * 
+   */
+  mySlideNext(){
+    this.slidesList.toArray()[0].slideNext();
   }
 
 }

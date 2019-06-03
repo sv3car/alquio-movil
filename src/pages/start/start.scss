@@ -1,5 +1,5 @@
 page-start {
-    
+
     .scroll-content {
         padding: 0px !important;
         contain: none !important;
@@ -18,6 +18,7 @@ page-start {
         contain: layout;
         //background: #d6d6d6
         background-color: #fff;
+        margin-top: 52px;
     }
 
     .div-slides{
@@ -25,6 +26,7 @@ page-start {
         position: relative;
         height: 200px;
         width: 100%;
+        position: relative;
     }
 
     .slides-img{
@@ -87,8 +89,7 @@ page-start {
     #search{
         border-bottom-left-radius: 200px;
     }
-    #user{
-    }
+
     #cart{
         border-bottom-right-radius: 200px;
     }
@@ -280,32 +281,90 @@ page-start {
         border-radius: 5px;
     }
 
+    .arrow{
+        z-index: 90 !important;
+        top: 30%;
+        max-width: 100%;
+        max-height: 40%;
+        position:absolute;   
+    }
+
+    .arrow-right{
+        right: -25px;
+    }
+
+    .arrow-left{
+        left: -25px;
+        transform: rotateY(180deg);
+    }
+
+    .my-thumbnail{
+        float: left;
+        position: relative;
+    }
+    
+    .imgCardAgotado{
+        top: 0;
+        left:0;
+        max-width: 100%;
+        max-height: 60%;
+        position:absolute;   
+    }
+
     .imgCard{
         max-width: 100%;
         max-height: 50%;
         text-align: center;
         border-radius: 5px;
+        vertical-align: bottom
     }
     
     .precio{
-        text-align: left;
-        font-family: Arial, Helvetica, sans-serif;
-        font-weight: bold;
-        font-size: 18px;
+        //text-align: left;
+        font-family: "Open Sans light";
+        //font-weight: bold;
+        font-size: 17px;
         margin:0
     }
 
     .titulo{
         margin: 2px 0 0 0;
-        text-align: left;
-        font-size: 14px;
-        font-family: Arial, Helvetica, sans-serif;
-        color: #6e6e6e;
+        //text-align: left;
+        font-size: 17px;
+        font-family: "Open Sans light";
+        //color: #6e6e6e;
         line-height: 18px
+    }
+    
+    .titulo-categoria{
+        margin: 2px 0 0 0;
+        //text-align: left;
+        font-size: 14px;
+        font-family: "Open Sans light";
+        //color: #6e6e6e;
+        line-height: 18px
+    }
+    
+    .envio-inter{
+        margin: 2px 0 0 0;
+        //text-align: left;
+        font-size: 14px;
+        font-family: "Open Sans light";
+        color: #7B55B9;
+        line-height: 18px
+    }
+
+    .plane-icon{
+
+        -ms-transform: rotate(50deg); /* IE 9 */
+        -webkit-transform: rotate(50deg); /* Safari 3-8 */
+        transform: rotate(50deg);
+
     }
 
     .card-cont{
         padding: 10px;
+        text-align: center !important;
     }
 
     .tutorial{
@@ -378,6 +437,18 @@ page-start {
         left: 35%;
         width: 50%;
         height: 20%;
+    }
+
+    .home-promo-title{
+
+        font-size: 23px;
+        font-weight: bold;
+        font-family: "Open Sans light";
+
+    }
+
+    .row-promo-title{
+        top: 50%;
     }
 
 }

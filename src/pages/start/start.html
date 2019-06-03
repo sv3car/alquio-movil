@@ -2,6 +2,8 @@
   <div class="mid">
 
     <div class="div-slides">
+      <img (click)="mySlidePrev()" [src]="'assets/imgs/start/slider_arrow_right.png'" class="arrow arrow-left"/>
+      <img (click)="mySlideNext()" [src]="'assets/imgs/start/slider_arrow_right.png'" class="arrow arrow-right"/>
       <ion-slides pager autoplay="4000" loop zoom (ionSlideAutoplayStop)="restarSlides()">
         <ion-slide *ngFor="let slide of slides">
           <div class="slides-img" 
@@ -10,6 +12,8 @@
         </ion-slide>
       </ion-slides>
     </div>
+
+
 
     <!-- <div class="title-search">
       <h4>Los mas buscados</h4>
@@ -39,7 +43,12 @@
     </div>
   </div> -->
 
-
+    
+  <ion-row class="row-promo-title">
+    <ion-col col-12 text-center>
+      <ion-label class="home-promo-title">promoción de semana</ion-label>
+    </ion-col>
+  </ion-row>
 
     <div class="div-card-parent">
 
@@ -47,12 +56,15 @@
         <div class="products" *ngFor="let product of productsPar" (click)="goProduct(product)">
           <div class="products-int">
           <!-- <ion-card tappable (click)="goProduct(product)"> -->
-            <ion-thumbnail>
+            <ion-thumbnail class="my-thumbnail">
               <img [src]="'https://alquio.com/productos/' + product.foto" class="imgCard"/>
+              <img *ngIf="product.inventario_operativo === 0" [src]="'assets/imgs/start/agotado-banner-diagonal.png'" class="imgCardAgotado" id="smallone"/>
             </ion-thumbnail>
             <div class="card-cont">
-              <p class="precio">{{ 'COP ' + product.precio }}</p>
               <p class="titulo">{{ product.titulo }}</p>
+              <p class="precio">{{ 'COP ' + product.precio }}</p>
+              <p class="titulo-categoria">{{ categoryName }}</p>
+              <p class="envio-inter"><ion-icon name="plane" class="plane-icon"></ion-icon> {{' ' + "Envío internacional"}}</p>
             </div>
           </div>
           <!-- </ion-card> -->
@@ -63,12 +75,15 @@
         <div class="products" *ngFor="let product of productsImpar" (click)="goProduct(product)">
           <div class="products-int">
           <!-- <ion-card tappable (click)="goProduct(product)"> -->
-            <ion-thumbnail>
+            <ion-thumbnail class="my-thumbnail">
               <img [src]="'https://alquio.com/productos/' + product.foto" class="imgCard"/>
+              <img *ngIf="product.inventario_operativo === 0" [src]="'assets/imgs/start/agotado-banner-diagonal.png'" class="imgCardAgotado"/>
             </ion-thumbnail>
             <div class="card-cont">
-              <p class="precio">{{ 'USD ' + product.precio }}</p>
               <p class="titulo">{{ product.titulo }}</p>
+              <p class="precio">{{ 'USD ' + product.precio }}</p>
+              <p class="titulo-categoria">{{ categoryName }}</p>
+              <p class="envio-inter"><ion-icon name="plane" class="plane-icon"></ion-icon> {{' ' + "Envío internacional"}}</p>
             </div>
           </div>
           <!-- </ion-card> -->
@@ -202,6 +217,6 @@
 <!-- <drawer-filter [sideBar]="sideBar"></drawer-filter> -->
 <div [ngClass]="{'backgroundNoColor': initialColor, 'backgroundBlack': leftColor}"></div>
 <div (click)="filterTransition()" (swipe)="filterTransitionWithGesture($event)" [ngClass]="{'fakeButtonInitial': initialButton, 'fakeButtonLeft': leftButton}" class="fakeButton"></div>
-<drawer-filter [ngClass]="{'idle': initialPosition, 'left': leftPosition}"></drawer-filter>
+<drawer-filter [ngClass]="{'idle': initialPosition, 'left': leftPosition}" style="z-index: 1 !important"></drawer-filter>
 
 
