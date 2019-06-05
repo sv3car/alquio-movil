@@ -1,5 +1,23 @@
 page-product {
 
+    ion-content{
+        font-family: "Open Sans light";
+    }
+
+    .my-segment{
+        color: black;
+    }
+    
+    .my-segment > .segment-button{
+        color: black;
+        border-color: rgb(177, 177, 177);
+    }
+    
+    .my-segment > .segment-activated{
+        color: black;
+        border-color: rgb(124, 124, 124) !important;
+    }
+
     .scroll-content {
         padding: 0px !important;
         contain: none !important;
@@ -19,6 +37,7 @@ page-product {
         background: #eeeeee;
         height: 100%;
         padding-bottom: 20%;
+        margin-top: 52px;
     }
 
     .div-slides{
@@ -80,6 +99,8 @@ page-product {
         background-color: transparent;
         width: 30%;
         height: 100%;
+        top: -8px;
+        position: relative;
         p{
             margin: 0;
         }
@@ -121,6 +142,13 @@ page-product {
     .icon-bar{
         width: 20px;
         height: 20px;
+        top: -3px;
+        position: relative;
+    }
+    
+    .car-icon-bar{
+        width: 30px;
+        height: 30px;
     }
 
     .icon-bar-user{
