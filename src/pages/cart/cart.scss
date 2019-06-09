@@ -1,8 +1,45 @@
 page-cart {
 
+    ion-content{
+        font-family: "Open Sans light";
+    }
+
+    .status-image{
+        width: 80%;
+    }
+
+    .icon-plane{
+        color: rgb(177, 177, 177);
+        font-size: 25px !important;
+        -ms-transform: rotate(50deg); /* IE 9 */
+        -webkit-transform: rotate(50deg); /* Safari 3-8 */
+        transform: rotate(50deg);
+    }
+    
+    .card-envio{
+        font-size: 10px !important;
+    }
+
+    .card-date{
+        font-weight: bold;
+    }
+
+    .card-number{
+
+        text-align: right;
+        color: #7B55B9;
+        font-weight: bold;
+
+    }
+
+    .top-card-row{
+        font-size: 20px;
+    }
+
     .img-card{
         width: 100%;
-        height: 100%;
+        //height: 100%;
+        height: 100px;
         background-size: cover;
         background-repeat: no-repeat;
         background-position: 50% 50%;
