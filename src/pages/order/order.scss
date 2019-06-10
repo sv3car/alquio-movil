@@ -2,6 +2,35 @@ page-order {
     
     background-color: #eeeeee;
 
+    ion-content{
+        font-family: "Open Sans light";
+    }
+
+    .div-alquio-img{
+
+        margin-top: 60px;
+
+    }
+
+    .title-noorders{
+        font-weight: bold;
+        font-size: 19px;
+    }
+
+    .div-btn-inicio{
+
+        color: white;
+        font-size: 23px;
+        position: relative !important;
+        font-weight: bold;
+        top: -49px  ;        
+
+    }
+
+    .btn-inicio{
+        
+    }
+
     .scroll-content {
         padding: 0px !important;
         contain: none !important;

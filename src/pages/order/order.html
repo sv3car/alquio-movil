@@ -1,4 +1,22 @@
 <ion-content padding>
+  <div *ngIf="orders.length === 0">
+      <div text-center class="div-alquio-img">    
+          <img width="100px" height="130px" src="assets/imgs/orders/Logo Purpura 2.png" alt="">
+          <img width="100%" src="assets/imgs/orders/pale-order-completed.png" alt="">
+        </div>
+        <div text-center padding>
+          <label class="title-noorders">¿Aún no tienes ninguna orden, que esperas?</label>
+        </div>
+        <div text-center>
+          <div>
+              <img width="150px" src="assets/imgs/orders/Alquio Modulo.png" alt="">
+          </div>
+          <div class="div-btn-inicio">
+              <label class="btn-inicio">Inicio</label>
+          </div>
+        </div>
+  </div>
+
   <div class="card-order">
     <ion-card *ngFor="let order of orders">
       <div>
