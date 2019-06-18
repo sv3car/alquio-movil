@@ -46,27 +46,27 @@ export class GlobalProvider {
   /**
    *
    * Getter del drawer
-   * 
+   *
    */
   getDrawer(){
     return this.isDrawer;
   }
 
   /**
-   * 
+   *
    * Setter del drawer
-   * 
+   *
    * @param isDrawer valor del drawer
-   * 
+   *
    */
   setDrawer(isDrawer:boolean){
     this.isDrawer = isDrawer;
   }
 
   /**
-   * 
+   *
    * Metodo que crea un Loading y lo retorna
-   * 
+   *
    */
   crearLoading(){
     this.loading = this.loadingCtrl.create({
@@ -76,9 +76,9 @@ export class GlobalProvider {
   }
 
   /**
-   * 
+   *
    * Metodo que crea un alertConfirm y lo retorna
-   * 
+   *
    */
   crearConfirm(titulo:string, contenido:string, handlerAceptar:any, handlerCancelar:any){
     this.alertConfirm = this.alertCtrl.create({
@@ -103,17 +103,17 @@ export class GlobalProvider {
     });
     return this.alertConfirm;
   }
-  
+
   /**
-   * 
+   *
    * Metodo que crea un alert y lo retorna
-   * 
-   * @param titulo string : titulo del alert pop up 
-   * 
+   *
+   * @param titulo string : titulo del alert pop up
+   *
    * @param contenido string: contenido del alert pop up
-   * 
+   *
    * @param buttons array : opcional => de botones a mostrar.
-   * 
+   *
    */
   crearAlert(titulo:string, contenido:string, buttons: any = [
                                                                 {
@@ -133,8 +133,9 @@ export class GlobalProvider {
   showToast(mensaje:string ,position: string) {
     this.toast = this.toastCtrl.create({
       message: mensaje,
-      duration: 2000,
-      position: position
+      duration: 3000,
+      position: position,
+      cssClass: 'customToastClass'
     });
     return this.toast;
   }
@@ -142,9 +143,9 @@ export class GlobalProvider {
   /**
    * Método que retorna el id de un
    * elemento de un array segun su indice
-   * 
-   * @param array 
-   * @param indexCat 
+   *
+   * @param array
+   * @param indexCat
    */
   getArrayIdByIndex(array:any, index:number):number{
     return array.find((element:any, ind: number) => {
@@ -155,9 +156,9 @@ export class GlobalProvider {
   /**
    * Método que retorna el índice de un
    * elemento de un array segun su id
-   * 
-   * @param array 
-   * @param id 
+   *
+   * @param array
+   * @param id
    */
   getArrayIndexById(array:any, id:number):number{
     return array.findIndex((element:any) => {
@@ -168,12 +169,12 @@ export class GlobalProvider {
   /**
    * Remueve un elemento de un array
    * segun el id que se le pase del elemento
-   * 
+   *
    * retorna el array luego de ser eliminado el elemento,
    * si el array quedó vacío, devuelve null
-   * 
-   * @param array 
-   * @param id 
+   *
+   * @param array
+   * @param id
    */
   removeElementArrayById(array:any, id:number):any{
     let elemene_index = this.getArrayIndexById(array, id);

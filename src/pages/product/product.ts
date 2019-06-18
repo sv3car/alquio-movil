@@ -57,13 +57,13 @@ export class ProductPage {
 
   addCart() {
     this.globalProv.addElementToJSONOfLocalStorage(GlobalProvider.CART_LOCAL, this.product);
-    this.globalProv.showToast("Agregado al carrito", "middle").present();
+    this.globalProv.showToast("Agregado al carrito", "top").present();
     this.isCart = true;
   }
 
   removeCart() {
     this.globalProv.removeElementToJSONOfLocalStorageById(GlobalProvider.CART_LOCAL, this.product.id);
-    this.globalProv.showToast("Removido del carrito", "middle").present();
+    this.globalProv.showToast("Removido del carrito", "top").present();
     this.isCart = false;
   }
 
@@ -81,7 +81,7 @@ export class ProductPage {
 
   removeFavorite() {
     this.globalProv.removeElementToJSONOfLocalStorageById(GlobalProvider.FAVORITE_LOCAL, this.product.id);
-    this.globalProv.showToast("Removido de favoritos", "middle").present();
+    this.globalProv.showToast("Removido de favoritos", "top").present();
     this.isFavorite = false;
   }
 
