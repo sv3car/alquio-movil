@@ -24,6 +24,7 @@ import { DrawerUserPanel } from '../components/drawer-user-panel/drawer-user-pan
 import { DrawerUserService } from '../components/drawer-user/drawer-user-service';
 import { DrawerFilter } from '../components/drawer-filter/drawer-filter';
 import { DrawerCategoryPanel } from '../components/drawer-category-panel/drawer-category-panel';
+import { ButtonBackComponent } from '../components/button-back/button-back';
 
 
 //Pages
@@ -75,6 +76,7 @@ import { FavoritePage } from '../pages/favorite/favorite';
     CreditCardPage,
     HeaderComponent,
     BottomComponent,
+    ButtonBackComponent,
     DrawerFilter,
     DrawerCategory,
     DrawerCategoryPanel,
@@ -84,7 +86,7 @@ import { FavoritePage } from '../pages/favorite/favorite';
     DrawerUserPanelHide,
     DrawerSearch,
     DrawerOpacity,
-    DrawerProductDetailPanel
+    DrawerProductDetailPanel,
   ],
   imports: [
     BrowserModule,

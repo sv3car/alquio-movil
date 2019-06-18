@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ToastController } from 'ionic-angular';
 import { GlobalProvider } from '../../providers/global/global';
+import { Util } from '../../providers/util/util';
 
 @Component({
   selector: 'page-product',
@@ -8,12 +9,12 @@ import { GlobalProvider } from '../../providers/global/global';
 })
 export class ProductPage {
 
-  currentNumber : number = 1;
+  currentNumber: number = 1;
 
-  variantId:any;
+  variantId: any;
 
-  isCart:any;
-  isFavorite:any;
+  isCart: any;
+  isFavorite: any;
 
   detail: string = 'description';
 
@@ -33,9 +34,9 @@ export class ProductPage {
   namePage: any;
 
   constructor(public navCtrl: NavController,
-              public navParams: NavParams,
-              public globalProv: GlobalProvider,
-              public toastCtrl: ToastController) {
+    public navParams: NavParams,
+    public globalProv: GlobalProvider,
+    public toastCtrl: ToastController) {
 
     this.product = this.navParams.data;
 
@@ -54,19 +55,19 @@ export class ProductPage {
     };
   }
 
-  addCart(){
+  addCart() {
     this.globalProv.addElementToJSONOfLocalStorage(GlobalProvider.CART_LOCAL, this.product);
     this.globalProv.showToast("Agregado al carrito", "middle").present();
     this.isCart = true;
   }
 
-  removeCart(){
+  removeCart() {
     this.globalProv.removeElementToJSONOfLocalStorageById(GlobalProvider.CART_LOCAL, this.product.id);
     this.globalProv.showToast("Removido del carrito", "middle").present();
     this.isCart = false;
   }
 
-  addFavorite(){
+  addFavorite() {
     this.globalProv.addElementToJSONOfLocalStorage(GlobalProvider.FAVORITE_LOCAL, this.product);
     //this.globalProv.showToast("Agregado a favoritos", "middle").present();
     let toast = this.toastCtrl.create({
@@ -78,7 +79,7 @@ export class ProductPage {
     this.isFavorite = true;
   }
 
-  removeFavorite(){
+  removeFavorite() {
     this.globalProv.removeElementToJSONOfLocalStorageById(GlobalProvider.FAVORITE_LOCAL, this.product.id);
     this.globalProv.showToast("Removido de favoritos", "middle").present();
     this.isFavorite = false;
@@ -86,64 +87,67 @@ export class ProductPage {
 
   ionViewDidLoad() {
   }
-  
-  increment():void {
+
+  increment(): void {
     this.currentNumber++;
   }
-  
-  decrement():void {
-    if (this.currentNumber > 1) { 
+
+  decrement(): void {
+    if (this.currentNumber > 1) {
       this.currentNumber--;
     }
   }
 
-  backPage():void{
+  backPage(): void {
     //this.startService.toggle(false);
-    this.navCtrl.pop();
+    // console.log(this.navCtrl);
+    // this.navCtrl.pop();
+    Util.goToStart(this.navCtrl);
+
   }
 
-  updateColor(color: number){
-    if (color == 1 && this.color1){
-      this.color2=false;
-      this.color3=false;
-      this.color4=false;
-      this.color5=false;
-      this.color6=false;
+  updateColor(color: number) {
+    if (color == 1 && this.color1) {
+      this.color2 = false;
+      this.color3 = false;
+      this.color4 = false;
+      this.color5 = false;
+      this.color6 = false;
     } else if (color == 2 && this.color2) {
-      this.color1=false;
-      this.color3=false;
-      this.color4=false;
-      this.color5=false;
-      this.color6=false;
+      this.color1 = false;
+      this.color3 = false;
+      this.color4 = false;
+      this.color5 = false;
+      this.color6 = false;
     } else if (color == 3 && this.color3) {
-      this.color1=false;
-      this.color2=false;
-      this.color4=false;
-      this.color5=false;
-      this.color6=false;
+      this.color1 = false;
+      this.color2 = false;
+      this.color4 = false;
+      this.color5 = false;
+      this.color6 = false;
     } else if (color == 4 && this.color4) {
-      this.color1=false;
-      this.color2=false;
-      this.color3=false;
-      this.color5=false;
-      this.color6=false;
+      this.color1 = false;
+      this.color2 = false;
+      this.color3 = false;
+      this.color5 = false;
+      this.color6 = false;
     } else if (color == 5 && this.color5) {
-      this.color1=false;
-      this.color2=false;
-      this.color3=false;
-      this.color4=false;
-      this.color6=false;
+      this.color1 = false;
+      this.color2 = false;
+      this.color3 = false;
+      this.color4 = false;
+      this.color6 = false;
     } else if (color == 6 && this.color6) {
-      this.color1=false;
-      this.color2=false;
-      this.color3=false;
-      this.color4=false;
-      this.color5=false;
+      this.color1 = false;
+      this.color2 = false;
+      this.color3 = false;
+      this.color4 = false;
+      this.color5 = false;
     }
   }
 
-  updateSize(size: string){
-    if (size == "s" && this.s){
+  updateSize(size: string) {
+    if (size == "s" && this.s) {
       this.m = false;
       this.l = false;
     } else if (size == "m" && this.m) {
@@ -155,19 +159,19 @@ export class ProductPage {
     }
   }
 
-  checkS(){
+  checkS() {
     this.s = true;
     this.m = false;
     this.l = false;
   }
 
-  checkM(){
+  checkM() {
     this.s = false;
     this.m = true;
     this.l = false;
   }
 
-  checkL(){
+  checkL() {
     this.s = false;
     this.m = false;
     this.l = true;

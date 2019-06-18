@@ -8,7 +8,7 @@
                 <p>Dirección de envío</p>
             </ion-item>
         </ion-list>
-    
+
         <ion-list>
             <ion-item>
                 <p>Notificaciones</p>
@@ -20,7 +20,7 @@
                 <p>Limpiar historial</p>
             </ion-item>
         </ion-list>
-    
+
         <ion-list>
             <ion-item>
                 <p>Sugerencias</p>
@@ -36,7 +36,7 @@
             </ion-item>
         </ion-list>
         <div style="width: 100%; text-align: center">
-            <button ion-button 
+            <button ion-button
                 style="width: 90%; text-align: center; background-color: rgb(255, 74, 74)"
                 (click)="closeSesion()">Cerrar Sesión
             </button>
@@ -48,9 +48,10 @@
 <drawer-opacity #sideBar></drawer-opacity>
 
 <!--Volver-->
-<button class="button-back" (click)="backPage()">
+<!-- <button class="button-back" (click)="backPage()">
     <ion-icon name="arrow-back" style="color: white"></ion-icon>
-</button>
+</button> -->
+<button-back></button-back>
 
 <!--Header-->
 <header-app [options]="namePage"></header-app>
