@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
+//providers
+import { GlobalProvider } from '../../providers/global/global';
+import { RestProvider } from '../../providers/rest/rest';
+
 /**
  * Generated class for the UserDetailPage page.
  *
@@ -14,11 +18,22 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class UserDetailPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  edit: boolean = false;
+  user_name: string;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+    public global: GlobalProvider,
+    public rest: RestProvider) {
+
+      this.rest.getData('user', "?api_token=" + localStorage.getItem('token')).then((data: any) => {
+        console.log(data);
+        this.user_name=data.name;
+      });
+
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad UserDetailPage');
+    console.log('Vista de Perfil');
   }
 
 }

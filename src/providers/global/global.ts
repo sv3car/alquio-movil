@@ -28,6 +28,7 @@ export class GlobalProvider {
   }
 
   setToken(api_token:any){
+
     this.api_token = api_token;
   }
 

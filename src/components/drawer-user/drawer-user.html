@@ -1,16 +1,16 @@
 <ion-content center text-center class="contentUser">
-  
+
   <div class="user-option">
-    <div class="images-user" 
-    [style.background-image]="'url(assets/imgs/user-images/' + userImg + ')'">
-    </div>
-    
-    <div class = "img-user-small" 
+    <div class="images-user"
     [style.background-image]="'url(assets/imgs/user-images/' + userImg + ')'">
     </div>
 
-    <h3 class="name-user">Marco Garcia</h3>
-   
+    <div class = "img-user-small"
+    [style.background-image]="'url(assets/imgs/user-images/' + userImg + ')'">
+    </div>
+
+    <h3 class="name-user">{{user_name}}</h3>
+
     <div class="options-class">
       <ion-grid>
         <ion-row>
@@ -33,7 +33,7 @@
             </button>
           </ion-col>
         </ion-row>
-        
+
         <ion-row>
             <ion-col>
               <button class="button-opction" (click)="goChat()">
