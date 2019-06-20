@@ -1,22 +1,35 @@
 <!-- <header-app [options]="namePage"></header-app> -->
 <ion-content padding style="background-color: #eeeeee;">
-    <div style="background-color: #eeeeee;">
-        <ion-list style="margin-top: 20%">
-            <!-- <ion-item>
-                <ion-label>Todo</ion-label>
-                <ion-input type="text" name="title"></ion-input>
-              </ion-item>
-              <ion-item>
-                <ion-label>Description</ion-label>
-                <ion-textarea name="description"></ion-textarea>
-              </ion-item>
-              <button ion-button type="submit" block>Add Todo</button> -->
-        </ion-list>
-    </div>
+    <ion-list style="margin-top: 12%">
+        <ion-item> 
+          <ion-thumbnail item-start>
+            <img src="img/thumbnail-totoro.png">
+          </ion-thumbnail>
+          <h2>Foto de Perfil</h2>
+          <button ion-button clear item-end>Editar</button>
+        </ion-item>
+      </ion-list>
+      <ion-list>
+       <ion-item> 
+            <h2>Nombre</h2>
+            <p>{{perfil.nombre}} {{perfil.apellido}}</p>
+            <button ion-button clear item-end (click)="showPrompt('Nombre')">Editar</button>
+        </ion-item>
+        <ion-item> 
+            <h2>E-mail</h2>
+            <p>{{perfil.email}}</p>
+            <button ion-button clear item-end (click)="showPrompt('E-mail')">Editar</button>
+        </ion-item>
+        <ion-item> 
+            <h2>Dirrección de envío</h2>
+            <p>{{perfil.direccion}}</p>
+            <button ion-button clear item-end (click)="showPrompt('Dirrección de envío')">Editar</button>
+        </ion-item>
+      </ion-list>
 </ion-content>
 
 <!--Opacidad del Contenido-->
-<!-- <drawer-opacity #sideBar></drawer-opacity> -->
+<drawer-opacity #sideBar></drawer-opacity>
 
 <!--Volver-->
 <!-- <button class="button-back" (click)="backPage()">
@@ -25,7 +38,7 @@
 <button-back></button-back>
 
 <!--Header-->
-
+<header-app [options]="namePage"></header-app>
 
 <!--Bottom-->
 <!-- <bottom-app></bottom-app> -->

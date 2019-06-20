@@ -69,13 +69,7 @@ export class ProductPage {
 
   addFavorite() {
     this.globalProv.addElementToJSONOfLocalStorage(GlobalProvider.FAVORITE_LOCAL, this.product);
-    //this.globalProv.showToast("Agregado a favoritos", "middle").present();
-    let toast = this.toastCtrl.create({
-      message: "Agregado a favoritos",
-      duration: 50000,
-      position: "middle",
-      cssClass: "toast-test"
-    }).present();
+    this.globalProv.showToast("Agregado a favoritos", "top").present();
     this.isFavorite = true;
   }
 

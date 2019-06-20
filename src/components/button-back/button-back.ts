@@ -25,9 +25,8 @@ export class ButtonBackComponent {
   backPage():void{
     // console.log(this.navCtrl);
     // this.navCtrl.pop();
+    this.appCtrl.getRootNav().push(StartPage);
     this.viewCtrl.dismiss();
-      this.appCtrl.getRootNav().push(StartPage);
-
   }
 
 }
