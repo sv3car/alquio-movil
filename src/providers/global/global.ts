@@ -187,7 +187,7 @@ export class GlobalProvider {
   }
 
   getJSONLocalStorage(nameArray:string):any{
-    return JSON.parse(localStorage.getItem(nameArray));;
+    return JSON.parse(localStorage.getItem(nameArray));
   }
 
   setJSONLocalStorage(nameArray:string, array:any){

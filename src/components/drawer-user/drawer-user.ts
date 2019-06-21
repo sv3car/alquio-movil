@@ -38,6 +38,10 @@ export class DrawerUser {
     public global: GlobalProvider,
     public rest: RestProvider) {
 
+      let user: any[] = global.getJSONLocalStorage(JSON.parse(localStorage.getItem('user')));
+
+      console.log('localStorage: '+user);
+
     this.rest.getData('user', "?api_token=" + localStorage.getItem('token')).then((data: any) => {
       console.log(data);
       this.user_name=data.name;
