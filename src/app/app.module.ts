@@ -29,6 +29,7 @@ import { ButtonBackComponent } from '../components/button-back/button-back';
 
 //Pages
 
+import { Splash } from '../pages/splash/splash';
 import { JivoChatPage } from '../pages/jivo-chat/jivo-chat';
 import { UserDetailPage } from '../pages/user-detail/user-detail';
 import { ProductPage } from '../pages/product/product';
@@ -57,6 +58,7 @@ import { FavoritePage } from '../pages/favorite/favorite';
 @NgModule({
   declarations: [
     MyApp,
+    Splash,
     AboutPage,
     ContactPage,
     HomePage,
@@ -97,6 +99,7 @@ import { FavoritePage } from '../pages/favorite/favorite';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
+    Splash,
     AboutPage,
     ContactPage,
     HomePage,
