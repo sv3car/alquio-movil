@@ -13,8 +13,6 @@ export class OrderPage {
 
   contentOpacityDisplay: string = 'no-exist-content';
 
-  loading: any;
-
   namePage: any;
 
   orders : any[] = [];
@@ -36,8 +34,8 @@ export class OrderPage {
   }
 
   getOrder(){
-    this.loading = this.globalProv.crearLoading();
-    this.loading.present().then(()=>{
+   let loading = this.globalProv.crearLoading();
+    loading.present();
     this.restService.getData('pedidos', "?api_token="+localStorage.getItem('token')).then(
       (data:any)=>{
         for(let order of data.data){
@@ -53,7 +51,7 @@ export class OrderPage {
                     product.name_detalle = prod.name;
                     productos.push(data);
                   },(err)=>{
-                    this.loading.dismiss();
+                    //this.loading.dismiss();
                     console.log("PRODUCTOS ERROR", err);
                   })
               }
@@ -77,17 +75,17 @@ export class OrderPage {
               order.fecha = fecha_formateada;
               order.detalles = productos;
               this.orders.push(order);
-              this.loading.dismiss();
             },(err)=>{
-              this.loading.dismiss();
+              //this.loading.dismiss();
               console.log("PRODUCTOS ERROR", err);
             })
         }
       },(err)=>{
-        this.loading.dismiss();
+        //this.loading.dismiss();
         console.log("PRODUCTOS ERROR", err);
       }
-    );});
+    );
+    loading.dismiss();
   }
 
   backPage():void{

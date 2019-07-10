@@ -1,11 +1,11 @@
 import { Component, Renderer, ElementRef, Input } from '@angular/core';
-import { DomController, Platform, NavController } from 'ionic-angular';
+import { DomController, Platform, NavController, ModalController } from 'ionic-angular';
 import { DrawerUserService } from './drawer-user-service';
 import { DrawerOpacity } from '../drawer-opacity/drawer-opacity';
 
 //Pages
 import { OrderPage } from '../../pages/order/order';
-import { JivoChatPage } from '../../pages/jivo-chat/jivo-chat';
+import { CometChatPage } from '../../pages/comet-chat/comet-chat';
 import { ConfigPage } from '../../pages/config/config';
 import { FavoritePage } from '../../pages/favorite/favorite';
 import { AboutPage } from '../../pages/about/about';
@@ -36,14 +36,14 @@ export class DrawerUser {
     public drUserService: DrawerUserService,
     public navCtrl: NavController,
     public global: GlobalProvider,
-    public rest: RestProvider) {
+    public rest: RestProvider,
+    public modalCtrl: ModalController) {
 
       let user: any[] = global.getJSONLocalStorage(JSON.parse(localStorage.getItem('user')));
 
       console.log('localStorage: '+user);
 
     this.rest.getData('user', "?api_token=" + localStorage.getItem('token')).then((data: any) => {
-      console.log(data);
       this.user_name=data.name;
     });
     this.userImg = "user-2.jpg";
@@ -95,7 +95,7 @@ export class DrawerUser {
   goChat(): void {
     this.hideContent();
     if (!(this.name === 'chat')) {
-      this.navCtrl.push(JivoChatPage);
+      this.navCtrl.push(CometChatPage);
     }
   }
 
@@ -114,9 +114,10 @@ export class DrawerUser {
   }
 
   goAbout(): void {
-    this.hideContent();
     if (!(this.name === 'about')) {
-      this.navCtrl.push(AboutPage);
+      const modal = this.modalCtrl.create(AboutPage);
+      modal.present();
+      //this.navCtrl.push(AboutPage);
     }
   }
 

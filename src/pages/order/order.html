@@ -1,46 +1,35 @@
 <ion-content padding>
   <div class="card-order">
     <ion-card *ngFor="let order of orders">
-      <div>
-        <div class="div-slides">
-          <ion-slides pager>
-            <ion-slide *ngFor="let prod of order.detalles">
-              <ion-grid center>
-                <ion-row class="row-card">
-                  <ion-col>
-                    <div class="img-card"
-                      [style.background-image]="'url(https://alquio.com/productos/' + prod.foto + ')'">
-                    </div>
-                  </ion-col>
-                  <ion-col>
-                    <p style="text-align: left">{{ prod.titulo }}</p>
-                    <div>
-                      <div style="width: 50%; float: left;">
-                        <p class="price">Precio:</p>
-                        <p class="value-price">{{ prod.precio }}</p>
-                      </div>
-                      <div style="width: 50%; float: left;">
-                        <p class="price">Cantidad:</p>
-                        <p class="value-price">{{ prod.cantidad }}</p>
-                      </div>
-                    </div>
-                  </ion-col>
-                </ion-row>
-              </ion-grid>
-              <div style="height: 40px;"></div>
-            </ion-slide>
-          </ion-slides>
-        </div>
+      <ion-card-header>
+        {{ order.fecha }}
+      </ion-card-header>
+      <ion-grid center>
+        <ion-row class="row-card">
+          <ion-col>
+            <div class="img-card"
+              [style.background-image]="'url(https://alquio.com/productos/thumbnail/' + prod.foto + ')'">
+            </div>
+          </ion-col>
+          <ion-col>
+            <p style="text-align: left">{{ prod.titulo }}</p>
+            <div>
+              <div style="width: 50%; float: left;">
+                <p class="price">Precio:</p>
+                <p class="value-price">{{ prod.precio }}</p>
+              </div>
+              <div style="width: 50%; float: left;">
+                <p class="price">Cantidad:</p>
+                <p class="value-price">{{ prod.cantidad }}</p>
+              </div>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
       </div>
       <hr style="border:5px; width: 90%; text-align: center; border-width: 5px">
       <div style="width: 100%; float: left;" class="order-bot">
         <div style="width: 50%; float: left; position: relative;">
-          <p class="price">Monto total:</p>
-          <p class="value-price">{{ order.monto }}</p>
-          <p></p>
-          <p class="price">Dirección:</p>
-          <p class="value-price">{{ order.direccion }}</p>
-          <p></p>
           <p class="price">Tipo de envío:</p>
           <p class="value-price">{{ order.cart_envio }}</p>
         </div>

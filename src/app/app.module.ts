@@ -8,6 +8,7 @@ import { StartService } from '../pages/start/start-service';
 import { OrdertService } from '../pages/order/order-service';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
+import { StarRatingModule } from 'ionic3-star-rating';
 
 //Components
 import { HeaderComponent } from '../components/header-app/header-app';
@@ -29,7 +30,7 @@ import { ButtonBackComponent } from '../components/button-back/button-back';
 
 //Pages
 
-import { JivoChatPage } from '../pages/jivo-chat/jivo-chat';
+import { CometChatPage } from '../pages/comet-chat/comet-chat';
 import { UserDetailPage } from '../pages/user-detail/user-detail';
 import { ProductPage } from '../pages/product/product';
 import { OrderPage } from '../pages/order/order';
@@ -45,12 +46,19 @@ import { CartPage } from '../pages/cart/cart';
 import { ConfigPage } from '../pages/config/config';
 import { OrdenesPage } from '../pages/ordenes/ordenes';
 import { CreditCardPage } from '../pages/credit-card/credit-card';
+import {LegalInformation} from '../pages/information/legal-information';
+import { PoliticasPage } from '../pages/politicas/politicas';
+import { CalificaPage } from '../pages/califica/califica';
 
 //Providers
 
 import { RestProvider } from '../providers/rest/rest';
 import { GlobalProvider } from '../providers/global/global';
 import { FavoritePage } from '../pages/favorite/favorite';
+import { CalidadImagen } from '../pages/calidadimagen/calidadimagen';
+import { Camera } from '@ionic-native/Camera';
+import { File } from '@ionic-native/File/ngx';
+import { FilePath } from '@ionic-native/file-path/ngx';
 
 
 
@@ -68,7 +76,7 @@ import { FavoritePage } from '../pages/favorite/favorite';
     ProductPage,
     CartPage,
     FavoritePage,
-    JivoChatPage,
+    CometChatPage,
     ActionCategoryPage,
     SearchPage,
     UserDetailPage,
@@ -87,11 +95,16 @@ import { FavoritePage } from '../pages/favorite/favorite';
     DrawerSearch,
     DrawerOpacity,
     DrawerProductDetailPanel,
+    LegalInformation,
+    CalidadImagen,
+    PoliticasPage,
+    CalificaPage
   ],
   imports: [
     BrowserModule,
     HttpModule,
     HttpClientModule,
+    StarRatingModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -105,7 +118,7 @@ import { FavoritePage } from '../pages/favorite/favorite';
     StartPage,
     ConfigPage,
     OrderPage,
-    JivoChatPage,
+    CometChatPage,
     ProductPage,
     CartPage,
     FavoritePage,
@@ -113,7 +126,11 @@ import { FavoritePage } from '../pages/favorite/favorite';
     SearchPage,
     UserDetailPage,
     OrdenesPage,
-    CreditCardPage
+    CreditCardPage,
+    LegalInformation,
+    CalidadImagen,
+    PoliticasPage,
+    CalificaPage
   ],
   providers: [
     StatusBar,
@@ -124,7 +141,10 @@ import { FavoritePage } from '../pages/favorite/favorite';
     DrawerUserService,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     RestProvider,
-    GlobalProvider
+    GlobalProvider,
+    File,
+    FilePath,
+    Camera
   ]
 })
 export class AppModule {}

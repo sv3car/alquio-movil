@@ -20,7 +20,7 @@ export class MyApp {
       statusBar.styleLightContent();
       splashScreen.hide();
       
-      if (!localStorage.getItem('token') || localStorage.getItem('token') === "null") {
+      if (!localStorage.getItem('token')) {
         this.rootPage = LoginPage;
       } else {
         this.rootPage = StartPage;

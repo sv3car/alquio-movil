@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Util } from '../../providers/util/util';
 import { App, ViewController } from 'ionic-angular';
 import {StartPage} from '../../pages/start/start';
 
@@ -23,8 +22,6 @@ export class ButtonBackComponent {
   ) {}
 
   backPage():void{
-    // console.log(this.navCtrl);
-    // this.navCtrl.pop();
     this.appCtrl.getRootNav().push(StartPage);
     this.viewCtrl.dismiss();
   }

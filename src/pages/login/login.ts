@@ -36,10 +36,6 @@ export class LoginPage {
 
   }
 
-  goBack():void{
-    this.navCtrl.pop();
-  }
-
   /**
    * 
    * Metodo que retorna un nuevo FormGroup
@@ -77,7 +73,7 @@ export class LoginPage {
         loading.dismiss();
       } else {
         localStorage.setItem('token', data.api_token);
-        localStorage.setItem('user', JSON.stringify(data));
+        localStorage.setItem(GlobalProvider.USER_LOCAL, JSON.stringify(data));
         this.globalProv.setToken(data.api_token);
         this.navCtrl.push(StartPage);
         loading.dismiss();
