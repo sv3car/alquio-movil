@@ -10,6 +10,10 @@ import { ConfigPage } from '../../pages/config/config';
 import { FavoritePage } from '../../pages/favorite/favorite';
 import { AboutPage } from '../../pages/about/about';
 
+//providers
+import { GlobalProvider } from '../../providers/global/global';
+import { RestProvider } from '../../providers/rest/rest';
+
 @Component({
   selector: 'drawer-user',
   templateUrl: 'drawer-user.html'
@@ -23,18 +27,31 @@ export class DrawerUser {
 
   userImg: string = 'user-2.jpg';
 
-  constructor(public domCtrl : DomController,
-              public renderer: Renderer,
-              public element: ElementRef,
-              public platform: Platform, 
-              public drUserService: DrawerUserService,
-              public navCtrl: NavController) {
-      this.userImg = "user-2.jpg";
+  user_name: string;
+
+  constructor(public domCtrl: DomController,
+    public renderer: Renderer,
+    public element: ElementRef,
+    public platform: Platform,
+    public drUserService: DrawerUserService,
+    public navCtrl: NavController,
+    public global: GlobalProvider,
+    public rest: RestProvider) {
+
+      let user: any[] = global.getJSONLocalStorage(JSON.parse(localStorage.getItem('user')));
+
+      console.log('localStorage: '+user);
+
+    this.rest.getData('user', "?api_token=" + localStorage.getItem('token')).then((data: any) => {
+      console.log(data);
+      this.user_name=data.name;
+    });
+    this.userImg = "user-2.jpg";
   }
 
   ngAfterViewInit() {
-    
-    if(this.options.name){
+
+    if (this.options.name) {
       this.name = this.options.name;
     }
 
@@ -42,9 +59,9 @@ export class DrawerUser {
     this.content();
   }
 
-  content():void{
+  content(): void {
     this.drUserService.change.subscribe(serviDisplay => {
-      if (serviDisplay){
+      if (serviDisplay) {
         this.showContent();
       } else {
         this.hideContent();
@@ -52,7 +69,7 @@ export class DrawerUser {
     });
   }
 
-  showContent():void{
+  showContent(): void {
     this.sideBar.content(true, false);
     this.domCtrl.write(() => {
       this.renderer.setElementStyle(this.element.nativeElement, 'transition', 'bottom 0.5s');
@@ -60,7 +77,7 @@ export class DrawerUser {
     });
   }
 
-  hideContent():void {
+  hideContent(): void {
     this.sideBar.content(false, false);
     this.domCtrl.write(() => {
       this.renderer.setElementStyle(this.element.nativeElement, 'transition', 'bottom 0.5s');
@@ -68,37 +85,37 @@ export class DrawerUser {
     })
   }
 
-  goOrder():void{
+  goOrder(): void {
     this.hideContent();
-    if (!(this.name === 'order')){
+    if (!(this.name === 'order')) {
       this.navCtrl.push(OrderPage);
     }
   }
 
-  goChat():void{
+  goChat(): void {
     this.hideContent();
-    if (!(this.name === 'chat')){
+    if (!(this.name === 'chat')) {
       this.navCtrl.push(JivoChatPage);
     }
   }
 
-  goConfig():void{
+  goConfig(): void {
     this.hideContent();
-    if (!(this.name === 'config')){
+    if (!(this.name === 'config')) {
       this.navCtrl.push(ConfigPage);
     }
   }
 
-  goFavorite():void{
+  goFavorite(): void {
     this.hideContent();
-    if (!(this.name === 'favorite')){
+    if (!(this.name === 'favorite')) {
       this.navCtrl.push(FavoritePage);
     }
   }
 
-  goAbout():void{
+  goAbout(): void {
     this.hideContent();
-    if (!(this.name === 'about')){
+    if (!(this.name === 'about')) {
       this.navCtrl.push(AboutPage);
     }
   }

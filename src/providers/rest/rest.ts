@@ -15,28 +15,30 @@ export class RestProvider {
   }
 
   /**
-   * 
+   *
    * Metodo para el consumo de apis get
-   * 
+   *
    * @param metodo : string nombre del metodo a consumir
-   * 
+   *
    */
   getData(metodo, params=""){
 
     let headers = new HttpHeaders({"Content-Type": "application/json"});
+    let uri = this.globalProv.apiURL + metodo + params;
+    console.log(uri);
 
-    return this.http.get(this.globalProv.apiURL + metodo + params, {headers: headers}).toPromise();
+    return this.http.get(uri, {headers: headers}).toPromise();
   }
 
   /**
-   * 
+   *
    * Metodo para el consumo de apis post
-   * 
+   *
    * @param metodo : string nombre del metodo a consumir
-   * 
+   *
    */
   postData(metodo, params=null){
-  
+
     let headers = new HttpHeaders({"Content-Type": "application/json"});
 
     return this.http.post(this.globalProv.apiURL + metodo, params, {headers:headers}).toPromise();

@@ -24,11 +24,11 @@ export class DrawerFilter {
   ionViewDidLoad() {
 
     // if (this.type === '%'){
-    //   this.handleWidth = ((parseFloat(this.handleWidth.toString()) * 
+    //   this.handleWidth = ((parseFloat(this.handleWidth.toString()) *
     //   parseFloat(this.platform.width().toString()))/100);
     // }
 
-    // this.renderer.setElementStyle(this.element.nativeElement, 'left', 
+    // this.renderer.setElementStyle(this.element.nativeElement, 'left',
     // this.platform.width() - this.handleWidth + 'px');
 
     // let hammer = new window['Hammer'](this.element.nativeElement);
@@ -51,7 +51,7 @@ export class DrawerFilter {
       this.domCtrl.write(() => {
         this.renderer.setElementStyle(this.element.nativeElement, 'transition', 'left 0.5s');
 
-        this.renderer.setElementStyle(this.element.nativeElement, 'left', this.platform.width() - 
+        this.renderer.setElementStyle(this.element.nativeElement, 'left', this.platform.width() -
         this.handleWidth + 'px');
 
       });
@@ -73,7 +73,7 @@ export class DrawerFilter {
     this.domCtrl.write(() => {
       this.renderer.setElementStyle(this.element.nativeElement, 'transition', 'left 0.5s');
 
-      this.renderer.setElementStyle(this.element.nativeElement, 'left', this.platform.width() - 
+      this.renderer.setElementStyle(this.element.nativeElement, 'left', this.platform.width() -
       this.handleWidth + 'px');
 
     });

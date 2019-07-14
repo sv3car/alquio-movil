@@ -12,7 +12,7 @@
       <ion-grid center>
         <ion-row class="row-card">
           <ion-col>
-            <div class="img-card" 
+            <div class="img-card"
               [style.background-image]="'url(https://alquio.com/productos/' + product.foto + ')'">
             </div>
           </ion-col>
@@ -38,7 +38,7 @@
                 </button>
                 <p class="quantity class-center" style="position: absolute">{{product.cantidad}}</p>
                 <img class="img-control" src="assets/imgs/customicons/control.png" >
-      
+
                 <button class="button-add" (click)="increment(product)">
                     <ion-icon name="add"></ion-icon>
                 </button>
@@ -56,7 +56,7 @@
     </ion-card>
 
   </div>
-  
+
 </ion-content>
 
 <div id="bottom" class="bar">
@@ -70,9 +70,10 @@
 <drawer-opacity #sideBar></drawer-opacity>
 
 <!--Volver-->
-<button class="button-back" (click)="backPage()">
+<!-- <button class="button-back" (click)="backPage()">
   <ion-icon name="arrow-back" style="color: white"></ion-icon>
-</button>
+</button> -->
+<button-back></button-back>
 
 <!--Header-->
 <header-app [options]="namePage"></header-app>

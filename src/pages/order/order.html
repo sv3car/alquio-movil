@@ -26,7 +26,7 @@
               <ion-grid center>
                 <ion-row class="row-card">
                   <ion-col>
-                    <div class="img-card" 
+                    <div class="img-card"
                       [style.background-image]="'url(https://alquio.com/productos/' + prod.foto + ')'">
                     </div>
                   </ion-col>
@@ -63,7 +63,7 @@
           <p class="value-price">{{ order.cart_envio }}</p>
         </div>
         <div style="width: 50%; float: left; text-align: center" class="div-status">
-          <img [src]="'assets/imgs/customicons/' + order.estatus_image" 
+          <img [src]="'assets/imgs/customicons/' + order.estatus_image"
             class="icon-status"/>
           <p class="status"><strong>{{ order.estatus }}</strong></p>
         </div>
@@ -95,9 +95,10 @@
 <drawer-opacity #sideBar></drawer-opacity>
 
 <!--Volver-->
-<button class="button-back" (click)="backPage()">
+<button-back></button-back>
+<!-- <button class="button-back" (click)="backPage()">
   <ion-icon name="arrow-back" style="color: white"></ion-icon>
-</button>
+</button> -->
 
 <!--Header-->
 <header-app [options]="namePage"></header-app>

@@ -3,7 +3,7 @@
     <div class="div-slides">
       <ion-slides pager>
         <ion-slide>
-          <div class="slides-img" 
+          <div class="slides-img"
           [style.background-image]="'url(https://alquio.com/productos/' + product.foto + ')'">
           </div>
         </ion-slide>
@@ -50,7 +50,7 @@
                     </button>
                     <p class="quantity">{{currentNumber}}</p>
                     <img class="img-control" src="assets/imgs/customicons/control.png" >
-              
+
                     <button class="button-add" (click)="increment()">
                         <ion-icon name="add"></ion-icon>
                     </button>
@@ -188,7 +188,7 @@
         </ion-segment-button>
       </ion-segment>
     </div>
-      
+
     <div [ngSwitch]="detail" style ="padding-left: 30px; padding-right: 30px; padding-top: 30px; padding-bottom: 20%; margin-top: 0; background-color: #eeeeee">
       <!-- <ion-list *ngSwitchCase="'description'">
         <ion-item>
@@ -202,13 +202,13 @@
       </ion-list> -->
       <div *ngSwitchCase="'description'" style="margin: 0" [innerHTML]='product.descripcion'></div>
       <p *ngSwitchCase="'shipping-and-return'" style="margin: 0">
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-        when an unknown printer took a galley of type and scrambled it to make a type 
-        specimen book. It has survived not only five centuries, but also the leap into 
-        electronic typesetting, remaining essentially unchanged. It was popularised in 
-        the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, 
-        and more recently with desktop publishing software like Aldus PageMaker including 
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+        when an unknown printer took a galley of type and scrambled it to make a type
+        specimen book. It has survived not only five centuries, but also the leap into
+        electronic typesetting, remaining essentially unchanged. It was popularised in
+        the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
+        and more recently with desktop publishing software like Aldus PageMaker including
         versions of Lorem Ipsum.
       </p>
     </div>
@@ -233,9 +233,10 @@
 <drawer-opacity #sideBar></drawer-opacity>
 
 <!--Volver-->
-<button class="button-back" (click)="backPage()">
+<!-- <button class="button-back" (click)="backPage()">
   <ion-icon name="arrow-back" style="color: white"></ion-icon>
-</button>
+</button> -->
+<button-back></button-back>
 
 <!--Header-->
 <header-app [options]="namePage"></header-app>

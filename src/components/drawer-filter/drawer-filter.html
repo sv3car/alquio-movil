@@ -1,9 +1,9 @@
 <ion-content id="filter">
-        
+
         <img src="assets/imgs/bg.png" alt="bar" class="img-bar"/>
-      
+
         <img src="assets/imgs/controls.png" alt="controls" class="img-control"/>
-      
+
         <div class="filtro">
           <button class="button-left" (click)="hideFliter()">
               <img src="assets/imgs/customicons/back.png" class="img-back">
@@ -18,21 +18,21 @@
               <ion-item>
                   <ion-label class="label-option"><strong>Buscar por</strong></ion-label>
               </ion-item>
-      
+
               <ion-item>
                   <ion-label>Los mas buscados</ion-label>
                   <ion-checkbox [(ngModel)]="more-search"></ion-checkbox>
                 </ion-item>
-              
+
                 <ion-item>
                   <ion-label>Mas recientes</ion-label>
                   <ion-checkbox [(ngModel)]="most-recent"></ion-checkbox>
                 </ion-item>
-      
-                <ion-item>
+
+                <!-- <ion-item>
                     <ion-label class="label-option"><strong>Colores</strong></ion-label>
                 </ion-item>
-      
+
                 <div>
                   <ion-grid center>
                     <ion-row>
@@ -56,12 +56,12 @@
                       </ion-col>
                     </ion-row>
                   </ion-grid>
-                </div>
-      
-                <ion-item>
+                </div> -->
+
+                <!-- <ion-item>
                     <ion-label class="label-option"><strong>Talla</strong></ion-label>
                 </ion-item>
-      
+
                 <ion-item>
                     <ion-label>Pequeño</ion-label>
                     <ion-checkbox [(ngModel)]="small"></ion-checkbox>
@@ -73,17 +73,17 @@
                 <ion-item>
                     <ion-label>Grande</ion-label>
                     <ion-checkbox [(ngModel)]="big"></ion-checkbox>
-                  </ion-item>
-              
+                  </ion-item> -->
+
               <ion-item>
                   <ion-label class="label-option"><strong>Precio</strong></ion-label>
               </ion-item>
-      
+
               <ion-item>
                 <ion-label >Mínimo</ion-label>
                 <ion-input type="number"></ion-input>
               </ion-item>
-            
+
               <ion-item>
                   <ion-label>Máximo</ion-label>
                   <ion-input type="number"></ion-input>
@@ -92,7 +92,7 @@
           <div class="div-button-aplic">
             <button ion-button round class="button-aplicar" (click)="hideFliter()">Aplicar</button>
           </div>
-          
+
         </div>
-  
+
 </ion-content>

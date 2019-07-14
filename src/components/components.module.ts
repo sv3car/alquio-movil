@@ -29,7 +29,7 @@ import { NgModule } from '@angular/core';
     	DrawerProductDetailPanel,
     	DrawerOpacity*/
 	],
-	providers: [ 
+	providers: [
 		/*DrawerCategoryService,
 		DrawerUserService*/
 	]

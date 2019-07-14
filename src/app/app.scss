@@ -68,3 +68,16 @@ ion-icon {
     border-top-left-radius: 200px;
     background-image: linear-gradient(#40188F, #7B55B9);
 }
+
+.customToastClass{
+  background-color: transparent !important;
+  // font-weight: bold;
+  position: absolute;
+  top: 5% !important;
+  text-align: center !important;
+  border-radius: 10px !important;
+  width: 90% !important;
+  align-items: center;
+  align-content: center;
+  left: 5%;
+}

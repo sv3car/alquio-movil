@@ -31,15 +31,15 @@ export class StartPage {
   nextPage: string;
 
   categories : any[] = [];
-  
+
   products : any[] = [];
 
   productsPar : any[] = []
-  
+
   productsImpar : any[] = []
 
 
-  //ANIMACION FILTER 
+  //ANIMACION FILTER
   initialPosition: boolean = true;
   leftPosition: boolean = false;
   initialColor: boolean = true;
@@ -87,7 +87,7 @@ export class StartPage {
   /**
    * Médotodo los productos segun la categoría seleccionada
    * en el template
-   * 
+   *
    * @param index índice de la categoría en el array
    * @param id id de la categoría en el array (opcional)
    */
@@ -112,7 +112,7 @@ export class StartPage {
   /**
    * Método que odena los productos para que se visualicen de forma correcta
    * en el gred asimétrico
-   * 
+   *
    * @param products array de productos a ordenar
    */
   getReorderProducts(products:any):any{
@@ -135,7 +135,7 @@ export class StartPage {
 
   /**
    * Método que carga los productos segun un id de categoría
-   * 
+   *
    * @param categoryId id de categoría
    */
   getPageProducts(categoryId:number) {
@@ -145,7 +145,7 @@ export class StartPage {
     this.nextPage = null;
     this.products = [];
     this.categoryId = categoryId;
-    this.restProvider.getData("productos", "?api_token="+localStorage.getItem('token') + 
+    this.restProvider.getData("productos", "?api_token="+localStorage.getItem('token') +
     "&categoria_id=" + categoryId)
     .then((data:any)=>{
         console.log("PRODUCTOS", data);
@@ -164,10 +164,10 @@ export class StartPage {
   }
 
   /**
-   * Método que determina si se añadiran o no mas 
+   * Método que determina si se añadiran o no mas
    * artículos a la página
-   * 
-   * @param infiniteScroll 
+   *
+   * @param infiniteScroll
    */
   next(infiniteScroll?) {
     if (infiniteScroll && this.nextPage) {
@@ -207,12 +207,12 @@ export class StartPage {
       });
     }
   }
- 
+
   /**
-   * Método que se llama desde el template para 
+   * Método que se llama desde el template para
    * el scroll infinito
-   * 
-   * @param infiniteScroll 
+   *
+   * @param infiniteScroll
    */
   loadMore(infiniteScroll) {
     this.next(infiniteScroll);
@@ -223,10 +223,10 @@ export class StartPage {
 
   /**
    * Redirecciona a la página de Productos
-   * 
+   *
    * @param product pasa como parametro el producto seleccionado
    */
-  goProduct(product){   
+  goProduct(product){
     this.navCtrl.push(ProductPage, product);
   };
 
@@ -234,18 +234,18 @@ export class StartPage {
     if (this.categoryIndex < this.categories.length - 1){
       this.getCategoriesAndProducts(++this.categoryIndex);
     }
-  } 
+  }
 
   moveLeft(): void {
     if (this.categoryIndex > 0){
       this.getCategoriesAndProducts(--this.categoryIndex);
     }
-  }   
+  }
 
   /**
-   * 
+   *
    * Metodo para mostrar u ocultar el filter
-   * 
+   *
    */
   filterTransition(){
 
@@ -259,31 +259,13 @@ export class StartPage {
   }
 
   /**
-   *
-   * Metodo que me permite saber en que categoria me encuentro 
-   * 
-   */
-  changeCategoryTexts(categoryId){
-
-    let category = this.categories.filter((item) => {
-        if(item.id === categoryId){
-          return item.name;
-        }
-    });
-
-    this.categoryName = category[0].name;
-
-    
-  }
-
-  /**
    * 
    * Metodo para mostrar u ocultar el filter con un gesture swipe
-   * 
+   *
    */
   filterTransitionWithGesture(event){
 
-    
+
 
     switch(event.direction){
 
@@ -318,7 +300,7 @@ export class StartPage {
   }
 
   /**
-   * 
+   *
    */
   /*backPage():void{
     localStorage.setItem("token", null);
