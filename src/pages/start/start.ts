@@ -26,8 +26,11 @@ export class StartPage {
 
   categoryId: number;
 
+<<<<<<< HEAD
   categoryName: string;
   
+=======
+>>>>>>> carlos-splash
   nextPage: string;
 
   categories : any[] = [];
@@ -256,6 +259,24 @@ export class StartPage {
     this.initialButton = !this.initialButton;
     this.leftButton = !this.leftButton;
 
+  }
+
+  /**
+   *
+   * Metodo que me permite saber en que categoria me encuentro 
+   * 
+   */
+  changeCategoryTexts(categoryId){
+
+    let category = this.categories.filter((item) => {
+        if(item.id === categoryId){
+          return item.name;
+        }
+    });
+
+    this.categoryName = category[0].name;
+
+    
   }
 
   /**
