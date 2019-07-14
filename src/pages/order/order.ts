@@ -4,6 +4,7 @@ import { NavController, NavParams } from 'ionic-angular';
 //Providers
 import { RestProvider } from '../../providers/rest/rest';
 import { GlobalProvider } from '../../providers/global/global';
+import { StartPage } from '../start/start';
 
 @Component({
   selector: 'page-order',
@@ -55,22 +56,29 @@ export class OrderPage {
                     console.log("PRODUCTOS ERROR", err);
                   })
               }
-              if (order.estatus=="PENDIENTE"){
-                order.estatus_image = "en-proceso.png";
+              switch(order.estatus){
+                case "PENDIENTE":{
+                  order.estatus_image = "en-proceso.png";
+                  break;
+                }
+                case "COMPLETADO":{
+                  order.estatus_image = "entregado.png";
+                  break;
+                }
+                case "CANCELADO":{
+                  order.estatus_image = "cancelado.png";
+                  break;
+                }
+                case "TRANSITO":{
+                  order.estatus_image = "en-transito.png";
+                }
               }
-
-              let meses = [
-                "Enero", "Febrero", "Marzo",
-                "Abril", "Mayo", "Junio", "Julio",
-                "Agosto", "Septiembre", "Octubre",
-                "Noviembre", "Diciembre"
-              ]
               
               let d = new Date(order.created_at);
               let dia = d.getDate();
               let mes = d.getMonth();
               let yyy = d.getFullYear();
-              let fecha_formateada = dia + ' de ' + meses[mes] + ' de ' + yyy;
+              let fecha_formateada = dia + '/' + mes + '/' + yyy;
 
               order.fecha = fecha_formateada;
               order.detalles = productos;
@@ -89,7 +97,7 @@ export class OrderPage {
   }
 
   backPage():void{
-    this.navCtrl.pop();
+    this.navCtrl.setRoot(StartPage);
   }
 
 }

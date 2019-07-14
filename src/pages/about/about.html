@@ -1,44 +1,6 @@
 <ion-content padding>
-  <div class="boxBorders">
-      <ion-list>
-
-          <ion-item>
-            <h2><b>Contacto</b></h2>
-            <p>carlos_andres95@outlook.com</p>
-            <button ion-button clear item-end>Cambiar</button>
-          </ion-item>
-
-          <ion-item>
-            <h2><b>Enviar a</b></h2>
-            <p>CALLE 1 F 3918, CASA 111611</p>
-            <p>BOGOTA DC, Colombia</p>
-            <button ion-button clear item-end>Cambiar</button>
-          </ion-item>
-          
-          <ion-item>
-            <h2><b>Method</b></h2>
-            <p>Free Shipping - <b>Free</b></p>
-          </ion-item>
-
-
-        </ion-list>
-  </div>
+    <div style="text-align: center;">
+        <img src="assets/imgs/fondo-Inico--.png" width="50%" height="45%" />
+        <h2 id="version"><strong>{{VERSION}}</strong></h2>
+    </div>
 </ion-content>
-
-<!--Opacidad del Contenido-->
-<drawer-opacity #sideBar></drawer-opacity>
-
-<!--Volver-->
-<button class="button-back" (click)="backPage()">
-    <ion-icon name="arrow-back" style="color: white"></ion-icon>
-</button>
-
-<!--Header-->
-<header-app [options]="namePage"></header-app>
-
-<!--Bottom-->
-<!-- <bottom-app></bottom-app> -->
-
-<!--Opciones del usuario-->
-<drawer-user [options]="namePage" [sideBar]="sideBar"></drawer-user>
-<drawer-user-panel></drawer-user-panel>

@@ -1,0 +1,38 @@
+<ion-content padding style="background-color: rgba(237, 237, 237, 1)">
+  <button ion-button full class="buttonayuda" (click)="gotoTerminosycondiciones()">
+    <h1><strong>Términos y condiciones</strong></h1>
+  </button>
+  <button ion-button full class="buttonayuda" (click)="gotoPreguntasfrecuentes()">
+    <h1><strong>Preguntas frecuentes</strong></h1>
+  </button>
+  <button ion-button full class="buttonayuda" (click)="gotoAcercade()">
+    <h1><strong>Acerca de</strong></h1>
+  </button>
+  <button ion-button full class="buttonayuda" (click)="gotoContacto()">
+    <h1><strong>Contacto</strong></h1>
+  </button>
+  <div style="height: 20px;"></div>
+  <div style="text-align: center;">
+    <img src="assets/imgs/alquio-order.png" width="80%" height="15%" />
+  </div>
+
+  <div id="bottom" class="bar">
+    <p id="category">{{ namePage.name }}</p>
+  </div>
+</ion-content>
+
+<!--Opacidad del Contenido-->
+<drawer-opacity #sideBar></drawer-opacity>
+
+<!--Volver-->
+<button-back></button-back>
+
+<!--Header-->
+<header-app [options]="namePage"></header-app>
+
+<!--Bottom-->
+<!-- <bottom-app></bottom-app> -->
+
+<!--Opciones del usuario-->
+<drawer-user [options]="namePage" [sideBar]="sideBar"></drawer-user>
+<drawer-user-panel></drawer-user-panel>

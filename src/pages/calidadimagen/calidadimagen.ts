@@ -17,11 +17,11 @@ export class CalidadImagen {
       "Calidad inteligente",
       "Calidad alta (Wi-Fi)",
       "Calidad normal (2G o 3G)"];
-    this.modoelegido=this.global.imagqualitymode;
+    this.modoelegido=localStorage.getItem(GlobalProvider.CALIDADIMAGEN_LOCAL);
   }
 
   saveImagQuality(){
-    this.global.imagqualitymode=this.modoelegido;
+    localStorage.setItem(GlobalProvider.CALIDADIMAGEN_LOCAL,this.modoelegido);
     this.viewCtrl.dismiss();
   }
 

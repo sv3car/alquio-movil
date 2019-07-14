@@ -33,7 +33,7 @@ export class LoginPage {
               public fb: FormBuilder,
               public alertController: AlertController) {
       this.myForm = this.crearFormulario();
-
+      this.setdefaultNotificacionesyCalidadimg();
   }
 
   /**
@@ -47,6 +47,15 @@ export class LoginPage {
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]],
     });
+  }
+
+  setdefaultNotificacionesyCalidadimg(){
+    if (!localStorage.getItem(GlobalProvider.NOTIFICACIONES_LOCAL)){
+      localStorage.setItem(GlobalProvider.NOTIFICACIONES_LOCAL,JSON.stringify(GlobalProvider.NOTIFICATIONS));
+    }
+    if (!localStorage.getItem(GlobalProvider.CALIDADIMAGEN_LOCAL)){
+      localStorage.setItem(GlobalProvider.CALIDADIMAGEN_LOCAL,JSON.stringify(GlobalProvider.CALIDADIMAGEN));
+    }
   }
 
 

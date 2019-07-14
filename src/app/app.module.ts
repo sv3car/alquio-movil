@@ -38,7 +38,7 @@ import { StartPage } from '../pages/start/start';
 import { SingInPage } from '../pages/sing-in/sing-in';
 import { SearchPage } from '../pages/search/search';
 import { ActionCategoryPage } from '../pages/action-category/action-category';
-import { AboutPage } from '../pages/about/about';
+import { AyudaPage } from '../pages/ayuda/ayuda';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
@@ -49,6 +49,10 @@ import { CreditCardPage } from '../pages/credit-card/credit-card';
 import {LegalInformation} from '../pages/information/legal-information';
 import { PoliticasPage } from '../pages/politicas/politicas';
 import { CalificaPage } from '../pages/califica/califica';
+import { AboutPage } from '../pages/about/about';
+import { PreguntasPage } from '../pages/preguntas/preguntas';
+import { TerminosyCondicionesPage } from '../pages/terminosycondiciones/terminosycondiciones';
+
 
 //Providers
 
@@ -65,7 +69,7 @@ import { FilePath } from '@ionic-native/file-path/ngx';
 @NgModule({
   declarations: [
     MyApp,
-    AboutPage,
+    AyudaPage,
     ContactPage,
     HomePage,
     LoginPage,
@@ -98,7 +102,10 @@ import { FilePath } from '@ionic-native/file-path/ngx';
     LegalInformation,
     CalidadImagen,
     PoliticasPage,
-    CalificaPage
+    CalificaPage,
+    AboutPage,
+    PreguntasPage,
+    TerminosyCondicionesPage
   ],
   imports: [
     BrowserModule,
@@ -110,7 +117,7 @@ import { FilePath } from '@ionic-native/file-path/ngx';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    AboutPage,
+    AyudaPage,
     ContactPage,
     HomePage,
     LoginPage,
@@ -130,7 +137,10 @@ import { FilePath } from '@ionic-native/file-path/ngx';
     LegalInformation,
     CalidadImagen,
     PoliticasPage,
-    CalificaPage
+    CalificaPage,
+    AboutPage,
+    PreguntasPage,
+    TerminosyCondicionesPage
   ],
   providers: [
     StatusBar,

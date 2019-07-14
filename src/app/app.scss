@@ -89,10 +89,6 @@ ion-icon {
 }
 
 .calidadimagen{
-    background: rgba(0, 0, 0, 0.5) !important;
-    ion-backdrop{
-        visibility: visible;
-    }
     .modal-wrapper{
         position: relative;
         top: 25% !important;
@@ -103,15 +99,11 @@ ion-icon {
 }
 
 .califica{
-    background: rgba(0, 0, 0, 0.5) !important;
-    ion-backdrop{
-        visibility: visible;
-    }
     .modal-wrapper{
         position: relative;
         top: 25% !important;
-        left: 12.5% !important;
-        width: 75%;
+        left: 5% !important;
+        width: 90%;
         height: 33%;
 
         .fixed-content{
@@ -119,12 +111,29 @@ ion-icon {
         }
 
         .scroll-content{
-            margin-top: 65px !important;
-        }
-
-        .scroll-content{
+            margin-top: 70px !important;
             top: 75px !important;
         }
+    }
+}
+
+.about{
+    .modal-wrapper{
+        position: relative;
+        top: 25% !important;
+        left: 10% !important;
+        width: 80%;
+        height: 40%;
+    }
+}
+
+.contact{
+    .modal-wrapper{
+        position: relative;
+        top: 25% !important;
+        left: 5% !important;
+        width: 90%;
+        height: 45%;
     }
 }
 
@@ -169,10 +178,6 @@ ion-icon {
 }
 
 .politicaspage{
-    background: rgba(0, 0, 0, 0.5) !important;
-    ion-backdrop{
-        visibility: visible;
-    }
     .modal-wrapper{
         position: relative;
         top: 12% !important;
@@ -185,6 +190,18 @@ ion-icon {
         }
     }
 }
+
+.calidadimagen,
+.califica,
+.about,
+.contact,
+.politicaspage{
+    background: rgba(0, 0, 0, 0.5) !important;
+    ion-backdrop{
+        visibility: visible;
+    }
+}
+
 
 ion-alert{
     .alert-wrapper{

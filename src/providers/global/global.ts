@@ -5,11 +5,12 @@ import { LoadingController, AlertController, ToastController } from 'ionic-angul
 
 @Injectable()
 export class GlobalProvider {
-
+  static VERSION : string = "Versión 1.0";
   static CART_LOCAL : string = "cart_local";
   static FAVORITE_LOCAL : string = "favorite_local";
   static USER_LOCAL : string = "user_local";
   static NOTIFICACIONES_LOCAL : string = "notificaciones_local";
+  static CALIDADIMAGEN_LOCAL : string = "calidadimagen_local";
   static API_KEY_CHAT : string = "9cdcfbaecd7f66f4a6a944ac87adee20d21501ef";
   static APP_ID_CHAT : string = "4834554758acef";
   static USER_PROPERTY_TO_BACK_PROPERTY = {
@@ -18,6 +19,13 @@ export class GlobalProvider {
     'E-mail': 'email',
     'Dirección de envío': 'direccion'
   };
+  static NOTIFICATIONS = {
+    Ordenes: true,
+    Promociones: false,
+    Notificaciones: true
+  };
+  static CALIDADIMAGEN : string = "Calidad inteligente";
+
 
   apiURL: string = 'https://alquio.com/api/';
   apiChat: string = 'https://api.cometchat.com/v1.8/';
@@ -25,13 +33,6 @@ export class GlobalProvider {
   loading: any;
   alertConfirm: any;
   toast: any
-
-  //variable to save image quality mode
-  imagqualitymode: string = "Calidad inteligente";
-
-  //variable to save notifications
-  NOTIFICATIONS: boolean[] = [true,false,true];
-
 
   //Drawer
   isDrawer: boolean = false;

@@ -1,5 +1,14 @@
-<ion-content padding>
-  <div *ngIf="!cartProd" class="card-cart"><h2 style="color:rgb(218, 218, 218); text-align: center">El carrito de compras está vacío</h2></div>
+<ion-content padding overflow-scroll="false">
+  <div *ngIf="!cartProd">
+    <div style="text-align: center; margin-top: 50px;">
+      <img src="assets/imgs/fondo-Inico--.png" width="25%" height="12.5%"/>
+      <img src="assets/imgs/pale-order-completed.png" width="100%" height="25%"/>
+      <p class="texto-de-vacio"><strong>!Aún no tienes nada en el carrito¡<br /> ¿qué esperas?</strong></p>
+      <button class="boton-inicio" icon-only (click)="backPage()">
+        <img src="assets/imgs/inicio_vacio.PNG" width="100%" height="100%"/>
+      </button>
+    </div>
+  </div>
   <div *ngIf="cartProd" class="card-cart" >
     <div style="width: 100%; text-align: center"><h2>Carrito de compras</h2></div>
     <ion-card *ngFor="let product of cartProd">

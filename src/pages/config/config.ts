@@ -117,42 +117,35 @@ export class ConfigPage {
   gotoNotificaciones(){
     let alert = this.alertCtrl.create({cssClass: 'Alerts'});
     alert.setTitle('Notificaciones');
+    let NOTIFICATIONS = this.globalProv.getJSONLocalStorage(GlobalProvider.NOTIFICACIONES_LOCAL);
     alert.addInput({
       type: 'checkbox',
       label: 'Ordenes',
-      checked: (this.globalProv.getJSONLocalStorage(GlobalProvider.NOTIFICACIONES_LOCAL) == null)?
-      this.globalProv.NOTIFICATIONS[0] : this.globalProv.getJSONLocalStorage(GlobalProvider.NOTIFICACIONES_LOCAL).Ordenes,
+      checked: this.globalProv.getJSONLocalStorage(GlobalProvider.NOTIFICACIONES_LOCAL).Ordenes,
       handler: () => {
-        this.globalProv.NOTIFICATIONS[0]=!this.globalProv.NOTIFICATIONS[0];
+        NOTIFICATIONS.Ordenes = !NOTIFICATIONS.Ordenes
       }
       });
     alert.addInput({
       type: 'checkbox',
       label: 'Promociones',
-      checked: (this.globalProv.getJSONLocalStorage(GlobalProvider.NOTIFICACIONES_LOCAL) == null)?
-      this.globalProv.NOTIFICATIONS[1] : this.globalProv.getJSONLocalStorage(GlobalProvider.NOTIFICACIONES_LOCAL).Promociones,
+      checked: this.globalProv.getJSONLocalStorage(GlobalProvider.NOTIFICACIONES_LOCAL).Promociones,
       handler: () => {
-        this.globalProv.NOTIFICATIONS[1]=!this.globalProv.NOTIFICATIONS[1];
+        NOTIFICATIONS.Promociones = !NOTIFICATIONS.Promociones
       }
       });
     alert.addInput({
       type: 'checkbox',
       label: 'Notificaciones',
-      checked: (this.globalProv.getJSONLocalStorage(GlobalProvider.NOTIFICACIONES_LOCAL) == null)?
-      this.globalProv.NOTIFICATIONS[2] : this.globalProv.getJSONLocalStorage(GlobalProvider.NOTIFICACIONES_LOCAL).Notificaciones,
+      checked: this.globalProv.getJSONLocalStorage(GlobalProvider.NOTIFICACIONES_LOCAL).Notificaciones,
       handler: () => {
-        this.globalProv.NOTIFICATIONS[2]=!this.globalProv.NOTIFICATIONS[2];
+        NOTIFICATIONS.Notificaciones = !NOTIFICATIONS.Notificaciones
       }
       });
     alert.addButton({
       text: 'Listo',
       handler: () => {
-        let noti={
-          Ordenes: this.globalProv.NOTIFICATIONS[0],
-          Promociones: this.globalProv.NOTIFICATIONS[1],
-          Notificaciones: this.globalProv.NOTIFICATIONS[2]
-        };
-        localStorage.setItem(GlobalProvider.NOTIFICACIONES_LOCAL,JSON.stringify(noti));
+        localStorage.setItem(GlobalProvider.NOTIFICACIONES_LOCAL,JSON.stringify(NOTIFICATIONS));
       }
     });
     alert.present();

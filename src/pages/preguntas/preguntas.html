@@ -1,0 +1,83 @@
+<ion-content padding style="background-color: rgba(237, 237, 237, 1)">
+  <div *ngFor="let preg of preguntas; index as i">
+    <ion-item full class="itemayuda">
+      <ion-grid>
+        <ion-row>
+          <ion-col left class="arrow-button">
+            <button ion-button clear icon-start class="arrow" (click)="muestra(i)">
+              <ion-icon name="arrow-dropdown"></ion-icon>
+            </button>
+          </ion-col>
+          <ion-col right class="preg-col">
+            <h2><strong>{{ preg }}</strong></h2>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+    <ion-item class="text" *ngIf="q[i]">
+      <iframe frameborder="0" [src]="preguntaURL(i)"></iframe>
+    </ion-item>
+  </div>
+  <!-- <ion-item  full class="itemayuda" (click)="gotoPreguntasfrecuentes()">
+    <ion-grid>
+      <ion-row>
+        <ion-col left class="arrow-button">
+          <button ion-button clear icon-start class="arrow">
+            <ion-icon name="arrow-dropdown"></ion-icon>
+          </button>
+        </ion-col>
+        <ion-col right class="preg-col">
+          <h2><strong>Devoluciones y reembolsos</strong></h2>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-item>
+  <ion-item  full class="itemayuda" (click)="gotoAcercade()">
+    <ion-grid>
+      <ion-row>
+        <ion-col left class="arrow-button">
+          <button ion-button clear icon-start class="arrow">
+            <ion-icon name="arrow-dropdown"></ion-icon>
+          </button>
+        </ion-col>
+        <ion-col right class="preg-col">
+          <h2><strong>Pagos, precios y promociones</strong></h2>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-item>
+  <ion-item  full class="itemayuda" (click)="gotoContacto()">
+    <ion-grid>
+      <ion-row>
+        <ion-col left class="arrow-button">
+          <button ion-button clear icon-start class="arrow">
+            <ion-icon name="arrow-dropdown"></ion-icon>
+          </button>
+        </ion-col>
+        <ion-col right class="preg-col">
+          <h2><strong>Administrando su cuenta</strong></h2>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-item> -->
+  <div style="height: 20px;"></div>
+  <div style="text-align: center;">
+    <img src="assets/imgs/alquio-order.png" width="80%" height="15%" />
+  </div>
+</ion-content>
+
+<!--Opacidad del Contenido-->
+<drawer-opacity #sideBar></drawer-opacity>
+
+<!--Volver-->
+<button-back></button-back>
+
+<!--Header-->
+<header-app [options]="namePage"></header-app>
+
+<!--Bottom-->
+<!-- <bottom-app></bottom-app> -->
+
+<!--Opciones del usuario-->
+<drawer-user [options]="namePage" [sideBar]="sideBar"></drawer-user>
+<drawer-user-panel></drawer-user-panel>

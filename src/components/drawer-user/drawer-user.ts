@@ -8,7 +8,7 @@ import { OrderPage } from '../../pages/order/order';
 import { CometChatPage } from '../../pages/comet-chat/comet-chat';
 import { ConfigPage } from '../../pages/config/config';
 import { FavoritePage } from '../../pages/favorite/favorite';
-import { AboutPage } from '../../pages/about/about';
+import { AyudaPage } from '../../pages/ayuda/ayuda';
 
 //providers
 import { GlobalProvider } from '../../providers/global/global';
@@ -115,9 +115,7 @@ export class DrawerUser {
 
   goAbout(): void {
     if (!(this.name === 'about')) {
-      const modal = this.modalCtrl.create(AboutPage);
-      modal.present();
-      //this.navCtrl.push(AboutPage);
+      this.navCtrl.push(AyudaPage);
     }
   }
 

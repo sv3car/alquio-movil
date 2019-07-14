@@ -1,36 +1,57 @@
-<ion-content padding>
+<ion-content padding overflow-scroll="false">
+  <div *ngIf="!orders">
+    <div style="text-align: center; margin-top: 50px;">
+      <img src="assets/imgs/fondo-Inico--.png" width="25%" height="12.5%"/>
+      <img src="assets/imgs/pale-order-completed.png" width="100%" height="25%"/>
+      <p class="texto-de-vacio"><strong>¿Aún no tienes ninguna orden, que esperas?</strong></p>
+      <button class="boton-inicio" icon-only (click)="backPage()">
+        <img src="assets/imgs/inicio_vacio.PNG" width="100%" height="100%"/>
+      </button>
+    </div>
+  </div>
   <div class="card-order">
     <ion-card *ngFor="let order of orders">
-      <ion-card-header>
-        {{ order.fecha }}
-      </ion-card-header>
-      <ion-grid center>
-        <ion-row class="row-card">
-          <ion-col>
-            <div class="img-card"
-              [style.background-image]="'url(https://alquio.com/productos/thumbnail/' + prod.foto + ')'">
-            </div>
-          </ion-col>
-          <ion-col>
-            <p style="text-align: left">{{ prod.titulo }}</p>
-            <div>
-              <div style="width: 50%; float: left;">
-                <p class="price">Precio:</p>
-                <p class="value-price">{{ prod.precio }}</p>
-              </div>
-              <div style="width: 50%; float: left;">
-                <p class="price">Cantidad:</p>
-                <p class="value-price">{{ prod.cantidad }}</p>
-              </div>
-            </div>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
+      <div>
+        <div class="div-slides">
+          <ion-slides pager>
+            <ion-slide *ngFor="let prod of order.detalles">
+              <ion-grid center>
+                <ion-row class="row-card">
+                  <ion-col>
+                    <div class="img-card"
+                      [style.background-image]="'url(https://alquio.com/productos/thumbnail/' + prod.foto + ')'">
+                    </div>
+                  </ion-col>
+                  <ion-col>
+                    <p style="text-align: left">{{ prod.titulo }}</p>
+                    <div>
+                      <div style="width: 50%; float: left;">
+                        <p class="price">Precio</p>
+                        <p class="value-price">${{ prod.precio }}</p>
+                      </div>
+                      <div style="width: 50%; float: left;">
+                        <p class="price">Cantidad</p>
+                        <p class="value-price">{{ prod.cantidad }}</p>
+                      </div>
+                    </div>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+              <div style="height: 20px;"></div>
+            </ion-slide>
+          </ion-slides>
+        </div>
       </div>
       <hr style="border:5px; width: 90%; text-align: center; border-width: 5px">
       <div style="width: 100%; float: left;" class="order-bot">
         <div style="width: 50%; float: left; position: relative;">
-          <p class="price">Tipo de envío:</p>
+          <p class="price">Monto total</p>
+          <p class="value-price">${{ order.monto }}</p>
+          <p></p>
+          <p class="price">Dirección</p>
+          <p class="value-price">{{ order.direccion }}</p>
+          <p></p>
+          <p class="price">Tipo de envío</p>
           <p class="value-price">{{ order.cart_envio }}</p>
         </div>
         <div style="width: 50%; float: left; text-align: center" class="div-status">
@@ -39,9 +60,19 @@
           <p class="status"><strong>{{ order.estatus }}</strong></p>
         </div>
         <hr style="border:5px; width: 90%; text-align: center; border-width: 5px">
-        <div style="text-align: center">
-          <p class="price" style="text-align: center">Fecha de orden</p>
-          <p class="value-price" style="text-align: center">{{ order.fecha }}</p>
+        <div>
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <p class="price" style="text-align: center;">No. de orden</p>
+                <p class="value-price" style="text-align: center;">{{ order.id }}</p>
+              </ion-col>
+              <ion-col>
+                <p class="price" style="text-align: center;">Fecha de orden</p>
+                <p class="value-price" style="text-align: center;">{{ order.fecha }}</p>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
         </div>
       </div>
     </ion-card>

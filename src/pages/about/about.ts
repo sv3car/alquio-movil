@@ -1,31 +1,16 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController } from 'ionic-angular';
 import { GlobalProvider } from '../../providers/global/global';
 
 @Component({
-  selector: 'page-about',
-  templateUrl: 'about.html'
-})
-export class AboutPage {
-  
-  namePage : any;
+    selector: 'page-about',
+    templateUrl: 'about.html'
+  })
 
-  constructor(public navCtrl: NavController, 
-            public navParams: NavParams,
-            public globalProv : GlobalProvider) {
-    /**
-     * Nombre de la Página
-     */
+export class AboutPage{
+    VERSION: string;
 
-    this.namePage = {
-      name: 'about'
-    };
-  }
-
-  backPage(){
-
-    this.navCtrl.pop();
-
-  }
-
+    constructor(public global: GlobalProvider){
+      this.VERSION = GlobalProvider.VERSION;
+    }
 }
