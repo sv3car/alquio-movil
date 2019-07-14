@@ -57,7 +57,7 @@
           <div class="products-int">
           <!-- <ion-card tappable (click)="goProduct(product)"> -->
             <ion-thumbnail class="my-thumbnail">
-              <img [src]="'https://alquio.com/productos/' + product.foto" class="imgCard"/>
+              <img [src]="'https://alquio.com/productos/thumbnail/' + product.foto" class="imgCard"/>
               <img *ngIf="product.inventario_operativo === 0" [src]="'assets/imgs/start/agotado-banner-diagonal.png'" class="imgCardAgotado" id="smallone"/>
             </ion-thumbnail>
             <div class="card-cont">
@@ -76,7 +76,7 @@
           <div class="products-int">
           <!-- <ion-card tappable (click)="goProduct(product)"> -->
             <ion-thumbnail class="my-thumbnail">
-              <img [src]="'https://alquio.com/productos/' + product.foto" class="imgCard"/>
+              <img [src]="'https://alquio.com/productos/thumbnail/' + product.foto" class="imgCard"/>
               <img *ngIf="product.inventario_operativo === 0" [src]="'assets/imgs/start/agotado-banner-diagonal.png'" class="imgCardAgotado"/>
             </ion-thumbnail>
             <div class="card-cont">

@@ -1,0 +1,73 @@
+page-preguntas {
+    .boxBorders{
+        margin-top: 16%;
+        border: 2px solid;
+        border-radius: 2px;
+        border-color: rgb(228, 228, 228);
+        width: 100%;
+    }
+
+    #category{
+        position: absolute;
+        top:0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        margin-top: 0;
+        font-size: 40px;
+        color: white;
+        //padding: 0;
+    }
+
+    #bottom{
+        position: absolute;
+        bottom: 8.5%;
+        border-top-right-radius: 200px;
+        border-top-left-radius: 200px;
+        background-color: #7B55B9;
+        background-image: linear-gradient(#40188F, #7B55B9);
+        margin-left: -16px;
+    }
+
+    .bar{
+        position: fixed;
+        height: 8.5%;
+        width: 100%;
+        background-color: #7B55B9;
+        text-align: center
+    }
+
+    .scroll-content{
+        padding: 16px 5px;
+        top: 35px;
+    }
+
+    .itemayuda{
+        color: black;
+        background-color: white;
+        text-transform: none;
+        vertical-align: middle;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        height: 3rem;
+        margin: 2rem 0.2rem;
+        padding: 0;
+    }
+
+    .arrow-button{
+        border-right: 80% solid black;
+        width: 10%;
+        margin-top: 0;
+    }
+
+    .preg-col{
+        margin-top: 10px;
+    }
+
+    .arrow{
+        color: black;
+        background-color: white;
+        height: 3rem;
+    }
+}

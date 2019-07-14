@@ -1,17 +1,14 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>
-      Contact
-    </ion-title>
-  </ion-navbar>
-</ion-header>
-
-<ion-content>
-  <ion-list>
-    <ion-list-header>Follow us on Twitter</ion-list-header>
-    <ion-item>
-      <ion-icon name="ionic" item-start></ion-icon>
-      @ionicframework
-    </ion-item>
-  </ion-list>
+<ion-content id="contacto">
+  <h1><strong>¡Contáctanos!</strong></h1>
+  <hr />
+  <form [formGroup]="contact" (ngSubmit)="contactar()">
+        <label><strong>Nombre</strong></label><br />
+        <input class="input" type="text" formControlName="nombre"/><br />
+        <label><strong>Correo electrónico</strong></label><br />
+        <input class="input" type="email" formControlName="correo"/><br />
+        <label><strong>Mensaje</strong></label><br />
+        <textarea class="textarea" formControlName="mensaje"></textarea><br />
+      <button id="enviar" type="submit" [disabled]="!contact.valid">Enviar</button>
+      <button id="cancelar" type="reset" (click)="viewCtrl.dismiss()">Cancelar</button>
+  </form>
 </ion-content>

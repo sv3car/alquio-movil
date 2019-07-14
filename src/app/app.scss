@@ -23,8 +23,8 @@ ion-icon {
         mask-position: 50% 50%;
         mask-repeat: no-repeat;
         background: currentColor;
-        width: 1em;
-        height: 1em;
+        width: 12%;
+        height: 12%;
     }
     // custom icons
     &[class*="alquio-left"] {
@@ -39,6 +39,12 @@ ion-icon {
     &[class*="alquio-user"] {
         mask-image: url(../assets/img/customicons/user.svg);
     }
+    &[class*="alquio-estrella-activa"] {
+        mask-image: url(../assets/imgs/customicons/estrellaactiva.svg) !important;
+    }
+    &[class*="alquio-estrella-inactiva"] {
+        mask-image: url(../assets/imgs/customicons/estrellainactiva.svg) !important;
+    }    
 }
 
 .button-back{
@@ -80,4 +86,152 @@ ion-icon {
   align-items: center;
   align-content: center;
   left: 5%;
+}
+
+.calidadimagen{
+    .modal-wrapper{
+        position: relative;
+        top: 25% !important;
+        left: 5% !important;
+        width: 90%;
+        height: 30%;
+    }
+}
+
+.califica{
+    .modal-wrapper{
+        position: relative;
+        top: 25% !important;
+        left: 5% !important;
+        width: 90%;
+        height: 33%;
+
+        .fixed-content{
+            margin-top: 65px !important;
+        }
+
+        .scroll-content{
+            margin-top: 70px !important;
+            top: 75px !important;
+        }
+    }
+}
+
+.about{
+    .modal-wrapper{
+        position: relative;
+        top: 25% !important;
+        left: 10% !important;
+        width: 80%;
+        height: 40%;
+    }
+}
+
+.contact{
+    .modal-wrapper{
+        position: relative;
+        top: 25% !important;
+        left: 5% !important;
+        width: 90%;
+        height: 45%;
+    }
+}
+
+.legalinformation{
+    background: rgba(0, 0, 0, 0.5) !important;
+    .modal-wrapper{
+        top: 0px !important;
+        left: 0px !important;
+        width: 100%;
+        height: 100%;
+        bottom: 0 !important;
+
+        ion-title{
+            padding-right: 10%;
+            font-size: large;
+            font-weight: bold;
+            text-align: center;
+            color: white;
+        }
+
+        p{ text-align: justify; }
+
+        li{ text-align: justify; }
+
+        ol{ margin-left: auto;
+            margin-right: 7%;
+        }
+
+        ul{ margin-left: auto;
+            margin-right: 7%;
+        }
+
+        .sectiontitle{
+            text-align: center;
+            font-size: medium;
+        }
+
+        ion-col{
+            border: thin solid black;
+        }
+    }
+}
+
+.politicaspage{
+    .modal-wrapper{
+        position: relative;
+        top: 12% !important;
+        left: 5% !important;
+        width: 90%;
+        height: 80%;
+
+        #PoliticasPage{
+            text-align: center;
+        }
+    }
+}
+
+.calidadimagen,
+.califica,
+.about,
+.contact,
+.politicaspage{
+    background: rgba(0, 0, 0, 0.5) !important;
+    ion-backdrop{
+        visibility: visible;
+    }
+}
+
+
+ion-alert{
+    .alert-wrapper{
+        .alert-head{
+            text-align: center;
+        }
+        .input-has-focus .input-cover{
+            display: none;
+        }
+        .main{
+            color: red;
+            border-left: 1px solid black;
+            text-indent: 5px;
+        }
+        .alert-button-group{
+            padding: 8px 8px 8px 0px;
+        }
+        .alert-button{
+            padding: 20px;
+        }
+        .cancel{
+            color: black;
+        }
+        .alert-message{
+            padding: 0 15px 15px;
+        }
+    }
+}
+
+.sugerencias .alert-wrapper{
+        position: relative;
+        top: 25% !important;
 }

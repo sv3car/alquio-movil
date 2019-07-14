@@ -37,11 +37,22 @@ export class RestProvider {
    * @param metodo : string nombre del metodo a consumir
    *
    */
-  postData(metodo, params=null){
-
-    let headers = new HttpHeaders({"Content-Type": "application/json"});
-
-    return this.http.post(this.globalProv.apiURL + metodo, params, {headers:headers}).toPromise();
+  postData(metodo, params=null, isChat?: boolean){
+    let headers;
+    let api;
+    if (isChat){
+      headers = new HttpHeaders({
+        "Content-Type": "application/json",
+        "apikey": GlobalProvider.API_KEY_CHAT,
+        "appid": GlobalProvider.APP_ID_CHAT
+      });
+      api = this.globalProv.apiChat;
+    } else {
+      headers = new HttpHeaders({"Content-Type": "application/json"});
+      api = this.globalProv.apiURL;
+    }
+    return this.http.post(api + metodo, params, {headers:headers}).toPromise();
   }
+
 
 }

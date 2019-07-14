@@ -1,0 +1,19 @@
+<ion-header style="text-align: center;">
+    <img src="assets/imgs/customicons/calificaheader.PNG" height="114px" width="111px"/>
+    <ion-title>¿Cómo fue tu experiencia<br />con nosotros?</ion-title>
+</ion-header>
+  
+  <ion-content padding style="text-align: center;">
+    <ionic3-star-rating #rating
+        activeIcon = "ios-star"
+        defaultIcon = "ios-star-outline"
+        activeColor = "#FFE933" 
+        defaultColor = "#A2A19D"
+        readonly="false"
+        rating="5"
+        fontSize = "40px"
+        (ratingChanged)="logRatingChange($event)">
+    </ionic3-star-rating>
+  </ion-content>
+
+  <drawer-opacity #sideBar></drawer-opacity>

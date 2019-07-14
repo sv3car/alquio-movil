@@ -1,3 +1,62 @@
 page-contact {
+    h1{
+        margin-bottom: 0;
+        margin-top: 0;
+        text-align: center;
+    }
 
+    hr{
+        border:5px;
+        width: 90%;
+        text-align: center;
+        border-width: 5px;
+        background-color: black;
+        margin-block-start: 0.2em;
+        margin-block-end: 0.2em;
+    }
+
+    #enviar{
+        background-color: rebeccapurple;
+        color: white;
+        border-radius: 10px;
+    }
+
+    #cancelar{
+        background-color: white;
+        color: rebeccapurple;
+    }
+
+    #enviar,
+    #cancelar{
+        font-weight: bold;
+        width: 35%;
+        height: 30px;
+    }
+
+    #enviar:hover,
+    #cancelar:hover{
+        opacity: 0.5;
+    }
+
+    #contacto{
+        background-color: #fff;
+        padding: 5px;
+        border-radius: 10px;
+    }
+
+    .textarea{
+        height: 80px !important;
+    }
+
+    .input,
+    .textarea {
+        border: 1px solid #cecece !important;
+        border-bottom-color: transparent;
+        color: #999;
+        background-color: white;
+        border-radius: 5px;
+        width: 100%;
+        height: 40px;
+        outline: none;
+    }
 }

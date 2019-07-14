@@ -10,6 +10,7 @@ import { GlobalProvider } from '../../providers/global/global';
 
 import { OrdenesPage  } from '../../pages/ordenes/ordenes';
 import { ProductPage } from '../product/product';
+import { StartPage } from '../start/start';
 
 
 @Component({
@@ -91,7 +92,7 @@ export class CartPage {
   }
 
   backPage():void{
-    this.navCtrl.pop();
+    this.navCtrl.setRoot(StartPage);
   }
 
 

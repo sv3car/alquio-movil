@@ -33,11 +33,7 @@ export class LoginPage {
               public fb: FormBuilder,
               public alertController: AlertController) {
       this.myForm = this.crearFormulario();
-
-  }
-
-  goBack():void{
-    this.navCtrl.pop();
+      this.setdefaultNotificacionesyCalidadimg();
   }
 
   /**
@@ -51,6 +47,15 @@ export class LoginPage {
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]],
     });
+  }
+
+  setdefaultNotificacionesyCalidadimg(){
+    if (!localStorage.getItem(GlobalProvider.NOTIFICACIONES_LOCAL)){
+      localStorage.setItem(GlobalProvider.NOTIFICACIONES_LOCAL,JSON.stringify(GlobalProvider.NOTIFICATIONS));
+    }
+    if (!localStorage.getItem(GlobalProvider.CALIDADIMAGEN_LOCAL)){
+      localStorage.setItem(GlobalProvider.CALIDADIMAGEN_LOCAL,JSON.stringify(GlobalProvider.CALIDADIMAGEN));
+    }
   }
 
 
@@ -77,7 +82,7 @@ export class LoginPage {
         loading.dismiss();
       } else {
         localStorage.setItem('token', data.api_token);
-        localStorage.setItem('user', JSON.stringify(data));
+        localStorage.setItem(GlobalProvider.USER_LOCAL, JSON.stringify(data));
         this.globalProv.setToken(data.api_token);
         this.navCtrl.push(StartPage);
         loading.dismiss();

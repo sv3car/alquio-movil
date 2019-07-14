@@ -25,7 +25,7 @@ export class MyApp {
       let splash = modalCtrl.create(Splash);
       splash.present();
 
-      if (!localStorage.getItem('token') || localStorage.getItem('token') === "null") {
+      if (!localStorage.getItem('token')) {
         this.rootPage = LoginPage;
       } else {
         this.rootPage = StartPage;

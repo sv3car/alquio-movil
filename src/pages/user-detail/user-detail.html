@@ -6,11 +6,16 @@
             <img src="img/thumbnail-totoro.png">
           </ion-thumbnail>
           <h2>Foto de Perfil</h2>
-          <button ion-button clear item-end>Editar</button>
+          <button ion-button clear item-end (click)="selectImage()">Editar</button>
         </ion-item>
       </ion-list>
       <ion-list>
-       <ion-item> 
+        <ion-item> 
+            <h2>Usuario</h2>
+            <p>{{perfil.name}}</p>
+            <button ion-button clear item-end (click)="showPrompt('Usuario')">Editar</button>
+        </ion-item>
+        <ion-item> 
             <h2>Nombre</h2>
             <p>{{perfil.nombre}} {{perfil.apellido}}</p>
             <button ion-button clear item-end (click)="showPrompt('Nombre')">Editar</button>

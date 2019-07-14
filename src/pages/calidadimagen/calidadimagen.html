@@ -1,0 +1,37 @@
+  <ion-content padding>
+    <ion-list radio-group [(ngModel)]="modoelegido">
+      <!-- <ion-list-header style="font-size: medium; text-align: center;">
+        Calidad de Imagen de los Productos
+      </ion-list-header> -->
+
+      <ion-item *ngFor="let modo of modos">
+        <ion-label style="font-size: medium;">{{ modo }}</ion-label>
+        <ion-radio [value]="modo" (ionSelect)="saveImagQuality()"></ion-radio>
+      </ion-item>
+    
+  <!-- 
+      <ion-item>
+        <ion-label>Modo calidad inteligente</ion-label>
+        <ion-radio value="inteligente"></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Calidad alta (perfecto para Wi-Fi)</ion-label>
+        <ion-radio value="alta"></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Calidad normal (perfecto para 2G o 3G)</ion-label>
+        <ion-radio value="normal"></ion-radio>
+      </ion-item> -->
+    </ion-list>
+  </ion-content>
+
+  <!--Opacidad del Contenido-->
+  <drawer-opacity #sideBar></drawer-opacity>
+
+  <!--Volver al StartPage-->
+  <!-- <button-back></button-back> -->
+
+  <!--Bottom-->
+  <!-- <bottom-app></bottom-app> -->

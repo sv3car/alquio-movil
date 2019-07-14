@@ -1,14 +1,34 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { CometChat, User, Message } from '@cometchat-pro/chat';
 import { LoadingController, AlertController, ToastController } from 'ionic-angular';
 
 @Injectable()
 export class GlobalProvider {
-
+  static VERSION : string = "Versión 1.0";
   static CART_LOCAL : string = "cart_local";
   static FAVORITE_LOCAL : string = "favorite_local";
+  static USER_LOCAL : string = "user_local";
+  static NOTIFICACIONES_LOCAL : string = "notificaciones_local";
+  static CALIDADIMAGEN_LOCAL : string = "calidadimagen_local";
+  static API_KEY_CHAT : string = "9cdcfbaecd7f66f4a6a944ac87adee20d21501ef";
+  static APP_ID_CHAT : string = "4834554758acef";
+  static USER_PROPERTY_TO_BACK_PROPERTY = {
+    'Usuario': 'name',
+    'Nombre': 'nombre',
+    'E-mail': 'email',
+    'Dirección de envío': 'direccion'
+  };
+  static NOTIFICATIONS = {
+    Ordenes: true,
+    Promociones: false,
+    Notificaciones: true
+  };
+  static CALIDADIMAGEN : string = "Calidad inteligente";
+
 
   apiURL: string = 'https://alquio.com/api/';
+  apiChat: string = 'https://api.cometchat.com/v1.8/';
   api_token: string = '';
   loading: any;
   alertConfirm: any;
@@ -116,13 +136,14 @@ export class GlobalProvider {
    * @param buttons array : opcional => de botones a mostrar.
    *
    */
-  crearAlert(titulo:string, contenido:string, buttons: any = [
-                                                                {
-                                                                  text: 'Aceptar',
-                                                                  handler: null
-                                                                }
-                                                              ])
-  {
+  crearAlert(titulo:string, 
+              contenido:string, 
+              buttons: any = [
+                {
+                  text: 'Aceptar',
+                  handler: null
+                }
+              ]) {
     this.alertConfirm = this.alertCtrl.create({
       title: titulo,
       message: contenido,

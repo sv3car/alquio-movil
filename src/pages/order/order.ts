@@ -4,6 +4,7 @@ import { NavController, NavParams } from 'ionic-angular';
 //Providers
 import { RestProvider } from '../../providers/rest/rest';
 import { GlobalProvider } from '../../providers/global/global';
+import { StartPage } from '../start/start';
 
 @Component({
   selector: 'page-order',
@@ -12,8 +13,6 @@ import { GlobalProvider } from '../../providers/global/global';
 export class OrderPage {
 
   contentOpacityDisplay: string = 'no-exist-content';
-
-  loading: any;
 
   namePage: any;
 
@@ -36,8 +35,8 @@ export class OrderPage {
   }
 
   getOrder(){
-    this.loading = this.globalProv.crearLoading();
-    this.loading.present().then(()=>{
+   let loading = this.globalProv.crearLoading();
+    loading.present();
     this.restService.getData('pedidos', "?api_token="+localStorage.getItem('token')).then(
       (data:any)=>{
         for(let order of data.data){
@@ -53,45 +52,52 @@ export class OrderPage {
                     product.name_detalle = prod.name;
                     productos.push(data);
                   },(err)=>{
-                    this.loading.dismiss();
+                    //this.loading.dismiss();
                     console.log("PRODUCTOS ERROR", err);
                   })
               }
-              if (order.estatus=="PENDIENTE"){
-                order.estatus_image = "en-proceso.png";
+              switch(order.estatus){
+                case "PENDIENTE":{
+                  order.estatus_image = "en-proceso.png";
+                  break;
+                }
+                case "COMPLETADO":{
+                  order.estatus_image = "entregado.png";
+                  break;
+                }
+                case "CANCELADO":{
+                  order.estatus_image = "cancelado.png";
+                  break;
+                }
+                case "TRANSITO":{
+                  order.estatus_image = "en-transito.png";
+                }
               }
-
-              let meses = [
-                "Enero", "Febrero", "Marzo",
-                "Abril", "Mayo", "Junio", "Julio",
-                "Agosto", "Septiembre", "Octubre",
-                "Noviembre", "Diciembre"
-              ]
               
               let d = new Date(order.created_at);
               let dia = d.getDate();
               let mes = d.getMonth();
               let yyy = d.getFullYear();
-              let fecha_formateada = dia + ' de ' + meses[mes] + ' de ' + yyy;
+              let fecha_formateada = dia + '/' + mes + '/' + yyy;
 
               order.fecha = fecha_formateada;
               order.detalles = productos;
               this.orders.push(order);
-              this.loading.dismiss();
             },(err)=>{
-              this.loading.dismiss();
+              //this.loading.dismiss();
               console.log("PRODUCTOS ERROR", err);
             })
         }
       },(err)=>{
-        this.loading.dismiss();
+        //this.loading.dismiss();
         console.log("PRODUCTOS ERROR", err);
       }
-    );});
+    );
+    loading.dismiss();
   }
 
   backPage():void{
-    this.navCtrl.pop();
+    this.navCtrl.setRoot(StartPage);
   }
 
 }
