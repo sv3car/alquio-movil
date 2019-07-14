@@ -299,7 +299,7 @@ page-start {
     }
 
     .my-thumbnail{
-        float: left;
+        //float: left;
         position: relative;
     }
     
@@ -321,35 +321,36 @@ page-start {
     
     .precio{
         //text-align: left;
-        font-family: "Open Sans light";
+        //font-family: "Open Sans light";
         //font-weight: bold;
         font-size: 17px;
-        margin:0
+        margin:0;
+        padding: 4px;
     }
 
     .titulo{
-        margin: 2px 0 0 0;
         //text-align: left;
-        font-size: 17px;
-        font-family: "Open Sans light";
+        //font-family: "Open Sans light";
         //color: #6e6e6e;
-        line-height: 18px
+        margin: 0;
+        font-size: 16px;
+        line-height: 20px;
     }
     
     .titulo-categoria{
         margin: 2px 0 0 0;
         //text-align: left;
         font-size: 14px;
-        font-family: "Open Sans light";
+        //font-family: "Open Sans light";
         //color: #6e6e6e;
         line-height: 18px
     }
     
     .envio-inter{
-        margin: 2px 0 0 0;
+        margin: 0 0 12px 0;
         //text-align: left;
         font-size: 14px;
-        font-family: "Open Sans light";
+        //font-family: "Open Sans light";
         color: #7B55B9;
         line-height: 18px
     }
@@ -443,7 +444,7 @@ page-start {
 
         font-size: 23px;
         font-weight: bold;
-        font-family: "Open Sans light";
+        //font-family: "Open Sans light";
 
     }
 

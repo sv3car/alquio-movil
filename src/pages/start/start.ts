@@ -26,11 +26,8 @@ export class StartPage {
 
   categoryId: number;
 
-<<<<<<< HEAD
   categoryName: string;
   
-=======
->>>>>>> carlos-splash
   nextPage: string;
 
   categories : any[] = [];

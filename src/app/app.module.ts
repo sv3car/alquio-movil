@@ -32,7 +32,6 @@ import { ButtonBackComponent } from '../components/button-back/button-back';
 
 import { CometChatPage } from '../pages/comet-chat/comet-chat';
 import { Splash } from '../pages/splash/splash';
-import { JivoChatPage } from '../pages/jivo-chat/jivo-chat';
 import { UserDetailPage } from '../pages/user-detail/user-detail';
 import { ProductPage } from '../pages/product/product';
 import { OrderPage } from '../pages/order/order';
