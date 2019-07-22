@@ -68,13 +68,8 @@ export class LoginPage {
 
     let loading = this.globalProv.crearLoading();
     loading.present();
-    
-    let params = {
-      email : this.myForm.value.email,
-      password : this.myForm.value.password
-    };
 
-    this.restProvider.postData("login",params)
+    this.restProvider.postData("login",this.myForm.value)
     .then((data:any)=>{
       console.log("LOGIN SUCCESS",data);
       if(data.Error){

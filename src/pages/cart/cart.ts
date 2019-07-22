@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, AlertController } from 'ionic-angular';
 
 //Providers
 
@@ -24,7 +24,8 @@ export class CartPage {
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
-              public globalProv: GlobalProvider,) {       
+              public globalProv: GlobalProvider,
+              public alertCtrl: AlertController) {       
     /**
      * Nombre de la Página
      */
@@ -102,8 +103,15 @@ export class CartPage {
    * 
    */
   nav(){
-    let order = this.fabricateOrder();
-    this.navCtrl.push(OrdenesPage, order);
+    let carritovacioalert = this.alertCtrl.create();
+    carritovacioalert.setTitle("Carrito vacío!");
+    carritovacioalert.setMessage("Llena el carrito para poder realizar una orden de compra");
+    if (this.cartProd){
+      let order = this.fabricateOrder();
+      this.navCtrl.push(OrdenesPage, order);
+    } else {
+      carritovacioalert.present();
+    }
   }
 
   goProduct(product){   

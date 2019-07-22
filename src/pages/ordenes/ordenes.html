@@ -171,8 +171,8 @@
   <div padding>
 
     <div class="boxBorders">
-      <div>
-        <ion-list radio-group>
+      <div> 
+        <ion-list radio-group [(ngModel)]="paymethod">
           <ion-grid>
             <ion-row>
               <ion-col col-9 push-3>
@@ -188,11 +188,11 @@
               </ion-col>
               <ion-col col-3 pull-9>
                 <div class="radio-pay">
-                  <ion-radio [value]="radcd"></ion-radio>
+                  <ion-radio value="rad_cd"></ion-radio>
                 </div>
               </ion-col>
             </ion-row>
-            <!-- <ion-row>
+            <ion-row>
               <ion-col col-9 push-3>
                 <ion-item>
                   <ion-label>Efectivo</ion-label>
@@ -225,11 +225,11 @@
                   <ion-radio value="rad_bank"></ion-radio>
                 </div>
               </ion-col>
-            </ion-row> -->
+            </ion-row>
           </ion-grid>
 
         </ion-list>
-
+        <!-- </form> -->
       </div>
 
       <!-- <ion-row>
@@ -270,7 +270,7 @@
 <div id="bottom" class="bar">
   <!--Ordenar-->
   <div class="order bar">
-    <p id="ord"><strong (click)="paidCreditCard()">Ordenar</strong></p>
+    <p id="ord"><strong (click)="ordenar()">Ordenar</strong></p>
   </div>
 </div>
 

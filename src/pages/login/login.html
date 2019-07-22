@@ -50,7 +50,8 @@
           <p color="danger" ion-text *ngIf="myForm.get('email').hasError('required')">Debe escribir una contraseña</p>
         </ion-item>
       </ion-list>
-      <button class="buttonLogin" [disabled]="myForm.invalid" (click)="login()"><div class="letras-button">Ingresar</div></button>
+      <button class="buttonLogin" [disabled]="myForm.invalid" (click)="login()"><div class="letras-button">Ingresar</div>
+      </button>
     </form>
 
     <div style="width: 100%; margin-top: 40px">

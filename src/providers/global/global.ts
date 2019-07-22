@@ -25,7 +25,12 @@ export class GlobalProvider {
     Notificaciones: true
   };
   static CALIDADIMAGEN : string = "Calidad inteligente";
-
+  //Datos de PAYULATAM
+  static API_KEY_PAYU : string = "OQfffXMX79ktTXyUx6eQDVUjvV";
+  static API_LOGIN_PAYU : string = "y7hSVgAr2Vz34Q2";
+  static MERCHANT_ID_PAYU : string = "701431";
+  static CURRENCY : string = "COP";
+  static ACCOUNT_ID : string = "704477";
 
   apiURL: string = 'https://alquio.com/api/';
   apiChat: string = 'https://api.cometchat.com/v1.8/';

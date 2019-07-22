@@ -1,15 +1,19 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController } from 'ionic-angular';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'page-credit-card',
   templateUrl: 'credit-card.html',
 })
 export class CreditCardPage {
+  
+  formacredito : FormGroup;
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
-              public viewCtrl: ViewController) {
+              public viewCtrl: ViewController,
+              private formb: FormBuilder) {
   }
 
   ionViewDidLoad() {
@@ -21,7 +25,7 @@ export class CreditCardPage {
   }
 
   process(){
-
+    
   }
 
 }

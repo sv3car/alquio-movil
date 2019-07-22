@@ -63,6 +63,7 @@ import { CalidadImagen } from '../pages/calidadimagen/calidadimagen';
 import { Camera } from '@ionic-native/Camera';
 import { File } from '@ionic-native/File/ngx';
 import { FilePath } from '@ionic-native/file-path/ngx';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 
 
@@ -154,7 +155,8 @@ import { FilePath } from '@ionic-native/file-path/ngx';
     GlobalProvider,
     File,
     FilePath,
-    Camera
+    Camera,
+    InAppBrowser
   ]
 })
 export class AppModule {}
